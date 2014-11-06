@@ -4,4 +4,5 @@ fabfile.py
 Makefile
 output/
 *.pyc
+*.pid
 
