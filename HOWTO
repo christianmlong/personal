@@ -1,0 +1,23 @@
+
+The first thing to do is to activate the virtualenv
+
+workon pelican-blog
+
+Then, use fabric to preview or publish
+
+fab publish
+
+As long as you have ssh-agent forwarding on, it should forward the auth from the laptop to the linux vm, and then onward to NearlyFreeSpeech.net.
+
+Here are the available Fabric commands:
+
+    build
+    cf_upload
+    clean
+    preview
+    publish
+    rebuild
+    regenerate
+    reserve
+    serve
+
