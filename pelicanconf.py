@@ -31,13 +31,13 @@ DEFAULT_PAGINATION = 10
 DEFAULT_DATE = 'fs'
 
 _THEME_BASE = 'themes'
-#_THEME_NAME ='tuxlite_tbs'
-#_THEME_NAME ='pelican-mockingbird'
-#_THEME_NAME ='blue-penguin'
-#_THEME_NAME ='nest'
-#_THEME_NAME ='pelican-simplegrey'
-#_THEME_NAME ='pelican-sober'
-_THEME_NAME = 'built-texts'
+# _THEME_NAME ='tuxlite_tbs'
+# _THEME_NAME ='pelican-mockingbird'
+_THEME_NAME ='blue-penguin'
+# _THEME_NAME ='nest'
+# _THEME_NAME ='pelican-simplegrey'
+# _THEME_NAME ='pelican-sober'
+# _THEME_NAME = 'built-texts'
 THEME = os.path.join(_THEME_BASE, _THEME_NAME)
 
 
