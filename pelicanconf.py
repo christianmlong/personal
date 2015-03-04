@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import os
 
 AUTHOR = u'Christian Long'
 SITENAME = u"Christian Long's Blog"
@@ -29,10 +30,15 @@ SOCIAL = (('twitter', 'http://twitter.com/christianmlong'),
 DEFAULT_PAGINATION = 10
 DEFAULT_DATE = 'fs'
 
-_THEME_BASE = '/home/christianmlong/projects/external/pelican-themes/'
-#THEME = _THEME_BASE + 'tuxlite_tbs'
-#THEME = _THEME_BASE + 'pelican-mockingbird'
-THEME = _THEME_BASE + 'built-texts'
+_THEME_BASE = 'themes'
+#_THEME_NAME ='tuxlite_tbs'
+#_THEME_NAME ='pelican-mockingbird'
+#_THEME_NAME ='blue-penguin'
+#_THEME_NAME ='nest'
+#_THEME_NAME ='pelican-simplegrey'
+#_THEME_NAME ='pelican-sober'
+_THEME_NAME = 'built-texts'
+THEME = os.path.join(_THEME_BASE, _THEME_NAME)
 
 
 # Uncomment following line if you want document-relative URLs when developing
