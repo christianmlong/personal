@@ -1,7 +1,7 @@
 Title: Looking for a new editor
 Category: Python
 Tags: komodo pycharm editor
-Slug:
+Date: 2014-12-19 10:35
 Author: Christian Long
 Summary: Need a new editor
 
