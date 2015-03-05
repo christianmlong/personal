@@ -1,16 +1,16 @@
-Title: More on Pelican themes 
+Title: More on Pelican themes
 Category: Python
 Tags: pelican, blog, themes, pygments
 Date: 2015-03-04 10:25
 Modified: 2015-03-05 16:03
 Author: Christian Long
-Summary: Adding the pelican-themes project as a git submodule 
+Summary: Adding the pelican-themes project as a git submodule
 
-The [Pelican Themes](https://github.com/getpelican/pelican-themes) project gathers together a bunch of nice themes for the [Pelican](http://docs.getpelican.com) static blog generator. 
+The [Pelican Themes](https://github.com/getpelican/pelican-themes) project gathers together a bunch of nice themes for the [Pelican](http://docs.getpelican.com) static blog generator.
 
-This is a good case for using git's [submodule](http://git-scm.com/book/en/v2/Git-Tools-Submodules) feature. 
+This is a good case for using git's [submodule](http://git-scm.com/book/en/v2/Git-Tools-Submodules) feature.
 
-Move to where your Pelican is installed (where your pelicanconf.py file is). 
+Move to where your Pelican is installed (where your pelicanconf.py file is).
 
     $ cd ~/personal/blog
 
@@ -38,7 +38,7 @@ Change to the newly-created themes directory, and look at the submodules defined
     -4ea9f35b517e67488f330799e8637e2e045d657e blue-penguin
     . . . etc.
 
-Here `git submodule status` prints all the submodules that make up the pelican-themes project, one line for each theme. 
+Here `git submodule status` prints all the submodules that make up the pelican-themes project, one line for each theme.
 See the little minus sign before the commit hash on each line? That means that the submodule for that theme
 is not initialized. We could initialize all the themes, but that would pull down a lot of code I'm not interested
 in. I just want a few themes.
@@ -49,15 +49,15 @@ in. I just want a few themes.
 
 `git submodule init` initializes the blue-penguin and pelican-mockingbird themes. Then, `git submodule update` clones the missing submodules.
 
-Then edit your `pelicanconf.py` file, and add this line, giving Pelican the appropriate path to your theme. 
+Then edit your `pelicanconf.py` file, and add this line, giving Pelican the appropriate path to your theme.
 
     THEME = 'path/to/your/theme'
 
-I'm using the [Blue Penguin](https://github.com/jody-frankowski/blue-penguin) theme. I made a few modifications. I'm not justifying the text, 
-and I replaced the dark solarized code formatting with my own format based on the [Pygments](http://pygments.org/docs/styles) 'friendly' style.
+I'm using the [Blue Penguin](https://github.com/jody-frankowski/blue-penguin) theme. I made [a few modifications](https://github.com/christianmlong/blue-penguin).
+I'm not justifying the text, and I replaced the dark solarized code formatting with my own format based on the [Pygments](http://pygments.org/docs/styles) 'friendly' style.
 
-Here's some code, to show off the syntax highlighting. 
-    
+Here's some code, to show off the syntax highlighting.
+
     from pygments.style import Style
     from pygments.token import Keyword, Name, Comment, String, Error, \
          Number, Operator, Generic
@@ -72,8 +72,3 @@ Here's some code, to show off the syntax highlighting.
             Name.Class:             'bold #0f0',
             String:                 'bg:#eee #111'
         }
-
-
-
-
-
