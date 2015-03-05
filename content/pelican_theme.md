@@ -1,6 +1,8 @@
 Title: More on Pelican themes 
 Category: Python
-Tags: 
+Tags: pelican, blog, themes, pygments
+Date: 2015-03-04 10:25
+Modified: 2015-03-05 16:03
 Author: Christian Long
 Summary: Adding the pelican-themes project as a git submodule 
 
