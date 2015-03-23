@@ -28,7 +28,7 @@ I have this shell script accessible via an alias `nbp`.
     cp --no-clobber $SKEL_FILE $FILE_PATH
     vi $FILE_PATH
 
-This copies my posting template to a new file in the drafts directory, and opens it for editing in vim. 
+This copies my posting template to a new file in the drafts directory, and opens it for editing in vim.
 
 #### Dev server
 
@@ -36,10 +36,26 @@ Run this command to start the Pelican development server.
 
     make devserver
 
-This will automatically regenerate the site when files are changed. It will also serve the site at http://localhost:8000
+This will automatically regenerate the site when files are changed. It will also serve the site at [http://localhost:8000](http://localhost:8000).
 
 Run `develop_server.sh stop` to stop the development server.
 
 #### Browser auto refresh
 
-There are many auto-refresh solutions for the browser, but they don't work well when you are editing a file on a remote server. [live.js](http://www.livejs.com/) is a nice solution that takes care of auto-refreshing in javascript.
+There are many auto-refresh solutions for the browser, but they don't work well when you are editing a file on a remote server. [live.js](http://www.livejs.com/) is a nice solution that takes care of auto-refreshing in javascript. However, we don't want to include the live.js javascript file in the published version, just in the local development version. We can modify our theme to include it only when developing.
+
+First edit pelicanconf.py. Add this
+
+    IS_DEVELOPMENT_VERSION = True
+
+Also edit publishconf.py. Add this
+
+    IS_DEVELOPMENT_VERSION = False
+
+Now, change the theme so that every article page includes the live.js javascript, if we are in development. Find your theme's template directory. It's probably at `themes/\<theme name>/templates. Edit `article.html`. Look for the head block in the template `{% block head %}`. Add this to it
+
+    {% if is_development_version %}
+      <script type="text/javascript" src="http://livejs.com/live.js"></script>
+    {% endif %}
+
+Run `make devserver`, and open [http://localhost:8000](http://localhost:8000). Edit one of your articles, and see if it reloads in the browser automatically. Neat!
