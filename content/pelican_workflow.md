@@ -54,8 +54,11 @@ Also edit publishconf.py. Add this
 
 Now, change the theme so that every article page includes the live.js javascript, if we are in development. Find your theme's template directory. It's probably at `themes/\<theme name>/templates. Edit `article.html`. Look for the head block in the template `{% block head %}`. Add this to it
 
-    {% if is_development_version %}
+    {% if IS_DEVELOPMENT_VERSION %}
       <script type="text/javascript" src="http://livejs.com/live.js"></script>
     {% endif %}
 
 Run `make devserver`, and open [http://localhost:8000](http://localhost:8000). Edit one of your articles, and see if it reloads in the browser automatically. Neat!
+
+The nice thing about the live.js solution is that it works even if the files you are editing are on a remote server. It polls the page by making a head request every few seconds. Obviously, you don't want this polling to happen on your published pages.
+
