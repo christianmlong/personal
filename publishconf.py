@@ -22,3 +22,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
+
+# Development server version vs published version
+IS_DEVELOPMENT_VERSION = False
+

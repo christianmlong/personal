@@ -27,23 +27,17 @@ LINKS = (('Archives', 'archives.html'),
 SOCIAL = (('twitter', 'http://twitter.com/christianmlong'),
          )
 
+GITHUB_URL = 'https://github.com/christianmlong'
+
 DEFAULT_PAGINATION = 10
 DEFAULT_DATE = 'fs'
 
 _THEME_BASE = 'themes'
-# _THEME_NAME ='tuxlite_tbs'
-# _THEME_NAME ='pelican-mockingbird'
 _THEME_NAME ='blue-penguin'
-# _THEME_NAME ='nest'
-# _THEME_NAME ='pelican-simplegrey'
-# _THEME_NAME ='pelican-sober'
-# _THEME_NAME = 'built-texts'
 THEME = os.path.join(_THEME_BASE, _THEME_NAME)
-
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
-
 
 DEFAULT_CATEGORY = ('Articles')
 #COPYRIGHT = 'Copyright Christian Long 2014'
@@ -56,39 +50,18 @@ STATIC_PATHS = ['images',
                ]
 PAGES_PATHS = ['pages']
 
-
-
 DISPLAY_PAGES_ON_MENU = True
 DISPLAY_CATEGORIES_ON_MENU = True
-
 TYPOGRIFY = True
-# TYPOGRIFY = False
-
 SLUGIFY_SOURCE = 'title'
-
- #
-#
 
 # path-specific metadata
 EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Development server version vs published version
+IS_DEVELOPMENT_VERSION = True
 
 
 
