@@ -52,7 +52,7 @@ Also edit publishconf.py. Add this
 
     IS_DEVELOPMENT_VERSION = False
 
-Now, change the theme so that every article page includes the live.js javascript, if we are in development. Find your theme's template directory. It's probably at `themes/\<theme name>/templates. Edit `article.html`. Look for the head block in the template `{% block head %}`. Add this to it
+Now, change the theme so that every article page includes the live.js javascript, if we are in development. Find your theme's template directory. It's probably at `themes/<theme name>/templates`. Edit `article.html`. Look for the head block in the template `{% block head %}`. Add this to it:
 
     {% if IS_DEVELOPMENT_VERSION %}
       <script type="text/javascript" src="http://livejs.com/live.js"></script>
