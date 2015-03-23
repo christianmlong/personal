@@ -60,7 +60,12 @@ EXTRA_PATH_METADATA = {
     'extra/robots.txt': {'path': 'robots.txt'},
     }
 
+# Don't regenerate unmodified content. Just use
+# the cached version
+LOAD_CONTENT_CACHE = True
+
 # Development server version vs published version
+# This is used in my theme
 IS_DEVELOPMENT_VERSION = True
 
 
