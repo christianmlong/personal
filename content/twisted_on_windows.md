@@ -18,6 +18,7 @@ These instructions have been tested with Windows 8.1 and Windows Server 2012 R2.
 
 Twisted requires Python 2. Install the [latest version](https://www.python.org/downloads/release/python-279/) of Python 2.7 ([direct link to the 32-bit installer](https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi)). Run the installer, and in the installer dialog, choose the option to add python to the path.
 
+![Python installer screenshot]({filename}/images/python_install.png)
 
 #### <a name="install_compiler"></a>Install a compiler
 
@@ -64,7 +65,7 @@ With the virtualenv activated, install the `wheel` package, and upgrade `setupto
 
     pip install --upgrade wheel setuptools
 
-Later we will use `wheel` to create our own binary packages for distribution to my production environment. That way we don't have to install the Microsoft Visual C++ Compiler on the production servers.
+Later we will use `wheel` to create our own binary packages for distribution to the production environment. That way we don't have to install the Microsoft Visual C++ Compiler on the production servers.
 
 
 #### <a name="python_packaging"></a> The state of Python packaging in 2015
