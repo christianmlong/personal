@@ -11,7 +11,7 @@ Installing and configuring [Twisted](https://twistedmatrix.com) on Windows has g
 
 Twisted runs well on Windows, in my experience. I moved some Twisted applications from Linux to Windows for a client, and they have been running happily for months now without issue.
 
-These instructions have been tested with Windows 8.1 and Windows Server 2012 R2. The applications I moved use Twisted.Web to serve single-page web apps, talking to a database using [pyodbc](https://code.google.com/p/pyodbc/). My ODBC driver is 32-bit, so I'm using 32-bit Python for these instructions.
+These instructions have been tested with Windows 8.1 and Windows Server 2012 R2. The applications I run on Windows use [Twisted.Web](http://twistedmatrix.com/trac/wiki/TwistedWeb) to serve single-page web apps, talking to a database using [pyodbc](https://code.google.com/p/pyodbc/). My ODBC driver is 32-bit, so I'm using 32-bit Python for these instructions. However, Twisted does not depend on pyodbc, so don't install it if you don't need it.
 
 
 #### <a name="install_python"></a>Install Python
@@ -21,14 +21,14 @@ Twisted requires Python 2. Install the [latest version](https://www.python.org/d
 
 #### <a name="install_compiler"></a>Install a compiler
 
-Some of Twisted's dependencies have C extensions, and these packages are not available from the [Python Package Index](https://pypi.python.org/pypi) in the binary `wheel` format. So, you need a compiler to compile them from source. This used to be [tricky](http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat), but fortunately, Microsoft now provides a free download that makes it easy. Download the [Microsoft Visual C++ Compiler for Python 2.7](http://www.microsoft.com/en-us/download/confirmation.aspx?id=44266). It may need to be installed as admin, to get around policy restrictions on compilers.
+Some of Twisted's dependencies have C extensions, and are not available from the [Python Package Index](https://pypi.python.org/pypi) in the binary `wheel` format. So, we need a compiler to compile them from source. This [used](http://stackoverflow.com/questions/26140192/microsoft-visual-c-compiler-for-python-2-7/28618559#28618559) [to](http://stackoverflow.com/questions/11405549/how-do-i-install-pycrypto-on-windows) [be](http://stackoverflow.com/questions/3047542/building-lxml-for-python-2-7-on-windows) [tricky](http://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat), but fortunately, Microsoft now provides a free download that makes it easy. Download the [Microsoft Visual C++ Compiler for Python 2.7](http://www.microsoft.com/en-us/download/details.aspx?id=44266). It may have to be installed as admin, to get around policy restrictions on compilers.
 
 
 #### <a name="upgrade_pip"></a>Upgrade pip and virtualenv
 
 The Python 2.7.9 installer now includes pip and virtualenv, and sets them up for you by default. However, it does not come with the very latest pip and virtualenv. Here's how to upgrade them to the latest versions.
 
-Start an admin command prompt. On Windows 8 and newer, 'Win-x then a' is a quick keyboard shortcut to open an admin command prompt.
+Start an admin command prompt. On Windows 8 and newer, Win-x then a is a quick keyboard shortcut to open an admin command prompt.
 
 Upgrade pip to  the latest version.
 
@@ -38,7 +38,7 @@ Upgrade virtualenv to the latest version.
 
     pip install --upgrade virtualenv
 
-Now close the admin command prompt. You will be installing the rest of the packages in to a [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and that does not require admin access. The great advantage of using a virtualenv is that it keeps the packages we install isolated from each other and from the system-wide packages.
+Now close the admin command prompt. We will be installing the rest of the packages in to a [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/), and that does not require admin access. The great advantage of using a virtualenv is that it keeps the packages we install isolated from each other, and from the system-wide packages.
 
 
 #### <a name="set_up_virtualenv"></a>Set up a virtual environment
@@ -51,19 +51,31 @@ Start a regular (non-admin) command prompt. Win-x then c is a quick keyboard sho
 
 This makes a new directory on the C: drive, makes a new virtualenv, and then activates the new virtualenv. You should see the name of the virtualenv in parentheses at the start of your command prompt, something like this:
 
-    (Example) C:\Users\Me
+    (Example) C:\Users\Me>
 
 When a virtualenv is activated, it looks for installed Python packages in its own site-packages directory `C:\PythonEnvs\Example\Lib\site-packages`, instead of looking in the system wide site-packages directory `C:\Python27\Lib\site-packages`. Note that we don't need to be in the virtualenv directory for it to be active.
 
 The [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) project is full of useful shortcuts for working with virtualenvs. For simplicity, I will be using only virtualenv, and not virtualenvwrapper, in this writeup. However, if you're interested in setting up virtualenvwrapper, [this patched version](https://github.com/christianmlong/virtualenvwrapper-win) works on Windows with the latest version of virtualenv.
 
-#### <a name="install_into_venv"></a> Install dependencies in to the virtual environment
 
-With the virtuaenv activated, install the `wheel` package, and upgrade `setuptools`.
+#### <a name="upgrade_pip_venv"></a> Upgrade pip and virtualenv
+
+With the virtualenv activated, install the `wheel` package, and upgrade `setuptools`.
 
     pip install --upgrade wheel setuptools
 
-Later I will use `wheel` to create my own binary packages for distribution to my production environment. That way I don't have to install the Microsoft Visual C++ Compiler on my production servers.
+Later we will use `wheel` to create our own binary packages for distribution to my production environment. That way we don't have to install the Microsoft Visual C++ Compiler on the production servers.
+
+
+#### <a name="python_packaging"></a> The state of Python packaging in 2015
+
+Installing Python packages on Windows has gotten a lot easier over the years. The [Python Package Index](https://pypi.python.org/pypi) (PyPI) now provides pre-compiled binary installers in the [wheel](https://wheel.readthedocs.org/en/latest/) format for many packages.
+
+When a wheel is not available, pip can automatically compile C extensions using [this compiler](http://www.microsoft.com/en-us/download/details.aspx?id=44266) that Microsoft provides at no cost.
+
+However, there are still packages that are not available on PyPI. Many are distributed for Windows in the Windows installer format (.msi or .exe). Pip can not install these packages, but there [is a way](#install_from_elsewhere) to install them in to a virtualenv.
+
+#### <a name="install_twisted"></a> Install Twisted
 
 Install Twisted.
 
@@ -79,24 +91,33 @@ This will pull the latest version from PyPI. It will also install its dependenci
 
 If you get a vcvarsall error, [install the Microsoft Visual C++ compiler](#install_compiler).
 
+#### <a name="install_from_pypi"></a> Install dependencies from PyPI
+
 Install pywin32.
 
     pip install pypiwin32
 
-As of January 2015, pywin32 is available on PyPI in the wheel format. That means it can be installed by pip. Note that in order to get the PyPI version, you must tell pip to install package `pypiwin32`, not `pywin32`.
+As of March 2015, pywin32 [is available on PyPI](https://pypi.python.org/pypi/pypiwin32) in the wheel format. That means it can be installed by pip. Note that in order to get the PyPI version, we must tell pip to install package `pypiwin32`, not `pywin32`.
 
-Install [pyodbc](https://code.google.com/p/pyodbc/)
 
-As of January 2015, pyodbc is not available in wheel format from PyPI.
-[Download](https://code.google.com/p/pyodbc/downloads/detail?name=pyodbc-3.0.7.win32-py2.7.exe&can=2&q=) the Windows installer. Make sure to get the installler that matches your version of Python and your architecture. I am using this one "3.0.7 32-bit Windows Installer for Python 2.7".
+#### <a name="install_from_elsewhere"></a> Install dependencies that are not on PyPI
 
-Use easy_install to install pyodbc in to the virtualenv from the Windows installer file.
+For packages that are not on PyPI, the installation steps are different. If the package is distributed using a Windows binary installer (.msi or .exe) we can use the older `easy_install` command to install it in to a virtualenv.
+
+One such package is [pyodbc](https://code.google.com/p/pyodbc/), which my application uses to talk to the database. Twisted itself does not depend on pyodbc, so there is no need to install it if your application doesn't use it.
+
+As of March 2015, pyodbc is not available in wheel format from PyPI.
+[Download](https://code.google.com/p/pyodbc/downloads/detail?name=pyodbc-3.0.7.win32-py2.7.exe&can=2&q=) the Windows installer. Make sure to get the installer that matches your version of Python and your architecture. I am using this one "3.0.7 32-bit Windows Installer for Python 2.7".
+
+Use `easy_install` to install pyodbc in to the virtualenv from the executable Windows installer file.
 
     easy_install --always-unzip C:\Path\to\pyodbc-3.0.7.win32-py2.7.exe
 
-I'll talk about why we need `--always-unzip` [later](#virtual_service_account)
+I'll talk about why we need `--always-unzip` in Part 2.
 
-Install the application.
+Not all installers will work with `easy_install` this way. See this [Stack Overflow question](http://stackoverflow.com/questions/25984095/install-pysvn-in-a-virtualenv/25984096#25984096) for more details.
+
+#### <a name="install_application"></a> Install your application
 
 Whatever Twisted application you are going to be running on this server, install it as you normally would. For example `pip install my_app`.
 
@@ -107,11 +128,12 @@ Now that everything has been installed, check it.
 should look something like this:
 
     my_app==4.14.2
-    pyodbc==3.0.7
     pypiwin32==219
     Twisted==14.0.2
     wheel==0.24.0
     zope.interface==4.1.2
+    other dependencies here
+    . . .
 
 Newer versions of some of these packages may since have been released.
 
@@ -130,9 +152,11 @@ Now try running your app under twisted.
        --rundir "C:\PythonEnvs\Example\Lib\site-packages\my_app" ^
        --python "my_tacfile.tac"
 
-This should print out some lines showing the `twistd` server starting up. Again, on Windows, you have to specify the full path to your app install directory when starting the `twistd` server. Go try out your app, and press Ctrl-c to shut down the server when you're done.
+For readability, I have broken this long command in to multiple lines using `^`, the dos line-continuation character.
+
+This command should print out some lines showing the `twistd` server starting up. Again, on Windows, we have to specify the full path to the app install directory when starting the `twistd` server. Go try out your app, and press Ctrl-c to shut down the server when you're done.
 
 
 #### <a name="up_running"></a> Up and running
 
-That's it for part 1. We have installed Python, set up a virtualenv, and gotten a Twisted app up and running. In Part 2, we will set up a Windows service to run the app, using the virutal service account that was introduced in Windows server 2008. Thanks for reading, and if you have any questions or suggestions, let me know. I'm on Twitter at [@christianmlong](https://twitter.com/christianmlong).
+That's it for Part 1. We have installed Python, set up a virtualenv, and gotten a Twisted app up and running. In Part 2, we will set up a Windows service to run the app, using the virtual service account that was introduced in Windows Server 2008. In Part 3, we will package the app and its dependencies for deployment to test and production servers. Thanks for reading, and if you have any questions or suggestions, let me know. I'm on Twitter at [@christianmlong](https://twitter.com/christianmlong).
