@@ -2,7 +2,7 @@ Title: Twisted on Windows, 2015 Edition
 Category: Python
 Tags:python, twisted, windows
 Author: Christian Long
-Date: 2015-03-23 17:55
+Date: 2015-03-25 16:43
 Summary: Install and run an application using Twisted on Windows, in a 2015 style.
 
 #### <a name="intro"></a>Intro
@@ -13,6 +13,7 @@ Twisted runs well on Windows, in my experience. I moved some Twisted application
 
 These instructions have been tested with Windows 8.1 and Windows Server 2012 R2. The applications I run on Windows use [Twisted.Web](http://twistedmatrix.com/trac/wiki/TwistedWeb) to serve single-page web apps, talking to a database using [pyodbc](https://code.google.com/p/pyodbc/). My ODBC driver is 32-bit, so I'm using 32-bit Python for these instructions. However, Twisted does not depend on pyodbc, so don't install it if you don't need it.
 
+These instructions assume that you already have an application that runs on Twisted. The Twisted documentation includes an [nice selection](https://twistedmatrix.com/documents/current/core/examples/) of example applications, if you don't have an existing Twisted application.
 
 #### <a name="install_python"></a>Install Python
 
@@ -59,15 +60,6 @@ When a virtualenv is activated, it looks for installed Python packages in its ow
 The [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) project is full of useful shortcuts for working with virtualenvs. For simplicity, I will be using only virtualenv, and not virtualenvwrapper, in this writeup. However, if you're interested in setting up virtualenvwrapper, [this patched version](https://github.com/christianmlong/virtualenvwrapper-win) works on Windows with the latest version of virtualenv.
 
 
-#### <a name="upgrade_pip_venv"></a> Upgrade pip and virtualenv
-
-With the virtualenv activated, install the `wheel` package, and upgrade `setuptools`.
-
-    pip install --upgrade wheel setuptools
-
-Later we will use `wheel` to create our own binary packages for distribution to the production environment. That way we don't have to install the Microsoft Visual C++ Compiler on the production servers.
-
-
 #### <a name="python_packaging"></a> The state of Python packaging in 2015
 
 Installing Python packages on Windows has gotten a lot easier over the years. The [Python Package Index](https://pypi.python.org/pypi) (PyPI) now provides pre-compiled binary installers in the [wheel](https://wheel.readthedocs.org/en/latest/) format for many packages.
@@ -77,8 +69,6 @@ When a wheel is not available, pip can automatically compile C extensions using 
 However, there are still packages that are not available on PyPI. Many are distributed for Windows in the Windows installer format (.msi or .exe). Pip can not install these packages, but there [is a way](#install_from_elsewhere) to install them in to a virtualenv.
 
 #### <a name="install_twisted"></a> Install Twisted
-
-Install Twisted.
 
     pip install Twisted
 
@@ -118,7 +108,8 @@ I'll talk about why we need `--always-unzip` in Part 2.
 
 Not all installers will work with `easy_install` this way. See this [Stack Overflow question](http://stackoverflow.com/questions/25984095/install-pysvn-in-a-virtualenv/25984096#25984096) for more details.
 
-#### <a name="install_application"></a> Install your application
+
+#### <a name="install_app"></a> Install your application
 
 Whatever Twisted application you are going to be running on this server, install it as you normally would. For example `pip install my_app`.
 
@@ -131,7 +122,6 @@ should look something like this:
     my_app==4.14.2
     pypiwin32==219
     Twisted==14.0.2
-    wheel==0.24.0
     zope.interface==4.1.2
     other dependencies here
     . . .
@@ -147,7 +137,7 @@ Try it out.
 
 The virtualenv picks up the right Python path, but on Windows we have to specify the full path to the `twistd.py` file. This command should give you a nice help message and no errors.
 
-Now try running your app under twisted.
+Now try running your app under Twisted.
 
     python C:\PythonEnvs\Example\Scripts\twistd.py ^
        --rundir "C:\PythonEnvs\Example\Lib\site-packages\my_app" ^
@@ -160,4 +150,4 @@ This command should print out some lines showing the `twistd` server starting up
 
 #### <a name="up_running"></a> Up and running
 
-That's it for Part 1. We have installed Python, set up a virtualenv, and gotten a Twisted app up and running. In Part 2, we will set up a Windows service to run the app, using the virtual service account that was introduced in Windows Server 2008. In Part 3, we will package the app and its dependencies for deployment to test and production servers. Thanks for reading, and if you have any questions or suggestions, let me know. I'm on Twitter at [@christianmlong](https://twitter.com/christianmlong).
+That's it for Part 1. We have installed Python, set up a virtualenv, and gotten your Twisted app up and running. In Part 2, we will set up a Windows service to run the app, using the virtual service account that was introduced in Windows Server 2008. In Part 3, we will package the app and its dependencies for deployment to test and production servers. Thanks for reading, and if you have any questions or suggestions, let me know. I'm on Twitter at [@christianmlong](https://twitter.com/christianmlong).
