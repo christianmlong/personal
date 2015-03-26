@@ -58,7 +58,7 @@
      id="layer2"
      inkscape:label="template"
      transform="translate(42.357143,-281.00504)"
-     style="display:none">
+     style="display:inline">
     <image
        style="display:inline"
        y="281.00504"
@@ -84,7 +84,7 @@
      transform="translate(42.357143,-281.00504)">
     <path
        style="fill:none;stroke:#000000;stroke-width:3.37487888;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m -191.48998,439.85046 c 0,0 581.16835,0 666.07907,0 84.91073,0 57.13186,-95.15154 142.45926,-95.15154 85.3274,0 428.20355,0 428.20355,0"
+       d="m -201.48998,439.85046 c 0,0 581.16835,0 666.07907,0 84.91073,0 57.13186,-95.15154 142.45926,-95.15154 85.3274,0 428.20355,0 428.20355,0"
        id="path3829"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czzc" />
@@ -92,7 +92,7 @@
        xml:space="preserve"
        id="flowRoot3831"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-48.357143,295.86218)"><flowRegion
+       transform="translate(-38.357143,295.86218)"><flowRegion
          id="flowRegion3833"><rect
            id="rect3835"
            width="524.97858"
@@ -104,7 +104,7 @@
        xml:space="preserve"
        id="flowRoot3831-7"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(545.00672,297.52512)"><flowRegion
+       transform="translate(535.00672,297.52512)"><flowRegion
          id="flowRegion3833-4"><rect
            id="rect3835-0"
            width="524.97858"
@@ -116,7 +116,7 @@
        xml:space="preserve"
        id="flowRoot2994"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-26.298549,303.00504)"><flowRegion
+       transform="translate(-16.298549,299.00504)"><flowRegion
          id="flowRegion2996"><rect
            id="rect2998"
            width="675.71429"
@@ -141,7 +141,7 @@
        xml:space="preserve"
        id="flowRoot3012"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-31.939174,301.00504)"><flowRegion
+       transform="translate(-21.939174,297.00504)"><flowRegion
          id="flowRegion3014"><rect
            id="rect3016"
            width="421.42856"
