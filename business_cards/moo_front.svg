@@ -129,7 +129,7 @@
        xml:space="preserve"
        id="flowRoot2994"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-38.298549,318.06386)"><flowRegion
+       transform="translate(-38.298549,302.06386)"><flowRegion
          id="flowRegion2996"><rect
            id="rect2998"
            width="675.71429"
@@ -137,13 +137,13 @@
            x="42.857143"
            y="501.28571" /></flowRegion><flowPara
          id="flowPara3000"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'">christianzlong@gmail.com</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'">christianzlong@gmail.com</flowPara><flowPara
          id="flowPara3002"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3012"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-43.939174,316.06386)"><flowRegion
+       transform="translate(-46.503277,308.06386)"><flowRegion
          id="flowRegion3014"><rect
            id="rect3016"
            width="421.42856"
@@ -151,5 +151,6 @@
            x="47.142857"
            y="568.42859"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRegion><flowPara
-         id="flowPara3018">@christianmlong</flowPara></flowRoot>  </g>
+         id="flowPara3018"
+         style="font-size:45px">@christianmlong</flowPara></flowRoot>  </g>
 </svg>
