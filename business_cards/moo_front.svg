@@ -15,7 +15,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="moo_front.svg">
+   sodipodi:docname="moo_front.svg"
+   shape-rendering="crispEdges">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,8 +26,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.78"
-     inkscape:cx="455.32924"
+     inkscape:zoom="0.45014485"
+     inkscape:cx="289.82696"
      inkscape:cy="335.14771"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -40,7 +41,7 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     showborder="true"
+     showborder="false"
      inkscape:showpageshadow="false"
      units="px" />
   <metadata
@@ -60,7 +61,7 @@
      id="layer2"
      inkscape:label="template"
      transform="translate(42.357143,-281.00505)"
-     style="display:inline">
+     style="display:none">
     <image
        style="display:inline"
        y="281.00504"
@@ -91,8 +92,8 @@
      style="display:inline"
      transform="translate(42.357143,-281.00505)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:3.50523067;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m -239.81486,444.81472 683.48846,0 c 87.13006,0 67.7165,-100.0293 155.27411,-100.0293 l 430.30419,0"
+       style="fill:none;stroke:#000000;stroke-width:3.1825633;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -159.81486,426.94619 683.48846,0 c 87.13006,0 67.7165,-82.46092 155.27411,-82.46092 l 430.30419,0"
        id="path3829"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="czzc" />
@@ -108,11 +109,12 @@
            x="55.749935"
            y="59.360111"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRegion><flowPara
-         id="flowPara3837">Christian Long</flowPara></flowRoot>    <flowRoot
+         id="flowPara3837"
+         style="font-size:50px">Christian Long</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3831-7"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(539.00672,295.50482)"><flowRegion
+       transform="translate(589.00672,295.50482)"><flowRegion
          id="flowRegion3833-4"><rect
            id="rect3835-0"
            width="524.97858"
@@ -120,7 +122,8 @@
            x="55.749935"
            y="59.360111"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:60px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRegion><flowPara
-         id="flowPara3837-9">Automation</flowPara></flowRoot>    <flowRoot
+         id="flowPara3837-9"
+         style="font-size:50px">Automation</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3004"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
@@ -135,7 +138,7 @@
        xml:space="preserve"
        id="flowRoot2994"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-24.298549,288.06386)"><flowRegion
+       transform="translate(-24.298549,300.06386)"><flowRegion
          id="flowRegion2996"><rect
            id="rect2998"
            width="675.71429"
@@ -143,13 +146,13 @@
            x="42.857143"
            y="501.28571" /></flowRegion><flowPara
          id="flowPara3000"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'">christianzlong@gmail.com</flowPara><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'">christianzlong@gmail.com</flowPara><flowPara
          id="flowPara3002"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:45px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRoot>    <flowRoot
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3012"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:125%;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="translate(-32.503277,294.06386)"><flowRegion
+       transform="translate(-32.503277,298.06386)"><flowRegion
          id="flowRegion3014"><rect
            id="rect3016"
            width="421.42856"
@@ -158,5 +161,5 @@
            y="568.42859"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;font-family:'Tw Cen MT';-inkscape-font-specification:'Tw Cen MT'" /></flowRegion><flowPara
          id="flowPara3018"
-         style="font-size:45px">@christianmlong</flowPara></flowRoot>  </g>
+         style="font-size:40px">@christianmlong</flowPara></flowRoot>  </g>
 </svg>
