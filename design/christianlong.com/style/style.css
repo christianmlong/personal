@@ -1,0 +1,38 @@
+#container {
+  /*position: absolute;*/
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  position: relative;
+  display: inline-block;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 200%;
+}
+
+
+#cl {
+  vertical-align: top;
+  border-bottom: 3px solid #ff0000;
+}
+
+#spacer {
+  vertical-align: top;
+  width: 40%;
+}
+
+#wave {
+  vertical-align: top;
+}
+
+#automation {
+  border-style: solid;
+  border-color: #ff0000;
+  border-top: thick;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  vertical-align: bottom;
+}
