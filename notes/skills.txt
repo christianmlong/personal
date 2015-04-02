@@ -1,0 +1,94 @@
+SQL server
+T-SQL
+VB6
+VBA
+MS Office
+html
+css
+dos
+windows NT3 to windows server 2012 R3
+Unix and Linux
+  HP-UX
+  OpenSUSE
+  Yellow Dog
+  Ubuntu
+  BusyBox
+Mac System 7 to OS X
+AWS
+Subversion
+Git
+Python
+JavaScript
+PostScript
+TracerX
+ZPL
+Networking
+bash
+SQL
+Oracle database
+Oracle forms and reports
+PL-SQL
+DB2
+iSeries
+Testing
+Nose
+Selenium
+Pytest
+State machines
+Asynchronous io
+Futures/promises/deferreds
+decorators
+Twisted
+Debugging
+pdb
+irc
+vpn
+Community building
+Virtualization
+VMWare
+VirtualBox
+Vagrant
+Blogging
+Pelican
+PyCon program committee member
+MochiKit
+html5
+html5 canvas
+svg
+InkScape
+User interface design
+Web services
+json
+ssh
+PuTTY
+gpg
+ERP systems
+Warehouse management
+Shipping
+Regulatory compliance
+Shipping batteries
+Shipping hazardous materials
+Business process automation
+ROI calculation
+Printer configuration
+sysadmin
+dba
+vnc/rdp
+Wake on lan
+TrueCrypt
+Disk encryption
+Clippership
+Zebra printers
+curl
+cups
+samba
+Windows services
+sc
+nssm
+volunteering for PyCon
+communication
+motivation
+task completion
+Run a Python user group
+itertools/itertoolz
+
