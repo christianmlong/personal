@@ -71,7 +71,12 @@ def get_auth_token_for_gists(username, password):
     """
     note = 'githubpy3.py for my utility scripts.'
     scopes = ['gist']
-    return authorize(username, password, scopes, note)
+    return authorize(username,
+                     password,
+                     scopes,
+                     note,
+                     two_factor_callback=two_factor_auth_callback,
+                    )
 
 def get_user_pass():
     """
