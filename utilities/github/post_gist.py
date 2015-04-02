@@ -23,9 +23,9 @@ def main():
     """
     Main function to post a gist to GitHub.
     """
-    (filename, description) = parse_arguments()
+    (filename, description, make_public) = parse_arguments()
     session = get_session()
-    post_gist(session, filename, description)
+    post_gist(session, filename, description, make_public)
 
 def parse_arguments():
     """
@@ -38,8 +38,14 @@ def parse_arguments():
     argument_parser.add_argument('description',
                                  help='Description of the gist',
                                 )
+    argument_parser.add_argument('-p',
+                                 '--public',
+                                 action='store_true',
+                                 dest='make_public',
+                                 help='Make this gist public',
+                                )
     args = argument_parser.parse_args()
-    return (args.filename, args.description)
+    return (args.filename, args.description, args.make_public)
 
 def get_session():
     """
@@ -93,6 +99,7 @@ def get_user_pass():
 def post_gist(session,
               filename,
               description,
+              make_public=False,
              ):
     """
     Post the gist to GitHub
@@ -102,8 +109,7 @@ def post_gist(session,
 
     files = {filename : {'content' : gist_text}}
 
-    gist = session.create_gist(description, files, public=False)
-    # gist = session.create_gist(description, files)
+    gist = session.create_gist(description, files, public=make_public)
 
     print(gist.html_url)    # pylint: disable=superfluous-parens
 
