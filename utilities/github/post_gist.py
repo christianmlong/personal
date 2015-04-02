@@ -1,3 +1,11 @@
+"""
+    Post Gist
+
+    A little utility for posting a file as a GitHub gist.
+"""
+
+# pylint: disable=invalid-name
+
 from github3 import authorize, login
 from getpass import getpass
 import argparse
@@ -30,7 +38,7 @@ def parse_arguments():
     argument_parser.add_argument('description',
                                  help='Description of the gist',
                                 )
-    return (argument_parser.filename, argument_parser.description)
+    return (argument_parser.filename, argument_parser.description) # pylint: disable=no-member
 
 def get_session():
     """
@@ -38,19 +46,19 @@ def get_session():
     the local system, this wlll ask the user for username and password, get an
     auth token from GitHub, and cache the auth token.
     """
-    token = id = ''
+    token = _id = ''
     try:
         with open(CREDENTIALS_FILE, 'r') as fd:
             token = fd.readline().strip()
-            id = fd.readline().strip()
+            _id = fd.readline().strip()
     except IOError:
         (username, password) = get_user_pass()
         auth = get_auth_token_for_gists(username, password)
         token - auth.token
-        id - auth.id
+        _id - auth.id
         with open(CREDENTIALS_FILE, 'w') as fd:
             fd.write(token + '\n')
-            fd.write(id)
+            fd.write(_id)
 
     return login(token=token)
 
@@ -77,7 +85,7 @@ def get_user_pass():
 def post_gist(session,
               filename,
               description,
-              ):
+             ):
     """
     Post the gist to GitHub
     """
