@@ -1,5 +1,6 @@
 from github3 import authorize, login
 from getpass import getpass
+import argparse
 
 try:
     # Python 2
@@ -20,7 +21,7 @@ def parse_arguments():
     """
     Parse command line. Return arguments.
     """
-    argument_parser = argparse.ArgumentParser()
+    argument_parser = argparse.ArgumentParser('Utility to upload gists to github')
     argument_parser.add_argument('filename',
                                  help='Name of the file to upload',
                                 )
@@ -71,5 +72,5 @@ def get_user_pass():
 
     return (username, password)
 
-if __name__ == '__main':
+if __name__ == '__main__':
     main()
