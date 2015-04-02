@@ -91,4 +91,5 @@ motivation
 task completion
 Run a Python user group
 itertools/itertoolz
+Fabric
 
