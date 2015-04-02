@@ -6,9 +6,10 @@
 
 # pylint: disable=invalid-name
 
-from github3 import authorize, login
-from getpass import getpass
 import argparse
+import os
+from getpass import getpass
+from github3 import authorize, login
 
 try:
     # Python 2
@@ -54,8 +55,8 @@ def get_session():
     except IOError:
         (username, password) = get_user_pass()
         auth = get_auth_token_for_gists(username, password)
-        token - auth.token
-        _id - auth.id
+        token = auth.token
+        _id = auth.id
         with open(CREDENTIALS_FILE, 'w') as fd:
             fd.write(token + '\n')
             fd.write(_id)
@@ -89,6 +90,19 @@ def post_gist(session,
     """
     Post the gist to GitHub
     """
+    with open(filename, 'r') as fd:
+        gist_text = fd.read
+
+    files = {filename,
+        {'content' : gist_text},
+    }
+
+    gist = session.create_gist(description, files, public=False)
+    # gist = session.create_gist(description, files)
+
+    print(gist.html_url)
+
+
 
 if __name__ == '__main__':
     main()
