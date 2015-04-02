@@ -7,7 +7,6 @@
 # pylint: disable=invalid-name
 
 import argparse
-import os
 from getpass import getpass
 from github3 import authorize, login
 
@@ -93,14 +92,15 @@ def post_gist(session,
     with open(filename, 'r') as fd:
         gist_text = fd.read
 
-    files = {filename,
+    files = {
+        filename,
         {'content' : gist_text},
     }
 
     gist = session.create_gist(description, files, public=False)
     # gist = session.create_gist(description, files)
 
-    print(gist.html_url)
+    print(gist.html_url)    # pylint: disable=superfluous-parens
 
 
 
