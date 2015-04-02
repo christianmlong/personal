@@ -14,6 +14,20 @@ def main():
     """
     Main function to post a gist to GitHub.
     """
+    args = parse_arguments()
+
+def parse_arguments():
+    """
+    Parse command line. Return arguments.
+    """
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument('filename',
+                                 help='Name of the file to upload',
+                                )
+    argument_parser.add_argument('description',
+                                 help='Description of the gist',
+                                )
+    return argument_parser.parse_args()
 
 def get_session():
     """
