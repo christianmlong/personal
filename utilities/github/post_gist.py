@@ -98,7 +98,7 @@ def post_gist(session,
     Post the gist to GitHub
     """
     with open(filename, 'r') as fd:
-        gist_text = fd.read
+        gist_text = fd.read()
 
     files = {filename : {'content' : gist_text}}
 
