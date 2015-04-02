@@ -15,7 +15,9 @@ def main():
     """
     Main function to post a gist to GitHub.
     """
-    args = parse_arguments()
+    (filename, description) = parse_arguments()
+    session = get_session()
+    post_gist(session, filename, description)
 
 def parse_arguments():
     """
@@ -28,7 +30,7 @@ def parse_arguments():
     argument_parser.add_argument('description',
                                  help='Description of the gist',
                                 )
-    return argument_parser.parse_args()
+    return (argument_parser.filename, argument_parser.description)
 
 def get_session():
     """
@@ -71,6 +73,14 @@ def get_user_pass():
         password = getpass('Password for {0}: '.format(username))
 
     return (username, password)
+
+def post_gist(session,
+              filename,
+              description,
+              ):
+    """
+    Post the gist to GitHub
+    """
 
 if __name__ == '__main__':
     main()
