@@ -38,7 +38,8 @@ def parse_arguments():
     argument_parser.add_argument('description',
                                  help='Description of the gist',
                                 )
-    return (argument_parser.filename, argument_parser.description) # pylint: disable=no-member
+    args = argument_parser.parse_args()
+    return (args.filename, args.description)
 
 def get_session():
     """
@@ -60,7 +61,9 @@ def get_session():
             fd.write(token + '\n')
             fd.write(_id)
 
-    return login(token=token)
+    return login(token=token,
+                 two_factor_callback=two_factor_auth_callback,
+                )
 
 def get_auth_token_for_gists(username, password):
     """
@@ -102,7 +105,14 @@ def post_gist(session,
 
     print(gist.html_url)    # pylint: disable=superfluous-parens
 
-
+def two_factor_auth_callback():
+    """
+    Callback that gets called when GitHub requests a two-factor auth code.
+    """
+    code = ''
+    while not code:
+        code = prompt('Enter 2FA code: ')
+    return code
 
 if __name__ == '__main__':
     main()
