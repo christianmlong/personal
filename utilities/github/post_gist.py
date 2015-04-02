@@ -100,10 +100,7 @@ def post_gist(session,
     with open(filename, 'r') as fd:
         gist_text = fd.read
 
-    files = {
-        filename,
-        {'content' : gist_text},
-    }
+    files = {filename : {'content' : gist_text}}
 
     gist = session.create_gist(description, files, public=False)
     # gist = session.create_gist(description, files)
