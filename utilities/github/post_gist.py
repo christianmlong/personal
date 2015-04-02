@@ -7,6 +7,7 @@
 # pylint: disable=invalid-name
 
 import argparse
+import os
 from getpass import getpass
 from github3 import authorize, login
 
@@ -17,7 +18,11 @@ except NameError:
     # Python 3
     prompt = input
 
-CREDENTIALS_FILE = r'C:\Users\Christian Long\.github3_py\credentials'
+CREDENTIALS_FILE = os.path.join(
+    os.path.expanduser('~'),
+    '.github3_py',
+    'credentials',
+)
 
 def main():
     """
