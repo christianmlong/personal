@@ -1,2 +1,16 @@
+* text=auto
+
+
+*.py		text
+*.ps1       text
+*.bat       text
+*.sql       text
+*.txt		text
+*.pth       text
+
+
+*.komodoproject     -text
+*.kpf               -text
+
 *.svg binary
 
