@@ -1,0 +1,301 @@
+/* Font */
+body{
+    font-family: Helvetica, Arial, "Franklin Gothic Medium", sans-serif;
+}
+
+
+/* Positioning individual elements by Id */
+#toplevelbox{
+    /* Make the box take up a certain percentage of the page width */
+    width: 90%;
+    /* Center the box on the page. In IE6, this only works in strict mode */
+    margin: 0em auto;
+}
+#pkpk_list_div{
+    /*height: 675px;*/
+    /*overflow-y: auto;*/
+}
+#userinputbox{
+    border: none;
+    border-style: none;
+    border-color: transparent;
+    width: 0px;
+}
+#pkpk_error_toggle_div, #pkpk_error_traceback{
+    padding-top: 30px;
+}
+#order_status_img{
+    top: .4em;
+}
+#wait_spinner{
+    left: 1em;
+}
+#big_green{
+    z-index: 10;
+}
+#pkpk_help_pane{
+    z-index: 15;
+}
+#pkpk_options_pane{
+    z-index: 20;
+}
+#pkpk_serial_no_box{
+    z-index: 30;
+}
+#pkpk_info_box{
+    z-index: 40;
+}
+#pkpk_error_box{
+    z-index: 50;
+}
+
+/* Positioning of content in dialog boxes and panes */
+.pkpk_pane, .pkpk_box, #big_green{
+    /*Auto center*/
+    left: 0px;
+    right: 0px;
+    margin: 0px auto;
+}
+.pkpk_pane, #big_green{
+    position: fixed;
+    top: 75px;
+    width: 50%;
+}
+.pkpk_box{
+    position: absolute;
+    top: 125px;
+    width: 75%;
+}
+.pkpk_cardboard_box{
+    top: 25px;
+    width: 90%;
+}
+.invisible, .pkpk_status, .pkpk_serialized, .pkpk_pane, #big_green{
+    display: none;
+}
+.pkpk_content{
+    padding: 27px 20px 25px 8px
+}
+.pkpk_content_body{
+    padding-left: 14px;
+}
+.pkpk_box .pkpk_content_body{
+    color: #686868;
+    font-size: 140%;
+}
+.pkpk_cardboard_box .pkpk_content_body{
+    color: #323232;
+    font-size: 115%;
+}
+
+/* When two styles conflict, there is a precedence calculation
+   1) Rules specified as !important
+   2) Most-specific selector
+   3) If an element has multipe classes, they are applied based on the order
+      they occur in the stylesheet, with the classes that come last taking
+      precedence.
+*/
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+
+
+
+
+
+/* Positioning of the order number display elements */
+.pkpk_header{
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-left: 1em;
+    font-size: 200%;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.clear{
+    clear: both;
+}
+
+
+/* Positioning of the elements in the options pane */
+.pkpk_option_div, .pkpk_help_div{
+    margin-bottom: 20px;
+    clear: both;
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+}
+.pkpk_option_label, .pkpk_help_label, .pkpk_option_select, .pkpk_option_checkbox, .pkpk_option_textinput{
+    float: left;
+}
+.pkpk_option_label{
+    width: 200px;
+    text-align: right;
+}
+.pkpk_option_select, .pkpk_option_checkbox, .pkpk_option_textinput{
+    margin-left: 30px;
+}
+.pkpk_option_select{
+    width: 150px;
+}
+
+
+/* Extra stuff needed for rounded corners for dialog boxes and panes */
+.xtop, .xbottom{
+    display: block;
+    background: transparent;
+    font-size: 1px;
+}
+.xb1, .xb2, .xb3, .xb4{
+    display: block;
+    overflow: hidden;
+}
+.xb1, .xb2, .xb3{
+    height: 1px;
+}
+.xb3, .xb4, .pkpk_content{
+    border-style: solid;
+    border-width: 0px 2px;
+}
+.xb1{
+    margin: 0px 5px;
+}
+.xb2{
+    margin: 0px 3px;
+}
+.xb3{
+    margin: 0px 2px;
+}
+.xb4{
+    height: 2px;
+    margin: 0px 1px;
+}
+
+
+/* Background and border colors of rounded-corner dialog boxes and panes */
+.pkpk_error .xb1, .pkpk_error .xb2{
+    background-color: #ff9999;
+}
+.pkpk_error .xb3, .pkpk_error .xb4, .pkpk_error .pkpk_content{
+    background-color: #fff8f0;
+    border-color: #ff9999;
+}
+.pkpk_dialog .xb1, .pkpk_dialog .xb2{
+    background-color: #c0c0c0;
+}
+.pkpk_dialog .xb3, .pkpk_dialog .xb4, .pkpk_dialog .pkpk_content{
+    background-color: #f5f5f5;
+    border-color: #c0c0c0;
+}
+.pkpk_alert .xb1, .pkpk_alert .xb2{
+    background-color: #9400d3;
+}
+.pkpk_alert .xb3, .pkpk_alert .xb4, .pkpk_alert .pkpk_content{
+    background-color:#ffccff;
+    border-color: #9400d3;
+}
+.pkpk_info .xb1, .pkpk_info .xb2{
+    /*Dark blue*/
+    background-color: #4682b4;
+}
+.pkpk_info .xb3, .pkpk_info .xb4, .pkpk_info .pkpk_content{
+    /*Light blue*/
+    background-color:#e0ffff;
+    /*Dark blue*/
+    border-color: #4682b4;
+}
+.pkpk_cardboard_box .xb1, .pkpk_cardboard_box .xb2{
+    /*Cafe Noir*/
+    background-color: #4b3621;
+}
+.pkpk_cardboard_box .xb3, .pkpk_cardboard_box .xb4, .pkpk_cardboard_box .pkpk_content{
+    /*Some kind of cardboard-box brown I made up*/
+    background-color:#d9ba8b;
+    /*Cafe Noir*/
+    border-color: #4b3621;
+}
+
+/* Colors and positioning for the main table of items */
+table{
+    table-layout: fixed;
+    border: none;
+    padding: 0em 0em 0em 0em;
+    margin: 5px auto;
+    border-collapse: collapse;
+}
+tr.highlight{
+    background-color: #87cefa
+}
+td{
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    padding-top: .15em;
+    padding-bottom: .15em;
+    overflow: hidden;
+}
+#table_of_items td{
+    font-size: 160%;
+}
+td.pkpk_status_img{
+    width: 50px;
+    text-align: left;
+    padding-left: .7em;
+}
+img.pkpk_status_img, img.pkpk_info_img{
+    position: relative;
+}
+img.pkpk_status_img{
+    top: 6px;
+}
+td.pkpk_cur_qty{
+    width: 100px;
+    text-align: right;
+}
+td.pkpk_qty{
+    width: 100px;
+    text-align: right;
+    color: #0000f0;
+}
+td.pkpk_item{
+    padding-right: .7em;
+    padding-left: 1em;
+    text-align: left;
+    color: #9900cc;
+}
+td.pkpk_um{
+    width: 100px;
+    color: #44bb11;
+    text-align: right;
+    padding-right: .7em;
+}
+td.pkpk_info_img{
+    width: 70px;
+    text-align: right;
+}
+img.pkpk_info_img{
+    top: 3px;
+}
+
+/* Formatting for the order notes table */
+td.pkpk_order_note_image{
+    text-align: center;
+    white-space: nowrap;
+}
+td.pkpk_order_note_text{
+    padding-left: 1em;
+    text-align: left;
+}
+td.pkpk_order_note_image img{
+    padding-right: .2em;
+    padding-left: .2em;
+    padding-top: .4em;
+    padding-bottom: .6em;
+}

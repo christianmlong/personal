@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+    <!-- Force IE 9 into cutting-edge compatibility mode, so it displays canvas -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <!-- This refreshes the whole page every hour, pulling down new javascript -->
+    <!-- This is for development only -->
+    <!--<meta http-equiv="refresh" content="3600" />-->
+
+    <title>Order Status</title>
+
+    <script type="text/javascript">MochiKit = {__export__: false};</script>
+    <script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit.js"></script>
+    <script type="text/javascript" src="/static/js/common/cookie.js"></script>
+    <script type="text/javascript" src="/static/js/common/state_machine.js"></script>
+    <script type="text/javascript" src="/static/js/common/ui.js"></script>
+    <script type="text/javascript" src="/static/js/common/utility_functions.js"></script>
+    <script type="text/javascript" src="/static/js/common/waitspinner.js"></script>
+    <script type="text/javascript" src="/static/js/common/constants.js"></script>
+    <script type="text/javascript" src="/static/js/common/error.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/constants.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/draw_graph.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/error.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/event_handlers.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/globals.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/server.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/startup.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/ui.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/utility_objects.js"></script>
+    <script type="text/javascript" src="/static/js/shopfloor_monitor/utility_functions.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/style/shopfloor_monitor/order_status.css" />
+</head>
+<body>
+    <!-- Fixed positioning -->
+    <!-- This is the containing block for fixed-positioned elements -->
+    <div id="fixed_container" class="relative">
+        <div id="sfmo_error_box" class="invisible sfmo_box sfmo_error">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="sfmo_content">
+                <div class="sfmo_content_body">
+                    <span id="sfmo_error_text" class="relative"></span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="sfmo_info_box" class="invisible sfmo_box sfmo_info">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="sfmo_content">
+                <div class="sfmo_content_body">
+                    <span id="sfmo_info_body" class="relative"></span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="sfmo_order_detail_box" class="invisible sfmo_box sfmo_info">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="sfmo_content">
+                <div class="sfmo_content_body">
+                    <span id="sfmo_order_detail_body" class="relative"></span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="sfmo_options_pane" class="invisible sfmo_pane sfmo_dialog">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="sfmo_content">
+                <div class="sfmo_header">
+                    <span class="relative">Options</span>
+                </div>
+                <div class="sfmo_option_div" title="Display options.">
+                    <span class="sfmo_option_label">Display</span>
+                    <select id="data_display" class="sfmo_option_select">
+                        <option value="wcc">Consumables</option>
+                        <option value="parts">Service Parts</option>
+                        <option value="both">Both</option>
+                        <!--<option value="special">Special</option>-->
+                        <option value="all" selected="selected">All orders</option>
+                        <option value="4up_narrow">4 Up - Narrow</option>
+                        <option value="4up">4 Up - Wide</option>
+                    </select>
+                </div>
+                <div class="sfmo_option_div" title="Show orders until they are scanned at the packing bench, or until they are scanned at the scale.">
+                    <span class="sfmo_option_label">Show orders until the</span>
+                    <select id="show_until" class="sfmo_option_select">
+                        <option value="packing_bench" selected="selected">packing bench</option>
+                        <option value="scale">scale</option>
+                    </select>
+                </div>
+                <div class="sfmo_option_div" title="Backorders.">
+                    <span class="sfmo_option_label">Backorders</span>
+                    <input id="show_backorder"
+                           type="checkbox"
+                           class="sfmo_option_checkbox" />
+                </div>
+                <div class="sfmo_option_div" title="Highlight 'Ready To Pick' orders.">
+                    <span class="sfmo_option_label">'Ready To Pick' orders</span>
+                    <select id="ready_to_pick_highlight" class="sfmo_option_select">
+                        <option value="no_highlight" selected="selected">No highlight</option>
+                        <option value="bug">Arrow</option>
+                        <option value="stripe">Stripes</option>
+                    </select>
+                </div>
+                <!--<div class="sfmo_option_div" title="Use diagonal stripes.">-->
+                <!--    <span class="sfmo_option_label">Diagonal stripes</span>-->
+                <!--    <input id="diagonal_stripes"-->
+                <!--           type="checkbox"-->
+                <!--           checked="checked"-->
+                <!--           class="sfmo_option_checkbox" />-->
+                <!--</div>-->
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="sfmo_help_pane" class="invisible sfmo_pane sfmo_dialog">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="sfmo_content">
+                <div class="sfmo_header">
+                    <span class="relative">Help</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">F1 - Help</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">F4 - Options</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">F5 - Full reset</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Click on the graph to see the order numbers.</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Click on an order number to see detailed information about that order.</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">To dismiss the blue info box (order numbers), press the space bar.</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Press a digit key (0-9) or the - (dash) key or the = (equals) key to quickly change the view.</span></br>
+                    <span class="sfmo_help_label">Keys 1,2,3,4,5 and 6 show normal orders.</span></br>
+                    <span class="sfmo_help_label">Keys 7,8,9,0,- (dash), and = (equals) show backorders.</span></br>
+                    <span class="sfmo_help_label">Press S for &quot;Show until Scale&quot;. Press B for &quot;Show until Bench&quot;.</span></br>
+                </div>
+                <div class="sfmo_header">
+                    <span class="relative">Graph Key</span>
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Today Sure</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/ts_key_ghost.png" alt="Today Sure Ship Tomorrow" /></span>
+                    <span>Ship Tomorrow&nbsp;&mdash;&nbsp;Backorders, and orders that came in after the 4:30 cutoff</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/ts_key_solid.png" alt="Today Sure Ship Today" /></span>
+                    <span>Ship Today&nbsp;&mdash;&nbsp;Orders that made today's cutoff</span><br />
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Signature Service</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/ss_key_ghost.png" alt="Signature Service Ship Tomorrow" /></span>
+                    <span>Ship Tomorrow&nbsp;&mdash;&nbsp;Backorders, and orders that came in after the 1pm cutoff</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/ss_key_solid.png" alt="Signature Service Ship Today" /></span>
+                    <span>Ship Today&nbsp;&mdash;&nbsp;Orders that made today's cutoff</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/ss_key_dark.png" alt="Signature Service On Hold" /></span>
+                    <span>On Hold&nbsp;&mdash;&nbsp;Canada backorders, Daily file orders</span><br />
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Service File</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/s_key_solid.png" alt="Service File Ship Today" /></span>
+                    <span>Ship Today</span><br />
+                </div>
+                <div class="sfmo_help_div">
+                    <span class="sfmo_help_label">Normal</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/n_key_ghost.png" alt="Normal Ship Tomorrow" /></span>
+                    <span>Ship Tomorrow&nbsp;&mdash;&nbsp;Backorders, and orders that are less than a day old</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/n_key_solid.png" alt="Normal Ship Today" /></span>
+                    <span>Ship Today&nbsp;&mdash;&nbsp;Orders that are more than a day old</span><br />
+                    <span><img class="sfmo_graph_key_img" src="/static/img/shopfloor_monitor/n_key_dark.png" alt="Normal On Hold" /></span>
+                    <span>On Hold&nbsp;&mdash;&nbsp;Canada backorders, Daily file orders</span><br />
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="waitspinner_container">
+        </div>
+    </div>
+
+    <!-- Normal flow positioning -->
+    <div id="toplevelbox">
+        <div id="sfmo_header">
+        </div>
+        <div id="sfmo_1up_container" class="invisible sfmo_graph_container">
+            <canvas id="sfmo_canvas_1up" class="sfmo_canvas" width="1024" height="768">
+                This text is displayed if your browser does not support HTML5 Canvas.
+            </canvas>
+        </div>
+        <div id="sfmo_4up_container" class="invisible sfmo_graph_container">
+            <table>
+                <tr>
+                    <td id="sfmo_4up_cell_1" class="sfmo_4up_cell">
+                        <canvas id="sfmo_canvas_4up_1" class="sfmo_canvas" width="700" height="450">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                    <td id="sfmo_4up_cell_2" class="sfmo_4up_cell">
+                        <canvas id="sfmo_canvas_4up_2" class="sfmo_canvas" width="700" height="450">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="sfmo_4up_cell_3" class="sfmo_4up_cell">
+                        <canvas id="sfmo_canvas_4up_3" class="sfmo_canvas" width="700" height="450">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                    <td id="sfmo_4up_cell_4" class="sfmo_4up_cell">
+                        <canvas id="sfmo_canvas_4up_4" class="sfmo_canvas" width="700" height="450">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="sfmo_4up_narrow_container" class="invisible sfmo_graph_container">
+            <table>
+                <tr>
+                    <td class="sfmo_4up_narrow_cell">
+                        <canvas id="sfmo_canvas_4up_narrow_1" class="sfmo_canvas" width="466" height="300">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                    <td class="sfmo_4up_narrow_cell">
+                        <canvas id="sfmo_canvas_4up_narrow_2" class="sfmo_canvas" width="466" height="300">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="sfmo_4up_narrow_cell">
+                        <canvas id="sfmo_canvas_4up_narrow_3" class="sfmo_canvas" width="466" height="300">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                    <td class="sfmo_4up_narrow_cell">
+                        <canvas id="sfmo_canvas_4up_narrow_4" class="sfmo_canvas" width="466" height="300">
+                            This text is displayed if your browser does not support HTML5 Canvas.
+                        </canvas>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="sfmo_debug_info">
+                <!-- Server tracebacks go here -->
+        </div>
+    </div>
+</body>
+</html>

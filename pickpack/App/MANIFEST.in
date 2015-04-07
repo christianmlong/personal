@@ -1,0 +1,3 @@
+include README
+include Pickpack/*.tac
+recursive-include Pickpack/static *

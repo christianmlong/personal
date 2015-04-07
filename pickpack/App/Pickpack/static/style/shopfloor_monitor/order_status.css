@@ -1,0 +1,324 @@
+/* Font */
+body {
+    font-family:Helvetica, Arial, "Franklin Gothic Medium", sans-serif;
+}
+
+/* Positioning individual elements by Id */
+#sfmo_help_pane{
+    z-index:15;
+}
+#sfmo_options_pane{
+    z-index:20;
+}
+#sfmo_info_box{
+    z-index:30;
+}
+#sfmo_order_detail_box{
+    z-index:35;
+}
+#sfmo_error_box{
+    z-index:40;
+}
+
+/**
+ * Note:specify width and height as attributes of the html canvas tag, not
+ * here in css. Otherwise, you get scaling between css on-screen size and
+ * actual (html) canvas size, and that can result in blurry lines.
+ *
+ * #sfmo_canvas_1up {
+ *     width:800px;
+ *     height:400px;
+ *     border:1px solid #000000;
+ * }
+ *
+ */
+
+#sfmo_1up_container {
+    width:1024px;
+    z-index:50;
+}
+#sfmo_4up_container {
+    width:1910px;
+    z-index:60;
+}
+#sfmo_4up_narrow_container {
+    width:1024px;
+    z-index:70;
+}
+#waitspinner_container {
+    position:absolute;
+    z-index:100;
+    top:80px;
+
+    /*Auto center*/
+    left:0px;
+    right:0px;
+    margin:0px auto;
+    width:483px;
+}
+
+/*              top     right   bottom  left    */
+#sfmo_4up_cell_1{
+    padding:   10px    100px   55px    180px;
+}
+#sfmo_4up_cell_2{
+    padding:   10px    0px     55px    100px;
+}
+#sfmo_4up_cell_3{
+    padding:   55px    100px   0px     180px;
+}
+#sfmo_4up_cell_4{
+    padding:   55px    0px     0px     100px;
+}
+
+
+/*  For development only */
+/*#sfmo_4up_container {*/
+/*    border:1px solid #000000;*/
+/*}*/
+/*.sfmo_canvas {*/
+/*    border:1px solid #000000;*/
+/*}*/
+/*.sfmo_4up_cell{*/
+/*    border:1px solid #606060;*/
+/*}*/
+
+
+
+/* Class based positioning */
+.relative {
+    position:relative;
+}
+.absolute {
+    position:absolute;
+}
+.invisible {
+    display:none;
+}
+.float_left {
+    float:left;
+}
+.float_right {
+    float:right;
+}
+
+/* Positioning of content in dialog boxes and panes */
+.sfmo_graph_container {
+    /**
+     * This is the margin shorthand property. This means that:
+     *  - top and bottom margins are 0px
+     *  - right and left margins are auto
+     *
+     * By setting the width to a fixed value, and setting the left
+     * and right margins to aut, we can center the item horizontally.
+     *
+     * Note:there is no comma between 0 and auto. If you put a comma in, it
+     * won't work.
+     */
+    margin:0 auto;
+}
+
+
+.sfmo_pane, .sfmo_box{
+    top:30px;
+    /*Auto center*/
+    left:0px;
+    right:0px;
+    margin:0px auto;
+}
+.sfmo_pane{
+    position:fixed;
+    /*position:absolute;*/
+    /*top:75px;*/
+    width:50%;
+}
+.sfmo_box{
+    /*position:fixed;*/
+    position:absolute;
+    /*top:125px;*/
+    width:75%;
+}
+.sfmo_content{
+    padding:27px 20px 25px 8px
+}
+.sfmo_content_body{
+    padding-left:14px;
+}
+.sfmo_box .sfmo_content_body{
+    color:#686868;
+    font-size:140%;
+}
+
+/* Positioning of the order number display elements */
+.sfmo_header{
+    margin-top:15px;
+    margin-bottom:20px;
+    padding-left:1em;
+    font-size:200%;
+}
+
+/* Positioning of the elements in the options pane */
+.sfmo_option_div, .sfmo_help_div{
+    margin-bottom:20px;
+    clear:both;
+    padding-top:10px;
+    padding-right:40px;
+    padding-bottom:10px;
+    padding-left:40px;
+}
+.sfmo_option_label, .sfmo_help_label{
+    float:left;
+}
+.sfmo_option_label{
+    width:200px;
+    text-align:right;
+}
+.sfmo_option_select{
+    float:left;
+    margin-left:30px;
+    width:150px;
+}
+.sfmo_option_checkbox{
+    float:left;
+    margin-left:30px;
+}
+.sfmo_4up_narrow_cell{
+    padding:20px;
+    /*border:1px solid #606060;*/
+}
+.sfmo_graph_key_img {
+    position:relative;
+    top:2px;
+}
+.sfmo_detail_header {
+    /*position:relative;*/
+    margin-top:10px;
+    width:98%;
+}
+
+
+/* Format thte order detail table */
+
+/* Colors and positioning for the main table of items */
+table{
+    table-layout: fixed;
+    border: none;
+    padding: 0px;
+    margin: 5px auto;
+    border-collapse: collapse;
+    width: 95%;
+}
+td{
+    /*border-top: 1px solid #d3d3d3;*/
+    /*border-bottom: 1px solid #d3d3d3;*/
+    padding-top: .25em;
+    padding-bottom: .25em;
+    /*padding-left: 2em;*/
+    /*padding-right: 2em;*/
+    overflow: hidden;
+    font-size: 120%;
+    width: 25%;
+    text-align: left;
+}
+td.sfmo_table_label{
+    width: 18%;
+}
+td.sfmo_table_data{
+    width: 32%;
+}
+td.sfmo_full_width{
+    width: 100%;
+    padding-top: .5em;
+}
+/*td.sfmo_cur_qty{*/
+/*    width: 100px;*/
+/*    text-align: right;*/
+/*}*/
+/*td.sfmo_qty{*/
+/*    width: 100px;*/
+/*    text-align: right;*/
+/*    color: #0000f0;*/
+/*}*/
+
+
+
+/* Extra stuff needed for rounded corners for dialog boxes and panes */
+.xtop, .xbottom{
+    display:block;
+    background:transparent;
+    font-size:1px;
+}
+.xb1, .xb2, .xb3, .xb4{
+    display:block;
+    overflow:hidden;
+}
+.xb1, .xb2, .xb3{
+    height:1px;
+}
+.xb3, .xb4, .sfmo_content{
+    border-style:solid;
+    border-width:0px 2px;
+}
+.xb1{
+    margin:0px 5px;
+}
+.xb2{
+    margin:0px 3px;
+}
+.xb3{
+    margin:0px 2px;
+}
+.xb4{
+    height:2px;
+    margin:0px 1px;
+}
+
+
+/* Background and border colors of rounded-corner dialog boxes and panes */
+.sfmo_error .xb1, .sfmo_error .xb2{
+    background-color:#ff9999;
+}
+.sfmo_error .xb3, .sfmo_error .xb4, .sfmo_error .sfmo_content{
+    background-color:#fff8f0;
+    border-color:#ff9999;
+}
+.sfmo_dialog .xb1, .sfmo_dialog .xb2{
+    background-color:#c0c0c0;
+}
+.sfmo_dialog .xb3, .sfmo_dialog .xb4, .sfmo_dialog .sfmo_content{
+    background-color:#f5f5f5;
+    border-color:#c0c0c0;
+}
+.sfmo_alert .xb1, .sfmo_alert .xb2{
+    background-color:#9400d3;
+}
+.sfmo_alert .xb3, .sfmo_alert .xb4, .sfmo_alert .sfmo_content{
+    background-color:#ffccff;
+    border-color:#9400d3;
+}
+.sfmo_info .xb1, .sfmo_info .xb2{
+    /*Dark blue*/
+    background-color:#4682b4;
+}
+.sfmo_info .xb3, .sfmo_info .xb4, .sfmo_info .sfmo_content{
+    /*Light blue*/
+    background-color:#e0ffff;
+    /*Dark blue*/
+    border-color:#4682b4;
+}
+.sfmo_order_number, .sfmo_inert{
+    display:inline-block;
+    padding:3px 6px;
+    white-space:nowrap;
+}
+.sfmo_order_number{
+    -moz-border-radius:8px;
+    border-radius:8px;
+}
+.sfmo_order_number:hover {
+    cursor:pointer;
+    /*Medium blue*/
+    background-color:#a0c0c0;
+    /*Dark blue text*/
+    color:#4682b4;
+}
