@@ -14,15 +14,15 @@ Current language: Python 2.7.1  www.python.org
 """
 
 # Import shared modules
-from Common.error import error
-from Common.error import error_objects
-from Common.utility import utl_functions
+from CML_Common.error import error
+from CML_Common.error import error_objects
+from CML_Common.utility import utl_functions
 
 # Import data connection object
-from Common.data.data_connection import data_connection_object as db
+from CML_Common.data.data_connection import data_connection_object as db
 
 # Import debug utility object
-from Common.error.debug import debug_utility_object as debugObj
+from CML_Common.error.debug import debug_utility_object as debugObj
 
 
 #    Transaction functions    ++++++++++++++++++++++++++++++++++++++++++++++++++

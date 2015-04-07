@@ -1,5 +1,5 @@
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_startup
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_startup
 
 # Create the application. Also create an ssh service to which clients can
 # attach. This allows inspection of the running service, for debugging.

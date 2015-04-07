@@ -14,14 +14,14 @@ Language: Python 2.7  www.python.org
 """
 import collections
 
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_lowlevel_common
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules.warn import pkpk_warnings
-from Pickpack.pickpack_modules.warn.utility_classes import CommonConstants
-from Pickpack.pickpack_modules.warn.rulesets import get_item_rulesets
-#from Pickpack.pickpack_modules.warn.rulesets import e_commerce_ruleset
-from Pickpack.pickpack_modules.warn.inline_image import get_inline_image_calcualtor
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_lowlevel_common
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules.warn import pkpk_warnings
+from CML_Pickpack.pickpack_modules.warn.utility_classes import CommonConstants
+from CML_Pickpack.pickpack_modules.warn.rulesets import get_item_rulesets
+#from CML_Pickpack.pickpack_modules.warn.rulesets import e_commerce_ruleset
+from CML_Pickpack.pickpack_modules.warn.inline_image import get_inline_image_calcualtor
 
 
 

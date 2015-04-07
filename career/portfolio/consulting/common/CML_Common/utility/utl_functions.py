@@ -12,7 +12,7 @@ Current language: Python 2.7.1  www.python.org
 """
 
 # Import shared modules
-from Common.utility import utl_constants
+from CML_Common.utility import utl_constants
 
 def wrapScalarValue(value):
     """

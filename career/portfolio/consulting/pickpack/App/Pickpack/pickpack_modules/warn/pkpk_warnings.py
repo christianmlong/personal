@@ -11,9 +11,9 @@ christianzlong@gmail.com
 Language: Python 2.7  www.python.org
 """
 
-from Common.utility import utl_decorators
+from CML_Common.utility import utl_decorators
 
-from Pickpack.pickpack_modules.warn.utility_classes import PackingInstructionConstants
+from CML_Pickpack.pickpack_modules.warn.utility_classes import PackingInstructionConstants
 
 class ShipmentWarning(object):
     """

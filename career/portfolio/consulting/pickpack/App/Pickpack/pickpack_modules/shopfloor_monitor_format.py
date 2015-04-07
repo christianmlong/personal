@@ -12,8 +12,8 @@ christianzlong@gmail.com
 Language: Python 2.7  www.python.org
 """
 
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import shopfloor_monitor_data
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import shopfloor_monitor_data
 
 def jStatusOrders_deferred(shipping_station,
                            show_backorder,

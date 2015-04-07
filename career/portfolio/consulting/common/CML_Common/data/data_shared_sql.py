@@ -12,11 +12,11 @@ Current language: Python 2.7.1  www.python.org
 """
 
 # Import shared modules
-from Common.data import data_access
-#from Common.utility import utl_decorators
+from CML_Common.data import data_access
+#from CML_Common.utility import utl_decorators
 
 # Import data connection object
-from Common.data.data_connection import data_connection_object as db
+from CML_Common.data.data_connection import data_connection_object as db
 
 
 

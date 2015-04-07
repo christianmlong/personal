@@ -16,12 +16,12 @@ Current language: Python 2.5.1  www.python.org
 # C0103: Invalid name "test_MRA_package"
 
 # Import test helper
-from Common.utility import utl_test
+from CML_Common.utility import utl_test
 
 # Import the tests for each package
-from Common.data.test import test_data_package
-from Common.error.test import test_error_package
-from Common.utility.test import test_utility_package
+from CML_Common.data.test import test_data_package
+from CML_Common.error.test import test_error_package
+from CML_Common.utility.test import test_utility_package
 
 unittest_modules = (test_data_package,
                    test_error_package,

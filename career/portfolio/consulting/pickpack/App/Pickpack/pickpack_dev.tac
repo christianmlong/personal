@@ -1,5 +1,5 @@
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_startup
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_startup
 
 # Create the application
 application = pickpack_startup.configureApp(pickpack_constants.DEV)

@@ -16,10 +16,10 @@ import unittest
 import doctest
 
 # Import module to test
-from Common.data import data_access
+from CML_Common.data import data_access
 
 # Import test helper
-#from Common.utility import utl_test
+#from CML_Common.utility import utl_test
 
 # Build a unittest suite from doctest tests
 doctest_suite = unittest.TestSuite()

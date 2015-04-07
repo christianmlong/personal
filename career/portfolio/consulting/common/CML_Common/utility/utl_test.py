@@ -23,14 +23,14 @@ class TestHelper(object):
 
     def runPackageTests(self):
         """
-        Run the tests for the Common.error package
+        Run the tests for the CML_Common.error package
         """
         runner = unittest.TextTestRunner()
         runner.run(self.packageTestSuite())
 
     def packageTestSuite(self):
         """
-        Build the test suite for the Common.error package, including
+        Build the test suite for the CML_Common.error package, including
         doctest and unittest tests.
         """
         suite = unittest.TestSuite()

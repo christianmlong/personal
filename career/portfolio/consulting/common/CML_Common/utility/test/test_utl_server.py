@@ -16,7 +16,7 @@ Current language: Python 2.5.1  www.python.org
 #import doctest
 #
 ## Import module to test
-#from Common.utility import utl_server
+#from CML_Common.utility import utl_server
 #
 ## Build a unittest suite from doctest tests
 #doctest_suite = unittest.TestSuite()

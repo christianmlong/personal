@@ -1,7 +1,7 @@
 # pylint: disable=C0111,W0142,R0915
 
-from Pickpack.test.selenium.common_selenium_tests import BaseForPickpackTests
-from Pickpack.test.selenium.table_tester import TableTester, QuickTableTester
+from CML_Pickpack.test.selenium.common_selenium_tests import BaseForPickpackTests
+from CML_Pickpack.test.selenium.table_tester import TableTester, QuickTableTester
 
 class TestBatteryRules(BaseForPickpackTests):
     """

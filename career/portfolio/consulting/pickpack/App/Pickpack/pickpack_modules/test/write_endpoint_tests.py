@@ -11,8 +11,8 @@ __test__ = False
 import requests, pprint, os.path
 import sys, os
 
-from Pickpack.pickpack_modules.pickpack_data_mock import MOCK_ORDERS
-from Pickpack.pickpack_modules.test import utility_functions_for_testing
+from CML_Pickpack.pickpack_modules.pickpack_data_mock import MOCK_ORDERS
+from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
 NONEXISTENT_ORDERS = ['AB00100',
                       'AB00200',
@@ -47,10 +47,10 @@ BY {generator_filename}
 import requests
 from nose import tools
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules.test import utility_functions_for_testing
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
-from Pickpack.pickpack_modules.test.write_endpoint_tests import REQUESTS_TIMEOUT
+from CML_Pickpack.pickpack_modules.test.write_endpoint_tests import REQUESTS_TIMEOUT
 
 
 if pickpack_constants.SHOW_FULL_DIFF:

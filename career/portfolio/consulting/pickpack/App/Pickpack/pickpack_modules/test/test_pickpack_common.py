@@ -3,14 +3,14 @@ Tests for the functions in the pickpack_common.py module
 """
 from nose import tools, twistedtools
 
-from Common.utility import utl_aplus
+from CML_Common.utility import utl_aplus
 
-#from Pickpack.pickpack_modules import pickpack_common
-from Pickpack.pickpack_modules import pickpack_data_mock
-#from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_constants
+#from CML_Pickpack.pickpack_modules import pickpack_common
+from CML_Pickpack.pickpack_modules import pickpack_data_mock
+#from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
 
-#from Pickpack.pickpack_modules.test.utility_classes_for_testing import HandleableServerException
+#from CML_Pickpack.pickpack_modules.test.utility_classes_for_testing import HandleableServerException
 
 if pickpack_constants.SHOW_FULL_DIFF:
     # Force Nose to output the full diff

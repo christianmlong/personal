@@ -2,7 +2,7 @@
 
 test_data_package.py
 
-This module runs all the tests for the modules in the Common.data package. It
+This module runs all the tests for the modules in the CML_Common.data package. It
 runs the doctest and the unittest tests. It can also provide a suite so
 higher-level packages can bundle its suite with others.
 
@@ -15,14 +15,14 @@ Current language: Python 2.5.1  www.python.org
 """
 
 # Import test helper
-from Common.utility import utl_test
+from CML_Common.utility import utl_test
 
 # Import the unit tests.  doctest tests are bundled into unittest suites inside
 # the test_* modules
-from Common.data.test import test_data_access
-from Common.data.test import test_data_connection
-from Common.data.test import test_data_datetime
-from Common.data.test import test_data_shared_sql
+from CML_Common.data.test import test_data_access
+from CML_Common.data.test import test_data_connection
+from CML_Common.data.test import test_data_datetime
+from CML_Common.data.test import test_data_shared_sql
 
 unittest_modules = (test_data_access,
                    test_data_connection,

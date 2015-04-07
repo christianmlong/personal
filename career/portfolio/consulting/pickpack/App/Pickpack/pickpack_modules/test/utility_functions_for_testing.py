@@ -6,7 +6,7 @@ Utility and support functions for testing
 """
 
 #import datetime
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 #def ecommerce_promotion_is_active():
 #    """

@@ -1,11 +1,11 @@
 # pylint: disable=C0111,W0142,R0904
 
-#from Pickpack.pickpack_modules.test import utility_functions_for_testing
+#from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
-from Pickpack.test.selenium.utility import PickpackTestingUtility
-from Pickpack.test.selenium.utility import PickpackTestingUtilityNoCookie
-from Pickpack.test.selenium.utility import ShopfloorMonitorTestingUtility
-from Pickpack.test.selenium.table_tester import TableTester
+from CML_Pickpack.test.selenium.utility import PickpackTestingUtility
+from CML_Pickpack.test.selenium.utility import PickpackTestingUtilityNoCookie
+from CML_Pickpack.test.selenium.utility import ShopfloorMonitorTestingUtility
+from CML_Pickpack.test.selenium.table_tester import TableTester
 
 class BaseForSeleniumTests(object):
     """
@@ -2482,7 +2482,7 @@ class TestPickpackNoCookie(BaseForPickpackTestsNoCookie):
 #
 ## DE BUG Note: In order for this de-bugging to be triggered, mra must be run
 ## using the dbg, dbg2, dbg3 commands on partsappdev.
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugBreakpoint()
 #
 #
@@ -2492,7 +2492,7 @@ class TestPickpackNoCookie(BaseForPickpackTestsNoCookie):
 #
 ## DE BUG Note: In order for this de-bugging to be triggered, mra must be run
 ## using the dbg, dbg2, dbg3 commands on partsappdev.
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugIpythonBreakpoint()
 #
 #
@@ -2503,5 +2503,5 @@ class TestPickpackNoCookie(BaseForPickpackTestsNoCookie):
 #
 ## DE BUG Note: In order for this de-bugging to be triggered, mra must be run
 ## using the dbg, dbg2, dbg3 commands on partsappdev.
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugPudbBreakpoint()

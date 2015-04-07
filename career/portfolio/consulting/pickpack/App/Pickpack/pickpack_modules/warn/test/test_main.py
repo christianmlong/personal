@@ -3,7 +3,7 @@ Tests for the functions in the warn.main.py module
 """
 # pylint: disable=too-many-public-methods
 
-from Pickpack.pickpack_modules.test.utility_classes_for_testing import BaseMainTester
+from CML_Pickpack.pickpack_modules.test.utility_classes_for_testing import BaseMainTester
 
 class TestCalculateBatteryWarnings(BaseMainTester):
     def __init__(self):
@@ -1238,7 +1238,7 @@ class TestCalculateBatteryWarningsFromPickpackDataMock(BaseMainTester):
 # configuration of remote debugging.
 #
 ## DE BUG
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugBreakpoint()
 #
 #
@@ -1247,7 +1247,7 @@ class TestCalculateBatteryWarningsFromPickpackDataMock(BaseMainTester):
 # Set local breakpoint in iPython.
 #
 ## DE BUG
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugIpythonBreakpoint()
 #
 #
@@ -1257,5 +1257,5 @@ class TestCalculateBatteryWarningsFromPickpackDataMock(BaseMainTester):
 # Set local breakpoint in pudb.
 #
 ## DE BUG
-#from Common.error.debug import debug_utility_object as debugObj
+#from CML_Common.error.debug import debug_utility_object as debugObj
 #debugObj.debugPudbBreakpoint()

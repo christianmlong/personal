@@ -1,5 +1,5 @@
 # pylint: disable=C0111, C0103
-from Pickpack.test.selenium.common_selenium_tests import TestPickpackCommon
+from CML_Pickpack.test.selenium.common_selenium_tests import TestPickpackCommon
 
 
 def main():

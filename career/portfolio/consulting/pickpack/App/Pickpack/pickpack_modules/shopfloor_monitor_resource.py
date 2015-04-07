@@ -14,11 +14,11 @@ Language: Python 2.7  www.python.org
 
 from twisted.internet import defer
 
-from Pickpack.pickpack_modules import shopfloor_monitor_format
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_common
+from CML_Pickpack.pickpack_modules import shopfloor_monitor_format
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_common
 
-from Pickpack.pickpack_modules.pickpack_cache import CachedResource
+from CML_Pickpack.pickpack_modules.pickpack_cache import CachedResource
 
 
 class JStatusOrdersBase(CachedResource):

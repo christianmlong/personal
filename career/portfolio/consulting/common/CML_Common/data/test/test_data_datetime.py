@@ -16,7 +16,7 @@ import unittest
 import doctest
 
 # Import module to test
-from Common.data import data_datetime
+from CML_Common.data import data_datetime
 
 # Build a unittest suite from doctest tests
 doctest_suite = unittest.TestSuite()

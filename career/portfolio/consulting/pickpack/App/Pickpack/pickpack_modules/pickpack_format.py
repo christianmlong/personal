@@ -16,10 +16,10 @@ import json
 
 from twisted.internet import defer
 
-from Pickpack.pickpack_modules import pickpack_data
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_result_builders
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_data
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_result_builders
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 
 def getPackingList_deferred(order_id,

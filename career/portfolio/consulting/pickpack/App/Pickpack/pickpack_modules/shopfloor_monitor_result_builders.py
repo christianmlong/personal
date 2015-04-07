@@ -12,7 +12,7 @@ christianzlong@gmail.com
 Language: Python 2.7  www.python.org
 """
 
-from Common.utility.utl_classes import Freezable
+from CML_Common.utility.utl_classes import Freezable
 
 
 # Note: it may seem that these classes aren't doing enough to justify their

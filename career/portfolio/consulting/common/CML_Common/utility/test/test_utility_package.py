@@ -2,7 +2,7 @@
 
 test_utility_package.py
 
-This module runs all the tests for the modules in the Common.utility package. It
+This module runs all the tests for the modules in the CML_Common.utility package. It
 runs the doctest and the unittest tests. It can also provide a suite so
 higher-level packages can bundle its suite with others.
 
@@ -15,14 +15,14 @@ Current language: Python 2.5.1  www.python.org
 """
 
 # Import test helper
-from Common.utility import utl_test
+from CML_Common.utility import utl_test
 
 # Import the unit tests.  doctest tests are bundled into unittest suites inside
 # the test_* modules
-from Common.utility.test import test_utl_classes
-from Common.utility.test import test_utl_decorators
-from Common.utility.test import test_utl_functions
-from Common.utility.test import test_utl_server
+from CML_Common.utility.test import test_utl_classes
+from CML_Common.utility.test import test_utl_decorators
+from CML_Common.utility.test import test_utl_functions
+from CML_Common.utility.test import test_utl_server
 
 unittest_modules = (test_utl_classes,
                    test_utl_decorators,

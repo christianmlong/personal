@@ -14,7 +14,7 @@ Current language: Python 2.7.1  www.python.org
 import copy
 
 # Import shared modules
-from Common.error import error
+from CML_Common.error import error
 
 # A note about decorators:
 #

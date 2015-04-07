@@ -11,7 +11,7 @@ christianzlong@gmail.com
 Language: Python 2.7  www.python.org
 """
 
-from Common.error import error
+from CML_Common.error import error
 
 class OrderIdParseError(error.InputError):
     """

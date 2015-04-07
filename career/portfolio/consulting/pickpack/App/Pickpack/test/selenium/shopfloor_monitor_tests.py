@@ -5,7 +5,7 @@ Tests for the Shopfloor Monitor application.
 """
 
 
-from Pickpack.test.selenium.common_selenium_tests import BaseForShopfloorMonitorTests
+from CML_Pickpack.test.selenium.common_selenium_tests import BaseForShopfloorMonitorTests
 
 class TestShopfloorMonitorCommon(BaseForShopfloorMonitorTests):
     """

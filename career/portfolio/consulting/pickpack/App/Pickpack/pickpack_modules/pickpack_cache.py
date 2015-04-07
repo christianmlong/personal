@@ -15,12 +15,12 @@ import time
 
 from twisted.internet import defer
 
-from Common.utility import utl_decorators
+from CML_Common.utility import utl_decorators
 
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
 
-from Pickpack.pickpack_modules.pickpack_resource import PickPackGettableResource
+from CML_Pickpack.pickpack_modules.pickpack_resource import PickPackGettableResource
 
 class TimedCache(object):
     """

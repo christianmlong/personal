@@ -11,10 +11,10 @@ christianzlong@gmail.com
 Language: Python 2.7  www.python.org
 """
 
-from Common.utility import utl_decorators
+from CML_Common.utility import utl_decorators
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 @utl_decorators.add_constants_to_class({'Flavor'    : ('Normal',
                                                       ),

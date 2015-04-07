@@ -1,5 +1,5 @@
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_startup
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_startup
 
 # Create the application, using mock test data instead of a connecting to the
 # database.

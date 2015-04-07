@@ -5,8 +5,8 @@ Tests for the classes in the warn.rulesets.py module
 
 import collections
 
-from Pickpack.pickpack_modules.warn import rulesets, pkpk_warnings
-from Pickpack.pickpack_modules.test.utility_classes_for_testing import BaseItemRulesetTester, MultiDictBackedRuleset
+from CML_Pickpack.pickpack_modules.warn import rulesets, pkpk_warnings
+from CML_Pickpack.pickpack_modules.test.utility_classes_for_testing import BaseItemRulesetTester, MultiDictBackedRuleset
 
 class TestMetalRuleset(BaseItemRulesetTester):
     """

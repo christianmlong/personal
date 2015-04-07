@@ -12,11 +12,11 @@ Language: Python 2.7  www.python.org
 """
 import cgi, json
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_lowlevel_common
-from Pickpack.pickpack_modules import pickpack_result_builders
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules.warn.main import calculateShipmentWarnings
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_lowlevel_common
+from CML_Pickpack.pickpack_modules import pickpack_result_builders
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules.warn.main import calculateShipmentWarnings
 
 def getOrderNotesAndWarningCategories(carrier_code,
                                       packing_list,

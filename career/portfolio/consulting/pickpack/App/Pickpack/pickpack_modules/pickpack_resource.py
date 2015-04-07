@@ -20,11 +20,11 @@ from twisted.web.resource import Resource
 from twisted.web import http
 from twisted.web.server import NOT_DONE_YET
 
-from Common.utility import utl_aplus
+from CML_Common.utility import utl_aplus
 
-from Pickpack.pickpack_modules import pickpack_format
-from Pickpack.pickpack_modules import pickpack_context
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_format
+from CML_Pickpack.pickpack_modules import pickpack_context
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 
 class FileWithCacheControl(File):                                               # pylint: disable=R0904

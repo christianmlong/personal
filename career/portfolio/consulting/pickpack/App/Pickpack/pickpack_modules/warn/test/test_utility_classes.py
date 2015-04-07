@@ -4,8 +4,8 @@ Tests for the classes in the warn.utility_classes.py module
 """
 
 
-from Pickpack.pickpack_modules.warn import utility_classes
-from Pickpack.pickpack_modules.test.utility_classes_for_testing import MultiDictBackedRuleset
+from CML_Pickpack.pickpack_modules.warn import utility_classes
+from CML_Pickpack.pickpack_modules.test.utility_classes_for_testing import MultiDictBackedRuleset
 
 
 

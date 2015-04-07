@@ -10,8 +10,8 @@ christianzlong@gmail.com
 
 Language: Python 2.7  www.python.org
 """
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 def isValidCarrierCode(carrier_code):
     """

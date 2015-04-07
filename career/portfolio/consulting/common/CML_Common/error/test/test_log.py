@@ -16,7 +16,7 @@ import unittest
 import doctest
 
 # Import module to test
-from Common.error import log
+from CML_Common.error import log
 
 # Build a unittest suite from doctest tests
 doctest_suite = unittest.TestSuite()

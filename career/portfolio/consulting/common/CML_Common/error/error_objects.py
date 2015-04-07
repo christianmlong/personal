@@ -17,8 +17,8 @@ Current language: Python 2.7.1  www.python.org
 # I brought the logic-containing bits over here.
 
 # Import shared modules
-from Common.error import error
-from Common.utility import utl_decorators
+from CML_Common.error import error
+from CML_Common.utility import utl_decorators
 
 class ExternalHandleableExceptions(object):
     """

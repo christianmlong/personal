@@ -6,7 +6,7 @@ Provides debugging services for applications.
 Here's an example of how to set remote breakpoint in Komodo. Komodo must be
 running on 1bk2zq1-190. Debugging listener must be listening on port 8201.
 
-    from Common.error.debug import debug_utility_object as debugObj
+    from CML_Common.error.debug import debug_utility_object as debugObj
     debugObj.debugBreakpoint()
 
 
@@ -25,10 +25,10 @@ import inspect
 import cStringIO
 
 # Import shared modules
-from Common.utility import utl_decorators
-from Common.utility import utl_classes
-from Common.utility import utl_constants
-from Common.error import log
+from CML_Common.utility import utl_decorators
+from CML_Common.utility import utl_classes
+from CML_Common.utility import utl_constants
+from CML_Common.error import log
 
 # Module constants
 # Note use DBG instead of DE BUG to avoid pylint flagging it as a TO DO.
@@ -62,7 +62,7 @@ class DebugUtility(object):
     # Sample usage
     #
     ## Import debug utility object
-    #from Common.error.debug import debug_utility_object as debugObj
+    #from CML_Common.error.debug import debug_utility_object as debugObj
     ## Example: Set remote breakpoint in Komodo. Komodo must be running on
     ## REMOTE_DBG_HOST
     #debugObj.debugBreakpoint()
@@ -94,7 +94,7 @@ class DebugUtility(object):
     #    Named Constants             +++++++++++++++++++
     # Named constants in convenient dot notation. If the shared
     # debug_utility_object was imported like this:
-    #   #from Common.error.debug import debug_utility_object as debugObj
+    #   #from CML_Common.error.debug import debug_utility_object as debugObj
     # then these constants can be addressed using this form:
     #   debugObj.DebugLevelConstants.ExtraHeavy
     named_constants = ["NoDebug",       # 0

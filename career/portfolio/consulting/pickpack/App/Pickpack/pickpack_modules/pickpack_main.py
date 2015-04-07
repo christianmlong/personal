@@ -14,9 +14,9 @@ Language: Python 2.7  www.python.org
 
 from twisted.web.resource import Resource
 
-from Pickpack.pickpack_modules import pickpack_resource
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import shopfloor_monitor_resource
+from CML_Pickpack.pickpack_modules import pickpack_resource
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import shopfloor_monitor_resource
 
 class PickPackAppRoot(Resource):
     """

@@ -13,10 +13,10 @@ BY write_shopfloor_monitor_service_tests.py
 import requests
 from nose import tools
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules.test import utility_functions_for_testing
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
-from Pickpack.pickpack_modules.test.write_endpoint_tests import REQUESTS_TIMEOUT
+from CML_Pickpack.pickpack_modules.test.write_endpoint_tests import REQUESTS_TIMEOUT
 
 if pickpack_constants.SHOW_FULL_DIFF:
     # Force Nose to output the full diff

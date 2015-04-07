@@ -4,8 +4,8 @@
     used to decide which inline warning image to display
 """
 
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules.warn.utility_classes import CommonConstants
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules.warn.utility_classes import CommonConstants
 
 class InlineImageCalculator(CommonConstants):
     """

@@ -9,7 +9,7 @@ pickpack_data_mock.
 __test__ = False
 
 import os.path
-from Pickpack.pickpack_modules.test import write_endpoint_tests
+from CML_Pickpack.pickpack_modules.test import write_endpoint_tests
 
 def main():
     """

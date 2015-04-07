@@ -17,13 +17,13 @@ import decimal
 from twisted.internet import defer
 from twisted.enterprise import adbapi
 
-from Common.utility import utl_aplus
+from CML_Common.utility import utl_aplus
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_common
-from Pickpack.pickpack_modules import pickpack_result_builders
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_utility_classes
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_common
+from CML_Pickpack.pickpack_modules import pickpack_result_builders
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_utility_classes
 
 # Module-level variables
 M_mock_data = None
@@ -75,7 +75,7 @@ def getPackingList_deferred(order_id,
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.getPackingList_deferred(order_id,
                                                           ctx,
                                                          )
@@ -238,7 +238,7 @@ def isValidItemNumberData_deferred(item_number):
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.isValidItemNumberData_deferred(item_number)
 
     sql = """
@@ -258,7 +258,7 @@ def isValidOrderNumberData_deferred(possible_order_id_scan):
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.isValidOrderNumberData_deferred(possible_order_id_scan)
 
     try:
@@ -286,7 +286,7 @@ def itemByUPCData_deferred(upc):
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.itemByUPCData_deferred(upc)
 
     sql = """
@@ -309,7 +309,7 @@ def writeOrderCompleteData_deferred(order_id,
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.writeOrderCompleteData_deferred(order_id,
                                                                   comment_text,
                                                                   serial_numbers,
@@ -423,7 +423,7 @@ def writeOrderComplete_transaction_wrapper(transaction_cursor,
 
     # Record the serial numbers
 
-    # Info from Dave 
+    # Info from Dave
     #
     # The stored procedure is ready for you to test! The program name is
     # ZSRLUPSP, and the version for the MT test environment is in library
@@ -528,7 +528,7 @@ def getClippershipWarningsData_deferred(order_id,
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.getClippershipWarningsData_deferred(order_id)
 
     return M_dbpool.runInteraction(getClippershipWarnings_transaction_wrapper,
@@ -888,7 +888,7 @@ def isValidSerialNumberData_deferred(item_number,
     """
     # Return mock data, if flag is set
     if M_mock_data:
-        from Pickpack.pickpack_modules import pickpack_data_mock
+        from CML_Pickpack.pickpack_modules import pickpack_data_mock
         return pickpack_data_mock.isValidSerialNumberData_deferred(item_number,
                                                                    serial_number,
                                                                   )

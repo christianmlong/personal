@@ -7,8 +7,8 @@ Tests for the Shopfloor Monitor service
 import requests
 from nose import tools
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules.test import utility_functions_for_testing
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
 if pickpack_constants.SHOW_FULL_DIFF:
     # Force Nose to output the full diff

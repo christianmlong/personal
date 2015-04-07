@@ -17,7 +17,7 @@ import unittest
 import doctest
 
 # Import module to test
-from Common.utility import utl_decorators
+from CML_Common.utility import utl_decorators
 
 # Build a unittest suite from doctest tests
 doctest_suite = unittest.TestSuite()

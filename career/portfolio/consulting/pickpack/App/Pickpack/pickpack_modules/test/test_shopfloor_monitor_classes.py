@@ -6,10 +6,10 @@ Tests for the Shopfloor Monitor utility classes
 
 from nose import tools
 
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
 
-from Pickpack.pickpack_modules.shopfloor_monitor_classes import Column, make_column_structure
+from CML_Pickpack.pickpack_modules.shopfloor_monitor_classes import Column, make_column_structure
 
 if pickpack_constants.SHOW_FULL_DIFF:
     # Force Nose to output the full diff

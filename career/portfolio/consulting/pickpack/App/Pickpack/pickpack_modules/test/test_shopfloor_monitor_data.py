@@ -15,8 +15,8 @@ from nose.plugins.attrib import attr
 
 import pyodbc, sqlparse
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import shopfloor_monitor_data
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import shopfloor_monitor_data
 
 if pickpack_constants.SHOW_FULL_DIFF:
     # Force Nose to output the full diff

@@ -15,7 +15,7 @@ Current language: Python 2.7.1  www.python.org
 import socket
 
 # Import shared modules
-from Common.utility import utl_decorators
+from CML_Common.utility import utl_decorators
 
 @utl_decorators.memoizeFunction
 def getHostname():

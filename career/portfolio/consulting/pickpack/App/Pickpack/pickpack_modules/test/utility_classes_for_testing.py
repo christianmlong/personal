@@ -8,12 +8,12 @@ Utility and support classes for testing
 import pprint, itertools, collections
 from nose import tools
 
-from Pickpack.pickpack_modules import pickpack_data_mock
-from Pickpack.pickpack_modules import pickpack_errors
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_utility_classes
-from Pickpack.pickpack_modules.warn.main import calculateShipmentWarnings
-#from Pickpack.pickpack_modules.test import utility_functions_for_testing
+from CML_Pickpack.pickpack_modules import pickpack_data_mock
+from CML_Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_utility_classes
+from CML_Pickpack.pickpack_modules.warn.main import calculateShipmentWarnings
+#from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 
 
 class BaseRuleset(object):

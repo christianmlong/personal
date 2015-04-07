@@ -16,10 +16,10 @@ import os
 
 from nevow import flat, tags, entities
 
-from Common.utility import utl_functions
+from CML_Common.utility import utl_functions
 
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_errors
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_errors
 
 # Note: it may seem that these classes aren't doing enough to justify their
 # existence. However, I added these *Builder classes to impose some structure

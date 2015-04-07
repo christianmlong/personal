@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium import selenium
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from Pickpack.test.selenium import constants
+from CML_Pickpack.test.selenium import constants
 
 
 # Decorators

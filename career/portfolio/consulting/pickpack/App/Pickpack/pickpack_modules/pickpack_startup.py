@@ -15,9 +15,9 @@ from twisted.application import internet
 from twisted.application import service
 from twisted.web import server
 
-from Pickpack.pickpack_modules import pickpack_main
-from Pickpack.pickpack_modules import pickpack_constants
-from Pickpack.pickpack_modules import pickpack_data
+from CML_Pickpack.pickpack_modules import pickpack_main
+from CML_Pickpack.pickpack_modules import pickpack_constants
+from CML_Pickpack.pickpack_modules import pickpack_data
 
 def configureApp(configuration):
     """
@@ -115,8 +115,8 @@ def configureAppWithManhole(configuration):
     # g.dataMethod(). I'm not going to do that right now.
     #
     # However, I can import and call individual functions directly.
-    #   from Pickpack.pickpack_modules import pickpack_data_mock
-    #   from Pickpack.pickpack_modules import pickpack_format
+    #   from CML_Pickpack.pickpack_modules import pickpack_data_mock
+    #   from CML_Pickpack.pickpack_modules import pickpack_format
     #   order_number = 'AA02200'
     #   h = pickpack_data_mock.getClippershipWarningsData_deferred(order_number)
     #   i = h.result['order_notes']
@@ -129,7 +129,7 @@ def configureAppWithManhole(configuration):
     # But, there is one cool thing we can do with the manhole. I can reload
     # individual modules at runtime, and they will reflect any changes that have
     # been made to the module.
-    #   from Pickpack.pickpack_modules import pickpack_format
+    #   from CML_Pickpack.pickpack_modules import pickpack_format
     #   from twisted.python.rebuild import rebuild
     #   rebuild(pickpack_format)
     #   print pickpack_format._formatClippershipWarnings(i)
