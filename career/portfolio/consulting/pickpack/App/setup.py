@@ -10,6 +10,7 @@ setup(
     include_package_data = True,
 
     install_requires = ['Twisted>=14.0.0',
+                        'nevow',
                         'CML_Common>=4.0.0',
                        ],
 
