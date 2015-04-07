@@ -1,0 +1,58 @@
+
+Start with a bitmap image (.bmp. .jpg. etc.) of the label. 
+
+Do your cropping outside of inkscape (e.g. in paint.NET). Inkscape has an idea of cropping (put a rect on top of your object, select both, and Object > Clip > Set), but it is not the same as cropping a bitmap.
+
+Make a new Inkscape file
+
+Import the image
+
+(control-scroll to zoom)
+
+Scale the bitmap up, by around 200-400%. This will make the bitmap blurry and pixellated. That is OK. It will yield a more stylized vector.
+
+
+Go to Path > Trace Bitmap...
+
+Try various settings. Start with this (for a black & white label):
+  Single scan
+  Brightness cutoff .560
+
+Or this (for a color label):
+  Multiple scans
+  Scans 3
+  Colors
+  Smooth
+  No stack scans
+  Remove background
+
+
+Paste the new path or group of paths in to a new document
+
+Select the path or group
+
+Go to File > Document Properties > Page tab > Resize Page to Content > Resize Page to drawing or selection
+
+While you're in there, turn off "Show page border".
+
+
+Tweak image as needed, save as .svg (Inksacpe format)
+
+
+One thing that might need to be done is keystone correction. The Inkscape way of doing this is weird.
+
+First, using the Bezier tool, draw a quadrilateral that represents the perspective transform you want to apply. Start drawing this quadrilateral from the bottom left. Then select both the object to be transformed, and the quadrilateral. Select the Object first, then the quadrilateral. Go to Extenstions > Modify Path > Perspective. Inkscape will calculate the new object. Now you can delete your quadrilateral.
+Reference:
+http://www.built-to-spec.com/blog/2011/01/02/quick-inkscape-tutorial-perspective-transforms/
+
+
+Now that the bitmap has been converted to a path, you can try simplifying the path. (Path > Simplify). By default, Inkscape's Simplify command is too agressive. To change it, go to File > Inkscape Preferences > Misc > Simplificaiton threshhold. Default is .002, I chaged it to .0005.
+
+
+You can export manually. I also have an automated script called export_images.py
+
+
+
+
+
+

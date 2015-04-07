@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>Pick Pack</title>
+    <!--<script type="text/javascript">MochiKit = {__export__: false};</script>-->
+    <!--<script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit.js"></script>-->
+
+
+    <script type="text/javascript">MochiKit = {__export__: false};</script>
+    <script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit_packed.js"></script> -->
+    <script type="text/javascript" src="/static/js/common/cookie.js"></script>
+    <script type="text/javascript" src="/static/js/common/utility_functions.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/constants.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/globals.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/regex.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/error.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/event_handlers.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/server.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/utility_objects.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/ui.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/startup.js"></script>
+
+
+    <script type="text/javascript">
+function do_it()
+{
+    document.getElementById("bla").innerHTML="Dynamic";
+
+    var request = new XMLHttpRequest();
+    request.open("GET",
+                 "/clippership/warnings?order_no=2560022",
+                 false);
+    request.send(null);
+    document.getElementById("bla2").innerHTML=request.responseText;
+}
+function test_sound()
+{
+    document.getElementById("sound_indicator").innerHTML="Played";
+
+}
+    </script>
+    <link rel="stylesheet" type="text/css" href="/static/style/pickpack.css" />
+</head>
+<body>
+
+    <div>
+        <button id='aaa' onclick='do_it();'>Click me</button>
+    </div>
+    <div>
+        <p id='bla'>Static</p>
+    </div>
+    <div id='bla2'>
+        <button id='sound' onclick='test_sound();'>Test sound</button>
+    </div>
+    <div>
+        <p id='sound_indicator'>Not Played</p>
+    </div>
+    <div>
+        <audio autoplay >
+            <source src="/static/sounds/d_note.mp3" type="audio/mpeg">
+            <source src="/static/sounds/d_note.ogg" type="audio/ogg">
+            <embed src="/static/sounds/d_note.mp3" autostart="true" hidden="true" />
+        </audio>
+    </div>
+
+</body>
+</html>

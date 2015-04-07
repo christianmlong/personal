@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <!-- Force IE into cutting-edge compatibility mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+    <title>Pick Pack</title>
+    <script type="text/javascript">MochiKit = {__export__: false};</script>
+    <script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/mochikit/MochiKit/MochiKit_packed.js"></script> -->
+    <script type="text/javascript" src="/static/js/common/cookie.js"></script>
+    <script type="text/javascript" src="/static/js/common/ui.js"></script>
+    <script type="text/javascript" src="/static/js/common/utility_functions.js"></script>
+    <script type="text/javascript" src="/static/js/common/constants.js"></script>
+    <script type="text/javascript" src="/static/js/common/error.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/constants.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/globals.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/regex.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/error.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/event_handlers.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/server.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/utility_objects.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/ui.js"></script>
+    <script type="text/javascript" src="/static/js/pickpack/startup.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style/pickpack.css" />
+</head>
+<body>
+    <!-- Fixed positioning -->
+    <!-- This is the containing block for fixed-positioned elements -->
+    <div id="fixed_container" class="relative">
+        <img id="big_green" src="/static/img/green_large.png" alt="Order success" />
+        <div id="pkpk_error_box" class="invisible pkpk_box pkpk_error">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="pkpk_content">
+                <div class="pkpk_content_body">
+                    <div><span id="pkpk_error_text" class="relative"></span></div>
+                    <div id="pkpk_error_toggle_div"><span id="pkpk_error_toggle_text">AAA</span></div>
+                    <div id="pkpk_error_traceback"></div>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="pkpk_info_box" class="invisible pkpk_box pkpk_info">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="pkpk_content">
+                <div class="pkpk_content_body">
+                    <span id="pkpk_info_body" class="relative"></span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="pkpk_serial_no_box" class="invisible pkpk_box pkpk_alert">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="pkpk_content">
+                <div class="pkpk_content_body">
+                    <span id="pkpk_serial_no_text" class="relative"></span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="pkpk_options_pane" class="pkpk_pane pkpk_dialog">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="pkpk_content">
+                <div class="pkpk_header">
+                    <span class="relative">Options</span>
+                </div>
+                <div class="pkpk_option_div" title="Enter your initials here.">
+                    <span class="pkpk_option_label">User initials</span>
+                    <input id="user_id"
+                           type="text"
+                           class="pkpk_option_textinput" />
+                </div>
+                <div class="pkpk_option_div">
+                    <span class="pkpk_option_label">Order complete sound</span>
+                    <select id="order_complete_sound" class="pkpk_option_select">
+                        <option value="none">No Sound</option>
+                        <option value="car_beep">Car beep</option>
+                        <option value="crystal_glass" selected="selected">Crystal glass</option>
+                        <option value="electronic_blip">Blip</option>
+                        <option value="jews_harp_bong">Jew's harp</option>
+                        <option value="pop_sound">Pop</option>
+                        <option value="rr">Railroad crossing</option>
+                        <option value="thump">Thump</option>
+                        <option value="thump2">Thump 2</option>
+                        <option value="web_buttons_10">Web button</option>
+                        <option value="web_buttons_2">Web button 2</option>
+                        <option value="whistle">Whistle</option>
+                        <option value="whistle2">Whistle 2</option>
+                        <option value="cash_register">Cash register</option>
+                        <option value="crow">Crow</option>
+                        <option value="d_note">D note</option>
+                        <option value="ocarina">Ocarina</option>
+                        <option value="old_phone">Old phone</option>
+                        <option value="phone">Phone</option>
+                        <option value="spooky">Spooky</option>
+                        <option value="steam_whistle">Steam whistle</option>
+                        <option value="chickadee1">Chickadee1</option>
+                        <option value="chickadee2">Chickadee2</option>
+                        <option value="quacks">Quacks</option>
+                        <option value="bluejay">Bluejay</option>
+                        <option value="redwing">Redwing</option>
+                        <option value="coot">Coot</option>
+                        <option value="cardinal">Cardinal</option>
+                        <option value="barney">Barney</option>
+                        <option value="homer1">Homer 1</option>
+                        <option value="homer2">Homer 2</option>
+                        <option value="homer3">Homer 3</option>
+                        <option value="nelson">Nelson</option>
+                        <option value="elvis">Thank you</option>
+                    </select>
+                </div>
+                <div class="pkpk_option_div">
+                    <span class="pkpk_option_label">Error sound</span>
+                    <select id="error_sound" class="pkpk_option_select">
+                        <option value="none">No Sound</option>
+                        <option value="car_beep">Car beep</option>
+                        <option value="crystal_glass">Crystal glass</option>
+                        <option value="electronic_blip">Blip</option>
+                        <option value="jews_harp_bong">Jew's harp</option>
+                        <option value="pop_sound">Pop</option>
+                        <option value="rr">Railroad crossing</option>
+                        <option value="thump">Thump</option>
+                        <option value="thump2">Thump 2</option>
+                        <option value="web_buttons_10">Web button</option>
+                        <option value="web_buttons_2">Web button 2</option>
+                        <option value="whistle" selected="selected">Whistle</option>
+                        <option value="whistle2">Whistle 2</option>
+                        <option value="cash_register">Cash register</option>
+                        <option value="crow">Crow</option>
+                        <option value="d_note">D note</option>
+                        <option value="ocarina">Ocarina</option>
+                        <option value="old_phone">Old phone</option>
+                        <option value="phone">Phone</option>
+                        <option value="spooky">Spooky</option>
+                        <option value="steam_whistle">Steam whistle</option>
+                        <option value="chickadee1">Chickadee1</option>
+                        <option value="chickadee2">Chickadee2</option>
+                        <option value="quacks">Quacks</option>
+                        <option value="bluejay">Bluejay</option>
+                        <option value="redwing">Redwing</option>
+                        <option value="coot">Coot</option>
+                        <option value="cardinal">Cardinal</option>
+                        <option value="barney">Barney</option>
+                        <option value="homer1">Homer 1</option>
+                        <option value="homer2">Homer 2</option>
+                        <option value="homer3">Homer 3</option>
+                        <option value="nelson">Nelson</option>
+                        <option value="elvis">Thank you</option>
+                    </select>
+                </div>
+                <div class="pkpk_option_div">
+                    <span class="pkpk_option_label">Scan beep sound</span>
+                    <select id="scan_beep" class="pkpk_option_select">
+                        <option value="none" selected="selected">No Sound</option>
+                        <option value="car_beep">Car beep</option>
+                        <option value="crystal_glass">Crystal glass</option>
+                        <option value="electronic_blip">Blip</option>
+                        <option value="jews_harp_bong">Jew's harp</option>
+                        <option value="pop_sound">Pop</option>
+                        <option value="rr">Railroad crossing</option>
+                        <option value="thump">Thump</option>
+                        <option value="thump2">Thump 2</option>
+                        <option value="web_buttons_10">Web button</option>
+                        <option value="web_buttons_2">Web button 2</option>
+                        <option value="whistle">Whistle</option>
+                        <option value="whistle2">Whistle 2</option>
+                        <option value="cash_register">Cash register</option>
+                        <option value="crow">Crow</option>
+                        <option value="d_note">D note</option>
+                        <option value="ocarina">Ocarina</option>
+                        <option value="old_phone">Old phone</option>
+                        <option value="phone">Phone</option>
+                        <option value="spooky">Spooky</option>
+                        <option value="steam_whistle">Steam whistle</option>
+                        <option value="chickadee1">Chickadee1</option>
+                        <option value="chickadee2">Chickadee2</option>
+                        <option value="quacks">Quacks</option>
+                        <option value="bluejay">Bluejay</option>
+                        <option value="redwing">Redwing</option>
+                        <option value="coot">Coot</option>
+                        <option value="cardinal">Cardinal</option>
+                        <option value="barney">Barney</option>
+                        <option value="homer1">Homer 1</option>
+                        <option value="homer2">Homer 2</option>
+                        <option value="homer3">Homer 3</option>
+                        <option value="nelson">Nelson</option>
+                        <option value="elvis">Thank you</option>
+                    </select>
+                </div>
+                <div class="pkpk_option_div" title="Uncheck this if the sound is choppy.">
+                    <span class="pkpk_option_label">Smooth fade</span>
+                    <input id="use_fade"
+                           type="checkbox"
+                           checked="checked"
+                           class="pkpk_option_checkbox" />
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+        <div id="pkpk_help_pane" class="pkpk_pane pkpk_dialog">
+            <!-- Extra stuff needed for rounded corners -->
+            <b class="xtop"><b class="xb1"></b><b class="xb2"></b><b class="xb3"></b><b class="xb4"></b></b>
+            <div class="pkpk_content">
+                <div class="pkpk_header">
+                    <span class="relative">Help</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F1 - Help</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F2 - Reset the current item</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F3 - Jump to the next incomplete item</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F4 - Settings: User initials, sounds</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F5 - Full reset</span>
+                </div>
+                <div class="pkpk_help_div">
+                    <span class="pkpk_help_label">F6 - Show battery warnings</span>
+                </div>
+            </div>
+            <b class="xbottom"><b class="xb4"></b><b class="xb3"></b><b class="xb2"></b><b class="xb1"></b></b>
+        </div>
+    </div>
+
+    <!-- Normal flow positioning -->
+    <div id="toplevelbox">
+        <div class="pkpk_header">
+            <div class="left">
+                <!-- Start out blank -->
+                <span id="order_status" class="pkpk_status">0</span>
+                <img id="order_status_img" class="relative" src="/static/img/blank1.png" alt="Order status" />
+                <span>Order number</span>
+                <span id="display_order_number"></span>
+                <img id="wait_spinner" class="invisible relative" src="/static/img/spinner.gif" alt="Wait spinner" />
+            </div>
+            <div class="right">
+                <span>User</span>
+                <span id="display_user_id"></span>
+                <img class="relative" src="/static/img/blank1.png" alt="Placeholder" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="pkpk_debug_info">
+                <!-- Server tracebacks go here -->
+        </div>
+        <div id="pkpk_list_div">
+            <table id="table_of_items">
+                <!-- List of items goes here, filled in by JavaScript -->
+            </table>
+        </div>
+    </div>
+</body>
+</html>

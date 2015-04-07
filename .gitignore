@@ -1,0 +1,4 @@
+*.pyc
+/App/Pickpack.egg-info
+*.kpf
+
