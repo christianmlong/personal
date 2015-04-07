@@ -1,4 +1,4 @@
-# pylint: disable=C0111,W0142,R0904
+# pylint: disable=C0111,R0904
 
 #from CML_Pickpack.pickpack_modules.test import utility_functions_for_testing
 

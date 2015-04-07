@@ -14,12 +14,12 @@ Current language: Python 2.7.1  www.python.org
 
 
 #    Classes         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-class BaseException(Exception):
+class CMLBaseException(Exception):
     """
     Base class for all exceptions and errors in the common modules
     """
 
-class AlertError(BaseException):
+class AlertError(CMLBaseException):
     """
     Base class for all custom errors in the common modules. These are
     application and database errors, and other runtime errors. We notify the

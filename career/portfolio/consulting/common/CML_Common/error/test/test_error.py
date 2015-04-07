@@ -29,9 +29,9 @@ doctest_suite.addTest(doctest.DocTestSuite(error))
 # ============================================================
 # ============================================================
 
-#class BaseException(Exception):
+#class CMLBaseException(Exception):
 #    pass
-#class AlertError(BaseException):
+#class AlertError(CMLBaseException):
 #    pass
 #class DataError(AlertError):
 #    pass

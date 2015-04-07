@@ -7,7 +7,7 @@
 
 
 
-import subprocess, os, sys, argparse, time
+import subprocess, os, argparse, time
 
 def main():
     """

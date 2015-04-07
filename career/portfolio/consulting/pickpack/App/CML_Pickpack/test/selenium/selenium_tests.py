@@ -1,4 +1,4 @@
-# pylint: disable=C0111,W0142,R0915
+# pylint: disable=C0111,R0915
 
 from CML_Pickpack.test.selenium.common_selenium_tests import BaseForPickpackTests
 from CML_Pickpack.test.selenium.table_tester import TableTester, QuickTableTester

@@ -1,4 +1,4 @@
-# pylint: disable=C0111,W0142
+# pylint: disable=C0111
 
 
 

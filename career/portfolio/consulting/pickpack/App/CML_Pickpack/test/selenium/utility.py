@@ -1,4 +1,4 @@
-# pylint: disable=C0111,W0142,R0903,R0904
+# pylint: disable=C0111,R0903,R0904
 import time, os.path, urllib, urlparse, socket
 from nose import tools
 from selenium import webdriver
@@ -99,7 +99,7 @@ class BaseTestingUtility(object):
         self.browser = '*firefox %s' % constants.PATH_TO_FIREFOX
         self.aut_url = "http://%s:%s%s" % (constants.HOST_TO_TEST,
                                            constants.PORT_TO_TEST,
-                                           self.PATH,
+                                           self.PATH,                   # pylint: disable=no-member
                                           )
         self.dummy_url = "http://%s:%s%s" % (constants.HOST_TO_TEST,
                                              constants.PORT_TO_TEST,

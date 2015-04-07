@@ -38,7 +38,6 @@ load-plugins=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
-#disable=similarities,W0142,R0922
 disable=similarities,bad-whitespace,bad-continuation,star-args,abstract-class-little-used,locally-disabled,locally-enabled
 
 [REPORTS]
