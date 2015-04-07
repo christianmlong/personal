@@ -9,8 +9,7 @@ setup(
     version = "4.0.0",
     packages = find_packages(),
 
-    install_requires = ['pyodbc>=3',
-                       ],
+    install_requires = [],
 
     # metadata
     author = "Christian Long",
