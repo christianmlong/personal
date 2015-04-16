@@ -111,7 +111,9 @@ Not all installers will work with `easy_install` this way. See this [Stack Overf
 
 #### <a name="install_app"></a> Install your application
 
-Whatever Twisted application you are going to be running on this server, install it as you normally would. For example `pip install my_app`.
+Whatever Twisted application you are going to be running on this server, install it as you normally would. For example: 
+
+    pip install my_app
 
 Now that everything has been installed, check it.
 
