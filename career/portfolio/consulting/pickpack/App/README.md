@@ -2,6 +2,7 @@ This is the python package containing the Pick Pack application. The application
 
 #### Install
 
+    git clone git@github.com:christianmlong/personal.git
     cd  personal/career/portfolio/consulting/
     pip install -e common
     pip install -e pickpack/App
