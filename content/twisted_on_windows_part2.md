@@ -20,6 +20,12 @@ With [some coding](), Twisted applications can run as a [Windows service](). How
 
 Note that we are using the 64-bit version of NSSM, even though the application we are installing is running on 32-bit Python. The 64-bit version of NSSM can manage both 64-bit and 32-bit applications.
 
+The nssm.exe file might be marked as untrusted. You can unblock it by right-clicking on the file and choosing Properties. In the Properties dialog, click Unblock.
+
+![Properties screenshot]({filename}/images/security_zone.png)
+
+[More information](http://weblogs.asp.net/dixin/understanding-the-internet-file-blocking-and-unblocking) about unblocking files in Windows.
+
 #### <a name="about_nssm"></a>More about NSSM
 
 We will use the NSSM command line tools to configure the new service. The NSSM commands look like this:
