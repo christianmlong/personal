@@ -2,7 +2,7 @@ Title: Twisted on Windows, 2015 Edition: Part 2
 Category: Python
 Tags:python, twisted, windows
 Author: Christian Long
-Date: 2015-04-20 16:30
+Date: 2015-04-21 16:57
 Summary: Part 2 of my series on running an application using Twisted on Windows, in a 2015 style.
 
 
@@ -28,15 +28,15 @@ The nssm.exe file might be marked as untrusted. You can unblock it by right-clic
 
 [More information](http://weblogs.asp.net/dixin/understanding-the-internet-file-blocking-and-unblocking) about unblocking files in Windows.
 
-#### More about NSSM
+#### NSSM command line
 
-We will use the NSSM command line tools to configure the new service. The NSSM commands look like this:
+We will use the NSSM [command line tools](https://nssm.cc/commands) to configure the new service. The NSSM commands look like this:
 
     nssm [nssm command] [service name] [arguments]
 
-The following commands assume that you have created a virtualenv called "Example", as described in [Part 1]({filename}/twisted_on_windows.md). Change these commands as needed to match the name of your service and your virtualenv. You have to quote paths if they contain spaces.
-
 #### Create the Windows service
+
+The following commands assume that you have created a virtualenv called "Example", as described in [Part 1]({filename}/twisted_on_windows.md). Change these commands as needed to match the name of your service and your virtualenv. You have to quote paths if they contain spaces.
 
 Start a new admin command prompt (Win-x then a):
 
@@ -47,6 +47,9 @@ This will install a service called my_service.
 Look at the paths in the command above. Instead of specifying the system-wide `python.exe` (C:\Python27\python.exe), we give the path to a `python.exe` in the Scripts folder of our virtual environment. This has the same effect as calling `activate` in an interactive session. The Python interpreter will have access to all the packages installed in that virtual environment.
 
 We also have to specify the full path to `twistd.py`. This file comes with Twisted; it starts the server process.
+
+However, we don't need to specify the full path to `my_tacfile.tac`. This is because we specify a working directory for the Windows service, as covered in the next section.
+
 
 #### Configure the working directory
 
@@ -59,7 +62,7 @@ In the above example, replace `my_app` with your app name (it's the name you use
 By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service.
 
 
-#### Set display name and directory
+#### Set display name and description
 
     nssm set my_service DisplayName "My App"
     nssm set my_service Description "My sweet application - running as a Windows service!"
@@ -80,15 +83,34 @@ There are a number of accounts you can use to run your Windows service. It is a 
 
 Windows provides some built-in accounts for this purpose:
 
-* The LOCAL_SYSTEM account is still quite privileged.
+* The [LOCAL_SYSTEM](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190%28v=vs.85%29.aspx) account is still quite privileged.
 
-* The NETWORK_SERVICE account allows the service to access network resources on the Windows network. However, we don't need to run as the NETWORK_SERVICE account if we are just serving local resources.
+* The [NETWORK_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272%28v=vs.85%29.aspx) account allows the service to access network resources on the Windows network. However, we don't need to run as the NETWORK_SERVICE account if we are just serving local resources.
 
-* The LOCAL_SERVICE account has traditionally been the account Windows sysadmins used for services. It does, however, have some drawbacks. There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
+* The [LOCAL_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account has traditionally been the account Windows sysadmins used for services. It does, however, have some drawbacks. There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
 
-In Windows Server 2008, Microsoft introduced a new kind of account for this purpose, called a "Virtual Service Account". These accounts are automatically created, one for each Windows service. By default, they have few privileges. And, if you assign privileges to a virtual service account, those privileges apply only to that service and that account, Other services on the same machine do not get those privileges.
+None of these are ideal, we're going to be using a different account type, covered in the next section
 
-Virtual service accounts are not especially well documented. The best information I found was in the [SQL Server 2008]() documentation. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "".
+#### Virtual service accounts
+
+In Windows Server 2008 R2, Microsoft introduced a new kind of account for this purpose, called a "Virtual Service Account". These accounts are automatically created, one for each Windows service. By default, they have few privileges. And, if you assign privileges to a virtual service account, those privileges apply only to that service and that account. Other services on the same machine do not get those privileges.
+
+Virtual service accounts are not especially well documented. This [Microsoft TechNet article](https://technet.microsoft.com/library/dd548356%28v=ws.10%29.aspx) is a good reference. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "Using virtual accounts". 
+
+**Ignore everything about "Managed service accounts".** Virtual service accounts and Managed service accounts are often lumped together in the documentation.
+
+
+
+
+To configure a service to use a virtual account
+
+Click Start, point to Administrative Tools, and then click Services.
+
+In the details pane, right-click the service that you want to configure, and then click Properties.
+
+Click the Log On tab, click This account, and then type NT SERVICE\ServiceName. When you are finished, click OK.
+
+Restart the service for the change to take effect.
 
 
 
