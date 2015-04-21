@@ -1,0 +1,10 @@
+
+# Pelican blog ignores
+cache/
+develop_server.sh
+fabfile.py
+Makefile
+output/
+*.pyc
+*.pid
+
