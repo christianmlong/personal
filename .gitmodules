@@ -1,0 +1,3 @@
+[submodule "blog/themes/blue-penguin"]
+	path = blog/themes/blue-penguin
+	url = git@github.com:christianmlong/blue-penguin.git
