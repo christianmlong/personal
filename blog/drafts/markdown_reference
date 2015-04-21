@@ -1,0 +1,21 @@
+
+
+http://pythonhosted.org/Markdown/index.html
+https://michelf.ca/projects/php-markdown/extra/#fenced-code-blocks
+
+Markdown Extra introduced a syntax code block without indentation. Fenced code blocks are like Markdown’s regular code blocks, except that they’re not indented and instead rely on start and end fence lines to delimit the code block. The code block starts with a line containing three or more tilde ~ characters, and ends with the first line with the same number of tilde ~. For instance:
+
+    This is a paragraph introducing:
+
+    ~~~~~~~~~~~~~~~~~~~~~
+    a one-line code block
+    ~~~~~~~~~~~~~~~~~~~~~
+
+    ~~~~.python
+    # python code
+    ~~~~
+
+    ~~~~.html
+    <p>HTML Document</p>
+    ~~~~
+
