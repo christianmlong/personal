@@ -5,7 +5,6 @@ Author: Christian Long
 Date: 2015-04-20 16:30
 Summary: Part 2 of my series on running an application using Twisted on Windows, in a 2015 style.
 
-#### <a name="recap"></a>Recap
 
 
 #### Recap
@@ -29,7 +28,7 @@ The nssm.exe file might be marked as untrusted. You can unblock it by right-clic
 
 [More information](http://weblogs.asp.net/dixin/understanding-the-internet-file-blocking-and-unblocking) about unblocking files in Windows.
 
-#### <a name="about_nssm"></a>More about NSSM
+#### More about NSSM
 
 We will use the NSSM command line tools to configure the new service. The NSSM commands look like this:
 
@@ -37,7 +36,7 @@ We will use the NSSM command line tools to configure the new service. The NSSM c
 
 The following commands assume that you have created a virtualenv called "Example", as described in [Part 1]({filename}/twisted_on_windows.md). Change these commands as needed to match the name of your service and your virtualenv. You have to quote paths if they contain spaces.
 
-#### <a name="create_service"></a>Create the Windows service
+#### Create the Windows service
 
 Start a new admin command prompt (Win-x then a):
 
@@ -49,7 +48,7 @@ Look at the paths in the command above. Instead of specifying the system-wide `p
 
 We also have to specify the full path to `twistd.py`. This file comes with Twisted; it starts the server process.
 
-#### <a name="working_dir"></a>Configure the working directory
+#### Configure the working directory
 
 The Windows service has been created, but we still need to configure it. Stay in the admin command prompt, and type:
 
@@ -60,7 +59,7 @@ In the above example, replace `my_app` with your app name (it's the name you use
 By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service.
 
 
-#### <a name="name_desc"></a>Set display name and directory
+#### Set display name and directory
 
     nssm set my_service DisplayName "My App"
     nssm set my_service Description "My sweet application - running as a Windows service!"
@@ -68,14 +67,14 @@ By setting the `AppDirectory` config variable, we are telling NSSM to make that 
 The display name and description will show up in the Windows service Manager console #TODO insert screenshot.
 
 
-#### <a name="set_startup"></a>Configure startup
+#### Configure startup
 
     nssm set my_service Start SERVICE_DELAYED_AUTO_START
 
 This setting tells the Windows service to start automatically when the server restarts. The NSSM docs have [more information]() about the possible startup options.
 
 
-#### <a name="which_account"></a>Which account should we use?
+#### Which account should we use?
 
 There are a number of accounts you can use to run your Windows service. It is a good idea to run network services under the least-privileged account possible. For that reason, a user account is not a good choice.
 
@@ -93,7 +92,7 @@ Virtual service accounts are not especially well documented. The best informatio
 
 
 
-#### <a name="set_account"></a>Set account
+#### Set account
 
 Because of the advantages listed above, I use virtual service accounts to run my Twisted services on Windows 2012 R2. Virtual service accounts are available on Windows Server 2008 and later.
 
