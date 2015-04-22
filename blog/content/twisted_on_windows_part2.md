@@ -24,7 +24,7 @@ Note that we are using the 64-bit version of NSSM, even though the application w
 
 The nssm.exe file might be marked as untrusted. You can unblock it by right-clicking on the file and choosing Properties. In the Properties dialog, click Unblock.
 
-![Properties screenshot]({filename}/images/security_zone.png)
+![Properties screenshot]({filename}/images/security_zone.png){: .no_round}
 
 [More information](http://weblogs.asp.net/dixin/understanding-the-internet-file-blocking-and-unblocking) about unblocking files in Windows.
 
@@ -35,6 +35,8 @@ We will use the NSSM [command line tools](https://nssm.cc/commands) to configure
     nssm [nssm command] [service name] [arguments]
 
 Type `nssm help` to get an overview of the commands. If you get a "not recognized" error from the shell, add NSSM to your [path](#install-nssm). Changes to the path don't apply to already-open command windows, so open a new command window after changing the path.
+
+Running `nssm` commands requires admin privileges.
 
 #### Create the Windows service
 
@@ -63,9 +65,11 @@ The Windows service has been created, but we still need to configure it. Stay in
 
     nssm set my_service AppDirectory C:\PythonEnvs\Example\Lib\site-packages\my_app
 
-In the above example, replace `my_app` with your app name (it's the name you used when you did `pip install`). Check that directory, it should contain your `.tac` file.
+In the above example, replace `my_app` with your app name (it's the name you used when you did `pip install`). Check that directory; it should contain your `.tac` file.
 
-By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service. This is the equivalent of passing the `--chroot` option to `twistd`.
+By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service. 
+
+This is the equivalent of passing the `--chroot` option to `twistd`.
 
 
 #### Set display name and description
@@ -96,7 +100,7 @@ Windows provides some built-in accounts for this purpose:
 
 * The [LOCAL_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account has traditionally been the account Windows sysadmins used for services. It does, however, have [some drawbacks](https://social.technet.microsoft.com/Forums/en-US/57e8b300-b3f7-4005-927b-e7b7b6a7097b/are-virtual-accounts-more-secure-than-local-service-accounts?forum=winserversecurity). There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
 
-None of these are ideal, we're going to be using a different account type, covered in the next section
+None of these are ideal. We're going to be using a different account type, covered in the next section.
 
 #### Virtual service accounts
 
@@ -110,7 +114,7 @@ Virtual service accounts are not especially well documented. This [Microsoft Tec
 
 
 
-#### Set account
+#### Set the account
 
 Because of the advantages listed above, I use virtual service accounts to run my Twisted services on Windows 2012 R2. Virtual service accounts are available on Windows Server 2008 and later.
 
@@ -153,7 +157,7 @@ This is what it should look like
 
 The service prorperties dialog should look like this:
 
-![Services screenshot]({filename}/images/service2.png)
+![Services screenshot]({filename}/images/service2.png){: .no_round}
 
 Notice our service is running, and is set to start automatically.
 
