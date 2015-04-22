@@ -142,7 +142,7 @@ Use `sc` to set the user back to the virtual service account
 
 You don't have to do it this way. Once you create the Windows service with NSSM, you can configure that service with the traditional Windows service configuration tools.
 
-#### Start the service
+#### Start it up
 
     nssm start my_service
 
