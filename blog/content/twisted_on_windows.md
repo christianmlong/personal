@@ -13,7 +13,7 @@ Twisted runs well on Windows, in my experience. I moved some Twisted application
 
 These instructions have been tested with Windows 8.1 and Windows Server 2012 R2. The applications I run on Windows use [Twisted.Web](http://twistedmatrix.com/trac/wiki/TwistedWeb) to serve single-page web apps, talking to a database using [pyodbc](https://code.google.com/p/pyodbc/). My ODBC driver is 32-bit, so I'm using 32-bit Python for these instructions. However, Twisted does not depend on pyodbc, so don't install it if you don't need it.
 
-These instructions assume that you already have an application that runs on Twisted. The Twisted documentation includes an [nice selection](https://twistedmatrix.com/documents/current/core/examples/) of example applications, if you don't have an existing Twisted application.
+These instructions assume that you already have an application that runs on Twisted. The Twisted documentation has a [good explanation](https://twistedmatrix.com/documents/current/core/howto/application.html) of how to set up your project so it runs as a Twisted Applicaion. It also includes an [nice selection](https://twistedmatrix.com/documents/current/core/examples/) of example applications, if you don't have an existing Twisted application.
 
 #### Install Python
 
@@ -104,10 +104,57 @@ Use `easy_install` to install pyodbc in to the virtualenv from the executable Wi
 
     easy_install --always-unzip C:\Path\to\pyodbc-3.0.7.win32-py2.7.exe
 
-I'll talk about why we need `--always-unzip` in Part 2.
+I'll talk about why we need `--always-unzip` in Part 3.
 
 Not all installers will work with `easy_install` this way. See this [Stack Overflow question](http://stackoverflow.com/questions/25984095/install-pysvn-in-a-virtualenv/25984096#25984096) for more details.
 
+
+#### Twisted Application
+
+In this series, I'm assuming you have your project structured as a Twisted Application. In that structure, you have a `.tac` file that is the connection point between your code and the Twisted server, `twistd`. 
+
+
+Here a basic `.tac` file, taken from the [documentation](https://twistedmatrix.com/documents/current/core/howto/application.html) for Twisted Application.
+
+`service.tac`
+
+
+    # You can run this .tac file directly with:
+    #    twistd -ny service.tac
+
+    """
+    This is an example .tac file which starts a webserver on port 8080 and
+    serves files from the current working directory.
+
+    The important part of this, the part that makes it a .tac file, is
+    the final root-level section, which sets up the object called 'application'
+    which twistd will look for
+    """
+
+    import os
+    from twisted.application import service, internet
+    from twisted.web import static, server
+
+    def getWebService():
+        """
+        Return a service suitable for creating an application object.
+
+        This service is a simple web server that serves files on port 8080 from
+        underneath the current working directory.
+        """
+        # create a resource to serve static files
+        fileServer = server.Site(static.File(os.getcwd()))
+        return internet.TCPServer(8080, fileServer)
+
+    # this is the core part of any tac file, the creation of the root-level
+    # application object
+    application = service.Application("Demo application")
+
+    # attach the service to its parent application
+    service = getWebService()
+    service.setServiceParent(application)
+
+If you don't already have a project that you run under Twisted, the documentation has a nice set of [examples](https://twistedmatrix.com/documents/current/core/examples/index.html) to get you started.
 
 ####  Install your application
 
@@ -130,10 +177,17 @@ should look something like this:
 
 Newer versions of some of these packages may since have been released.
 
+If you are installing using `pip`, make sure your `.tac` file is included in your distribution file. For exapmple, put this line in your `MANIFEST.in` file:
+
+    include *.tac
+
+[Documentation](https://docs.python.org/2/distutils/sourcedist.html#the-manifest-in-template) on `MANIFEST.in`.
+
+
 
 ####  Run it
 
-Try it out.
+Try it out. Make sure your virtualenv is [activated](#set-up-a-virtual-environment), and type:
 
     python C:\PythonEnvs\Example\Scripts\twistd.py --help
 
