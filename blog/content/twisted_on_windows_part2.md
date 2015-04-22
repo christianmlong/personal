@@ -94,7 +94,7 @@ Windows provides some built-in accounts for this purpose:
 
 * The [NETWORK_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272%28v=vs.85%29.aspx) account allows the service to access network resources on the Windows network. However, we don't need to run as the NETWORK_SERVICE account if we are just serving local resources.
 
-* The [LOCAL_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account has traditionally been the account Windows sysadmins used for services. It does, however, have some drawbacks. There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
+* The [LOCAL_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account has traditionally been the account Windows sysadmins used for services. It does, however, have [some drawbacks](https://social.technet.microsoft.com/Forums/en-US/57e8b300-b3f7-4005-927b-e7b7b6a7097b/are-virtual-accounts-more-secure-than-local-service-accounts?forum=winserversecurity). There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
 
 None of these are ideal, we're going to be using a different account type, covered in the next section
 
@@ -102,22 +102,11 @@ None of these are ideal, we're going to be using a different account type, cover
 
 In Windows Server 2008 R2, Microsoft introduced a new kind of account for this purpose, called a "Virtual Service Account". These accounts are automatically created, one for each Windows service. By default, they have few privileges. And, if you assign privileges to a virtual service account, those privileges apply only to that service and that account. Other services on the same machine do not get those privileges.
 
-Virtual service accounts are not especially well documented. This [Microsoft TechNet article](https://technet.microsoft.com/library/dd548356%28v=ws.10%29.aspx) is a good reference. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "Using virtual accounts". 
+Virtual service accounts are not especially well documented. This [Microsoft TechNet article](https://technet.microsoft.com/library/dd548356%28v=ws.10%29.aspx) is a good reference. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "Using virtual accounts". Here's [another article](http://weblogs.asp.net/owscott/managed-service-accounts-msa-and-virtual-accounts). Again, scroll down to the section titled "Virtual Accounts". 
 
 **Ignore everything about "Managed service accounts".** Virtual service accounts and Managed service accounts are often lumped together in the documentation.
 
 
-
-
-To configure a service to use a virtual account
-
-Click Start, point to Administrative Tools, and then click Services.
-
-In the details pane, right-click the service that you want to configure, and then click Properties.
-
-Click the Log On tab, click This account, and then type NT SERVICE\ServiceName. When you are finished, click OK.
-
-Restart the service for the change to take effect.
 
 
 
@@ -133,7 +122,44 @@ However, we can use good old `sc` to configure the service to use the virtual se
 
 Yes, that is a space after the equals sign. `sc` is very particular. SS64 has a good [reference for `sc`]().
 
-Use `nssm` to do most of the configuration, and then use `sc` at the end to set the service to use the virtual service account. `nssm` will complain if you use it to configure a service that has been set to use a virtual service account. If you want to use `nssm`, you can just use `sc` to set the account back to :wq
+#### NSSM workaround
+
+NSSM doesn't know about virtual service accounts, so it will complain if you use it to configure a service that has been set to use a virtual service account. As a workaround, use `sc` to temporarily set the account back to LocalSystem.
+
+For example:
+
+Use `sc` to set the user to something NSSM understands
+
+    sc config my_service obj= "LocalSystem"
+
+Use `nssm` to configure your service
+
+    nssm set my_service Description "A better description"
+
+Use `sc` to set the user back to the virtual service account
+
+    sc config my_service obj= "NT SERVICE\my_service"
+
+You don't have to do it this way. Once you create the Windows service with NSSM, you can configure that service with the traditional Windows service configuration tools.
+
+#### Start the service
+
+    nssm start my_service
+
+This is what it should look like
+
+    C:\WINDOWS\system32>nssm start my_service
+    my_service: START: The operation completed successfully.
+
+The service prorperties dialog should look like this:
+
+![Services screenshot]({filename}/images/service2.png)
+
+Notice our service is running, and is set to start automatically.
+
+#### At your service
+
+We've come to the end of Part 2. We have a Twisted application running as Windows service. It is running under a virtual service account. In the next part, we will configure the right privileges for the account. Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.
 
 
 
@@ -145,9 +171,3 @@ Use `nssm` to do most of the configuration, and then use `sc` at the end to set 
 
 
 
-
-
-
-
-
-#TODO Link to Part 2 from Part 1
