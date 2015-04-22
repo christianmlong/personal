@@ -71,10 +71,11 @@ By setting the `AppDirectory` config variable, we are telling NSSM to make that 
 #### Set display name and description
 
     nssm set my_service DisplayName "My App"
-    nssm set my_service Description "My sweet application - running as a Windows service!"
+    nssm set my_service Description "My sweet application - running as a Windows service."
 
-The display name and description will show up in the Windows service Manager console #TODO insert screenshot.
+The display name and description will show up in the Windows service Manager console.
 
+![Services screenshot]({filename}/images/services.png)
 
 #### Configure startup
 
