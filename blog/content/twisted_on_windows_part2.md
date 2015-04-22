@@ -34,13 +34,19 @@ We will use the NSSM [command line tools](https://nssm.cc/commands) to configure
 
     nssm [nssm command] [service name] [arguments]
 
+Type `nssm help` to get an overview of the commands. If you get a "not recognized" error from the shell, add NSSM to your [path](#install-nssm). Changes to the path don't apply to already-open command windows, so open a new command window after changing the path.
+
 #### Create the Windows service
 
 The following commands assume that you have created a virtualenv called "Example", as described in [Part 1]({filename}/twisted_on_windows.md). Change these commands as needed to match the name of your service and your virtualenv. You have to quote paths if they contain spaces.
 
 Start a new admin command prompt (Win-x then a):
 
-    nssm install my_service C:\PythonEnvs\Example\Scripts\python.exe "C:\PythonEnvs\Example\Scripts\twistd.py --python my_tacfile.tac"
+    nssm install my_service ^
+        C:\PythonEnvs\Example\Scripts\python.exe ^
+        "C:\PythonEnvs\Example\Scripts\twistd.py --python my_tacfile.tac"
+
+For readability, I have broken this long command in to multiple lines using `^`, the dos line-continuation character.
 
 This will install a service called my_service.
 
@@ -59,7 +65,7 @@ The Windows service has been created, but we still need to configure it. Stay in
 
 In the above example, replace `my_app` with your app name (it's the name you used when you did `pip install`). Check that directory, it should contain your `.tac` file.
 
-By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service.
+By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service. This is the equivalent of passing the `--chroot` option to `twistd`.
 
 
 #### Set display name and description
