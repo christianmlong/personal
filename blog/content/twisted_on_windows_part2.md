@@ -85,7 +85,7 @@ The display name and description will show up in the Windows service Manager con
 
     nssm set my_service Start SERVICE_DELAYED_AUTO_START
 
-This setting tells the Windows service to start automatically when the server restarts. The NSSM docs have [more information]() about the possible startup options.
+This setting tells the Windows service to start automatically when the server restarts. The NSSM docs have [more information](https://nssm.cc/commands) about the possible startup options.
 
 
 #### Which account should we use?
@@ -124,7 +124,7 @@ However, we can use good old `sc` to configure the service to use the virtual se
 
     sc config my_service obj= "NT SERVICE\my_service"
 
-Yes, that is a space after the equals sign. `sc` is very particular. SS64 has a good [reference for `sc`]().
+Yes, that is a space after the equals sign. `sc` is very particular. SS64 has a good [reference](http://ss64.com/nt/sc.html) for `sc`.
 
 #### NSSM workaround
 
