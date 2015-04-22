@@ -5,6 +5,8 @@ Author: Christian Long
 Date: 2015-03-25 16:43
 Summary: Install and run an application using Twisted on Windows, in a 2015 style.
 
+[TOC]
+
 #### Intro
 
 Installing and configuring [Twisted](https://twistedmatrix.com) on Windows has gotten easier over the years. Here is how to do it in 2015, using the latest packaging tools.

@@ -5,7 +5,7 @@ Author: Christian Long
 Date: 2015-04-21 16:57
 Summary: Part 2 of my series on running an application using Twisted on Windows, in a 2015 style.
 
-
+[TOC]
 
 #### Recap
 
