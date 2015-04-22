@@ -21,7 +21,7 @@ These instructions assume that you already have an application that runs on Twis
 
 Twisted requires Python 2. Install the [latest version](https://www.python.org/downloads/release/python-279/) of Python 2.7 ([direct link to the 32-bit installer](https://www.python.org/ftp/python/2.7.9/python-2.7.9.msi)). Run the installer, and in the installer dialog, choose the option to add python to the path.
 
-![Python installer screenshot]({filename}/images/python_install.png)
+![Python installer screenshot]({filename}/images/python_install.png){: .no_round}
 
 #### Install a compiler
 
