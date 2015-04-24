@@ -2,7 +2,9 @@
 
 set -eu
 
-DRAFTS_DIR=~/projects/personal/blog/drafts
+CUR_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+TOP_DIR="$(dirname "$CUR_DIR")"
+DRAFTS_DIR=$TOP_DIR/drafts
 
 if [ -z "$1" ] ; then
 	FILE_NAME='new_post'
