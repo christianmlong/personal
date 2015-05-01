@@ -1,8 +1,0 @@
-# Useful packages
-ipython
-ipdb
-pytest
-pygments
-pylint
-tox
-
