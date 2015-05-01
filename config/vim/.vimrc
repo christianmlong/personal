@@ -1,0 +1,213 @@
+" Pathogen
+" This is a vim plugin manager
+" All plugins found in ~/.vim/bundle will be automaticaly added to the
+" 'runtimepath'
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+" Settings for vim-sensible
+set undodir^=~/.vim/undo
+
+set encoding=utf-8
+
+" Pretty colors
+"set t_Co=256
+set background=dark
+" set background=light
+" let g:solarized_contrast='high'
+call togglebg#map("<F5>")
+colorscheme solarized
+
+" Switch in and out of paste mode
+set pastetoggle=<F10>
+
+" Show command status in status bar
+set showcmd
+
+"Map jk to Esc so that you do not have to reach for the Esc button"
+imap jk <Esc>
+
+" Allow hidden buffers
+set hidden
+
+" Remember more commands, search history, and undo levels
+set history=1000
+set undolevels=1000
+
+" Disable some old unneeded features
+set nocompatible
+set modelines=0
+
+" More fine-grained undo
+inoremap <Space> <Space><C-g>u
+inoremap <Return> <Return><C-g>u
+inoremap <Tab> <Tab><C-g>u
+inoremap <BS> <BS><C-g>u
+inoremap <Del> <Del><C-g>u
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
+" Set the leader to comma
+" So, for <Leader>r   type a comma then type r within 1 second.
+let mapleader=","
+
+" From Steve Losh's vim guide
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+" Vim 7.4 (Patch 7.3.787) will show the absolute line number instead of "0",
+" when both "relativenumber" and "number" are set.
+set number
+" set relativenumber
+
+" " Use normal regexes when searching, not vim regexes
+" nnoremap / /\v
+" vnoremap / /\v
+
+" If you search for an all-lowercase string your search will be
+" case-insensitive, but if one or more characters is uppercase the search will
+" be case-sensitive.
+set ignorecase
+set smartcase
+" set gdefault   " I'm used to putting g at the end of the find/replace
+" These lines highlight search results as you type
+set incsearch
+set showmatch
+set hlsearch
+" The <leader><space> mapping makes it easy to clear out a search by typing
+" ,<space>
+nnoremap <leader><space> :noh<cr>
+" These lines make the tab key match bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
+" This disables the arrow keys while you’re in normal mode to help you
+" learn to use hjkl
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+" These lines disable the arrow keys in insert mode to force you to get back
+" into normal mode the instant you’re done inserting text
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" Make j and k move by screen line, not file line
+nnoremap j gj
+nnoremap k gk
+" Make semicolon do the same thing as colon
+nnoremap ; :
+
+" Show tabs and trailing characters.
+"set listchars=tab:»·,trail:·,eol:¬
+set listchars=tab:»·,trail:·
+set list
+
+" Reformat paragraphs and list.
+" nnoremap <Leader>r gq}
+
+" Spaces instead of tabs
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"Press F9 in normal mode or in insert mode to insert the current datestamp
+nnoremap <F9> "=strftime("%Y-%m-%d %H:%M")<CR>P
+inoremap <F9> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
+
+" Make vim read .md files as Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+function! FixWhiteSpace()
+    " Remove trailing white space
+    %s/\s\+$//e
+    " Remove extra blank lines at eof
+    %s/\($\n\)\+\%$//e
+endfunction
+nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
+" autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
+" autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhiteSpace()
+" autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
+" autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
+
+" Enable spellcheck
+set spelllang=en_us
+set spellfile=~/.vim/spell/en.utf-8.add
+
+" vim-airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+" nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+" nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+" nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+" nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" " Tab Pages
+" " Open multiple files, one file per tab:  vi -p *.py
+" nnoremap tj :tabnext<CR>
+" nnoremap tk :tabprev<CR>
+" nnoremap tn :tabnew<CR>
+" nnoremap td :tabclose<CR>
+
+" Splits
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
+
+" Settings for Ctrl-P
+"
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMRU<cr>
+
+" Open multiple files as tabs
+let g:ctrlp_open_multiple_files = 'i'
+
+" " BufferGator
+" " Use the right side of the screen
+" let g:buffergator_viewport_split_policy = 'R'
+
+" " I want my own keymappings...
+" let g:buffergator_suppress_keymaps = 1
+
+" " Go to the previous buffer open
+" nmap <leader>j :BuffergatorMruCyclePrev<cr>
+
+" " Go to the next buffer open
+" nmap <leader>k :BuffergatorMruCycleNext<cr>
+
+" " View the entire list of buffers open
+" nmap <leader>bb :BuffergatorOpen<cr>
+
+" " Close the buffergator pane
+" nmap <leader>B :BuffergatorClose<cr>
+
+" " To open a new empty buffer
+" nmap <leader>T :enew<cr>
+
+" " Close the current buffer and move to the previous one
+" nmap <leader>bq :bp <BAR> bd #<cr>

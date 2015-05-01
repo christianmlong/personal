@@ -1,0 +1,24 @@
+[user]
+	name = Christian Long
+	email = christianzlong2@gmail.com
+[gitreview]
+	username = christianmlong
+[push]
+	default = matching
+[core]
+	editor = vim
+[alias]
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit        
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all 
+	st = status
+	co = checkout
+	ci = commit
+	pull = pull --rebase
+	wiff = diff --color-words
+[diff]
+	tool = vimdiff2
+[pull]
+	rebase = preserve
+[rerere]
+	enabled = true
+	autoupdate = true

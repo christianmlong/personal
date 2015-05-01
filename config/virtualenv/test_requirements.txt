@@ -1,0 +1,9 @@
+pylint
+flake8
+pytest
+tox
+requests[security]
+ipython
+ipdb
+coverage
+
