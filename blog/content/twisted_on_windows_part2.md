@@ -67,7 +67,7 @@ The Windows service has been created, but we still need to configure it. Stay in
 
 In the above example, replace `my_app` with your app name (it's the name you used when you did `pip install`). Check that directory; it should contain your `.tac` file.
 
-By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service. 
+By setting the `AppDirectory` config variable, we are telling NSSM to make that directory the current working directory before starting the service. That is why we did not need to specify the full path to `my_tacfile.tac` when we installed the service.
 
 This is the equivalent of passing the `--chroot` option to `twistd`.
 
@@ -94,11 +94,11 @@ There are a number of accounts you can use to run your Windows service. It is a 
 
 Windows provides some built-in accounts for this purpose:
 
-* The [LOCAL_SYSTEM](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190%28v=vs.85%29.aspx) account is still quite privileged.
+* The [LocalSystem](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684190%28v=vs.85%29.aspx) account (`NT AUTHORITY\SYSTEM`) is still quite privileged.
 
-* The [NETWORK_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272%28v=vs.85%29.aspx) account allows the service to access network resources on the Windows network. However, we don't need to run as the NETWORK_SERVICE account if we are just serving local resources.
+* The [NetworkService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684272%28v=vs.85%29.aspx) account (`NT AUTHORITY\NetworkService`) allows the service to access network resources on the Windows network. However, we don't need to run as the NetworkService account if we are just serving local resources.
 
-* The [LOCAL_SERVICE](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account has traditionally been the account Windows sysadmins used for services. It does, however, have [some drawbacks](https://social.technet.microsoft.com/Forums/en-US/57e8b300-b3f7-4005-927b-e7b7b6a7097b/are-virtual-accounts-more-secure-than-local-service-accounts?forum=winserversecurity). There is only one LOCAL_SERVICE account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LOCAL_SERVICE account for the benefit of one service, those permissions are shared by all the services that use that account.
+* The [LocalService](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684188%28v=vs.85%29.aspx) account (`NT AUTHORITY\LocalService`) has traditionally been the account Windows sysadmins used for services. It does, however, have [some drawbacks](https://social.technet.microsoft.com/Forums/en-US/57e8b300-b3f7-4005-927b-e7b7b6a7097b/are-virtual-accounts-more-secure-than-local-service-accounts?forum=winserversecurity). There is only one LocalService account per machine. Let's say you want to set up multiple services per server (a database and a web server, for example). If you assign permissions to the LocalService account for the benefit of one service, those permissions are shared by all the services that use that account.
 
 None of these are ideal. We're going to be using a different account type, covered in the next section.
 
@@ -106,7 +106,10 @@ None of these are ideal. We're going to be using a different account type, cover
 
 In Windows Server 2008 R2, Microsoft introduced a new kind of account for this purpose, called a "Virtual Service Account". These accounts are automatically created, one for each Windows service. By default, they have few privileges. And, if you assign privileges to a virtual service account, those privileges apply only to that service and that account. Other services on the same machine do not get those privileges.
 
-Virtual service accounts are not especially well documented. This [Microsoft TechNet article](https://technet.microsoft.com/library/dd548356%28v=ws.10%29.aspx) is a good reference. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "Using virtual accounts". Here's [another article](http://weblogs.asp.net/owscott/managed-service-accounts-msa-and-virtual-accounts). Again, scroll down to the section titled "Virtual Accounts". 
+Virtual service accounts have the same name as the service they apply to. So, for a service called my_service, the account name would be `NT SERVICE\my_service`.
+
+
+Virtual service accounts are not especially well documented. This [Microsoft TechNet article](https://technet.microsoft.com/library/dd548356%28v=ws.10%29.aspx) is a good reference. There's no conveniently-located anchor tag in that document, so scroll down to the section titled "Using virtual accounts". Here's [another article](http://weblogs.asp.net/owscott/managed-service-accounts-msa-and-virtual-accounts). Again, scroll down to the section titled "Virtual Accounts".
 
 **Ignore everything about "Managed service accounts".** Virtual service accounts and Managed service accounts are often lumped together in the documentation.
 
@@ -164,14 +167,3 @@ Notice our service is running, and is set to start automatically.
 #### At your service
 
 We've come to the end of Part 2. We have a Twisted application running as Windows service. It is running under a virtual service account. In the next part, we will configure the right privileges for the account. Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.
-
-
-
-
-
-
-
-
-
-
-
