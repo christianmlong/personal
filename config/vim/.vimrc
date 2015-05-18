@@ -97,6 +97,8 @@ nnoremap <right> <nop>
 " Make j and k move by screen line, not file line
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 " Make semicolon do the same thing as colon
 nnoremap ; :
 
@@ -128,10 +130,10 @@ function! FixWhiteSpace()
     %s/\($\n\)\+\%$//e
 endfunction
 nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
-" autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
-" autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhiteSpace()
-" autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
-" autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
 
 " Enable spellcheck
 set spelllang=en_us
@@ -184,9 +186,6 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMRU<cr>
 
-" Open multiple files as tabs
-let g:ctrlp_open_multiple_files = 'i'
-
 " " BufferGator
 " " Use the right side of the screen
 " let g:buffergator_viewport_split_policy = 'R'
@@ -209,6 +208,8 @@ let g:ctrlp_open_multiple_files = 'i'
 " " To open a new empty buffer
 " nmap <leader>T :enew<cr>
 
+" " Close the current buffer and move to the previous one
+" nmap <leader>bq :bp <BAR> bd #<cr>
 
 
 
