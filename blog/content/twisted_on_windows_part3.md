@@ -2,7 +2,7 @@ Title: Twisted on Windows, 2015 Edition: Part 3
 Category: Python
 Tags:python, twisted, windows
 Author: Christian Long
-Date:
+Date: 2015-05-18 12:03
 Summary: Part 3 of my series on running an application using Twisted on Windows, in a 2015 style.
 
 [TOC]
@@ -14,7 +14,7 @@ In [Part 1]({filename}/twisted_on_windows.md), we set up [Twisted](https://twist
 
 #### Windows file permissions
 
-Since Windows NT, Windows has implemented file-level security through access control lists. Windows provides [the `icacls` utility](http://ss64.com/nt/icacls.html) to query and set permissions at the command line.
+Windows implements file-level security through access control lists. Windows provides [the `icacls` utility](http://ss64.com/nt/icacls.html) to query and set permissions at the command line.
 
 For example
 
@@ -25,7 +25,7 @@ Let's break this down:
  * `C:\PythonEnvs\Example` - The folder you want to change permissions on
  * `/grant` - Grant rights additively
  * `"nt service\my_service"` - The name of the virtual service account
- * `(OI)(CI)` - Applies the grant recursively to this folder, subfolders, and files.
+ * `(OI)(CI)` - Applies the grant recursively to this folder, subfolders, and files
  * `RX` - Grants Read and Execute access
 
 
@@ -69,7 +69,7 @@ Here's how to execute a single command, under the LocalService account.
 
 The `-u` option tells `psexec` what user to run as. The rest of the line is the command that you want `psexec` to run. Notice that we pass the full path to the `pip` inside the virtualenv. `pip freeze` prints a list of the packages that are installed.
 
-If you get a "Couldn't install PSEXESVC service:" error, try running as administrator.
+If you get a "Couldn't install PSEXESVC service" error, try running `psexec` as administrator.
 
 Here's another example.  We're telling Python to import the pyodbc module, and print "ok" if it succeeds.
 
@@ -83,9 +83,9 @@ It should look something like this.
 
 ![New interactive shell screenshot]({filename}/images/cmd_i.png){: .no_round}
 
-In the new command window, I have used the `whoami` command to show that we are running as NT AUTHORITY\LocalService.
+In the screenshot above, I have used the `whoami` command to show that, in the new console window, we are running as `NT AUTHORITY\LocalService`.
 
-That's not very pretty. If you want to start a new interactive session as a different user, but stay in your current command window, omit the `-i` argument to `psexec`.
+If you want to start a new interactive session as a different user, but stay in your current command window, omit the `-i` argument to `psexec`.
 
     psexec -u "NT AUTHORITY\LocalService" cmd /k
 
@@ -100,7 +100,7 @@ The `whoami /all` command shows a lot of useful information about the user, grou
 
 Two things to keep in mind when using `psexec` to troubleshoot. One, it must be called from an admin command prompt (Win-x then a). Two, you can not use `psexec` to run commands as a virtual service account.
 
-When I'm setting up Windows service, I configure it to run under the LocalService account at first, and I use `psexec` to track down any permissions errors. Then I switch the service over to a virtual service account. I grant the virtual service account the same privileges that I had to grant to the LocalService account to get it working.
+When I'm setting up Windows service, I configure it to run under the LocalService account at first, and I use `psexec` to track down any permissions problems. Then I switch the service over to a virtual service account. I grant the virtual service account the same privileges that I granted to the LocalService account.
 
 
 
@@ -110,9 +110,9 @@ When I'm setting up Windows service, I configure it to run under the LocalServic
 
 You may find that the virtual service accounts you're using to run the services don't have permission to handle zip files. This may be due to a policy restriction set by your network administrator. The LocalService account may have the same restriction.
 
-This is why, when I'm installing pyodbc, I have to pass --always-unzip to easy_install so that the virtual service account can import pyodbc. Otherwise, easy_install installs it as a zip file, and the virtual service account can't import it.
+This is why, when I'm installing pyodbc, I have to pass the `--always-unzip` option to `easy_install`. Otherwise, `easy_install` installs it as a zip file, and the virtual service account doesn't have permission to read it.
 
-Another example: on Windows, distutils packages source distributions as zip files. Let's say for example you're running python's [simpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html) as a Windows service (using nssm), running it as account "nt service\package_server". You can visit http://localhost:8000 and you get a nice file listing. However, if you try to download one of the zip files, you get a 404. Assigning permissions for "nt service\package_server" doesn't work - the permissions apply to folders and text files but they don't apply to zip files through inheritance. It only works if you assign read permission specifically for the zip file itself.
+Another example: on Windows, distutils packages source distributions as zip files. Let's say for example you're running python's [simpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html) as a Windows service (using nssm), running it as account `nt service\package_server`. You can visit http://localhost:8000 and you get a nice file listing. However, if you try to download one of the zip files, you get a 404. Assigning permissions for `nt service\package_server` doesn't work - the permissions apply to folders and text files but they don't apply to zip files through inheritance. It only works if you assign read permission specifically for the zip file itself.
 
 Here's a command to specifically assign permissions for a zip file
 
