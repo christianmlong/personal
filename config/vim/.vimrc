@@ -209,5 +209,9 @@ let g:ctrlp_open_multiple_files = 'i'
 " " To open a new empty buffer
 " nmap <leader>T :enew<cr>
 
-" " Close the current buffer and move to the previous one
-" nmap <leader>bq :bp <BAR> bd #<cr>
+
+
+
+" Gundo plugin
+map <leader>g :GundoToggle<CR>
+

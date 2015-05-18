@@ -49,7 +49,7 @@ So `BUILTIN\Administrators:(OI)(CI)F` means that both files and subfolders will 
 
 Similarly `(CI)R` means folders will inherit 'R' (Read folders only = List permission)
 
-SS64 has a [good reference](http://ss64.com/nt/icacls.html) for the `icacl` options.
+SS64 has a [good reference](http://ss64.com/nt/icacls.html) for the `icacls` options.
 
 
 
