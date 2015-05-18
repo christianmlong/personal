@@ -166,4 +166,8 @@ Notice our service is running, and is set to start automatically.
 
 #### At your service
 
-We've come to the end of Part 2. We have a Twisted application running as Windows service. It is running under a virtual service account. In the next part, we will configure the right privileges for the account. Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.
+We've come to the end of Part 2. We have a Twisted application running as Windows service. It is running under a virtual service account. 
+
+Of course, virtual service accounts can be used for any service you are running on Windows, not only those using Twisted or NSSM.
+
+In the next part, we will configure the right privileges for the account. Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.

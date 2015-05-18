@@ -126,4 +126,8 @@ Here's a command to specifically assign permissions for a zip file
 #### By your leave
 
 
-We've come to the end of Part 3.  The virtual service account under which the service is running has been assigned the permissions it needs. Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.
+We've come to the end of Part 3.  The virtual service account under which the service is running has been assigned the permissions it needs. 
+
+Note that these commands can be used for any service you are running on Windows, not only those using Twisted or NSSM.
+
+Thanks for following along, and find me on Twitter at [@christianmlong](https://twitter.com/christianmlong) if you have any suggestions or fixes.
