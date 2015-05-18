@@ -14,71 +14,42 @@ In [Part 1]({filename}/twisted_on_windows.md), we set up [Twisted](https://twist
 
 #### Windows file permissions
 
-Since Windows NT, Windows has implemented file-level security through access control lists. Windows provides the `icacl` utility to query and set permissions at the command line.
+Since Windows NT, Windows has implemented file-level security through access control lists. Windows provides [the `icacls` utility](http://ss64.com/nt/icacls.html) to query and set permissions at the command line.
 
-    icacls C:\PythonEnvs\PackValidation /grant "nt service\pickpack_dev":(OI)(CI)RX
-    icacls C:\Temp\logs /grant "nt service\pickpack_dev":(OI)(CI)F
+For example
+
+    icacls C:\PythonEnvs\Example /grant "nt service\my_service":(OI)(CI)RX
+
+Let's break this down:
+
+ * `C:\PythonEnvs\Example` - The folder you want to change permissions on
+ * `/grant` - Grant rights additively
+ * `"nt service\my_service"` - The name of the virtual service account
+ * `(OI)(CI)` - Applies the grant recursively to this folder, subfolders, and files.
+ * `RX` - Grants Read and Execute access
 
 
-#### Specify the inheritance mode
+#### Inheritance mode
 
 Inherited folder permissions are specified as:
 
- * OI - Object inherit    - This folder and files. (no inheritance to subfolders)
- * CI - Container inherit - This folder and subfolders.
+ * OI - Object inherit    - This folder and files (no inheritance to subfolders)
+ * CI - Container inherit - This folder and subfolders
  * IO - Inherit only      - The ACE does not apply to the current file/directory
 
 
-Thees can also be combined as follows:
+These can also be combined:
 
- *   (OI)(CI)	    This folder, subfolders, and files.
- *   (OI)(CI)(IO)	Subfolders and files only.
- *       (CI)(IO)  Subfolders only.
- *   (OI)    (IO)	Files only.
+ *   (OI)(CI)       this folder, subfolders, and files
+ *   (OI)(CI)(IO)   subfolders and files only
+ *       (CI)(IO)   subfolders only
+ *   (OI)    (IO)   files only
 
-So `BUILTIN\Administrators:(OI)(CI)F` means that both files and Subdirectories will inherit 'F' (Fullcontrol)
+So `BUILTIN\Administrators:(OI)(CI)F` means that both files and subfolders will inherit 'F' (Full Control)
 
-Similarly (CI)R means Directories will inherit 'R' (Read folders only = List permission)
+Similarly `(CI)R` means folders will inherit 'R' (Read folders only = List permission)
 
 SS64 has a [good reference](http://ss64.com/nt/icacls.html) for the `icacl` options.
-
-#### Zip files
-
-You may find that the virtual service accounts you're using to run the services don't have permission to handle zip files. This may be due to a policy restriction set by your network administrator. The LocalService account may have the same restriction.
-
-This is why, when I'm installing pyodbc, I have to pass --always-unzip to easy_install so that the virtual service account can import pyodbc. Otherwise, easy_install installs it as a zip file, and the virtual service account can't import it.
-
-Another example: on Windows, distutils packages source distributions as zip files. I'm running python's simpleHTTPServer as a Windows service (using nssm). I'm running it as account "nt service\package_server". I can visit http://localhost:8000 and I get a nice file listing. However, if I try to download one of the zip files, I get a 404. I tried assigning permissions for "nt service\package_server" - they apply to folders and text files but they don't apply to zip files through inheritance. It only works if I assign read permission specifically for the zip file itself.
-
-Here's a command to specifically assign permissions to the zip file
-
-     icacls "C:\PackageServer\www\downloads\My_Package-0.0.1.zip" /grant "nt service\package_server":R
-
-I do this as part of the release process.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -132,6 +103,20 @@ Two things to keep in mind when using `psexec` to troubleshoot. One, it must be 
 When I'm setting up Windows service, I configure it to run under the LocalService account at first, and I use `psexec` to track down any permissions errors. Then I switch the service over to a virtual service account. I grant the virtual service account the same privileges that I had to grant to the LocalService account to get it working.
 
 
+
+
+
+#### Zip files
+
+You may find that the virtual service accounts you're using to run the services don't have permission to handle zip files. This may be due to a policy restriction set by your network administrator. The LocalService account may have the same restriction.
+
+This is why, when I'm installing pyodbc, I have to pass --always-unzip to easy_install so that the virtual service account can import pyodbc. Otherwise, easy_install installs it as a zip file, and the virtual service account can't import it.
+
+Another example: on Windows, distutils packages source distributions as zip files. Let's say for example you're running python's [simpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html) as a Windows service (using nssm), running it as account "nt service\package_server". You can visit http://localhost:8000 and you get a nice file listing. However, if you try to download one of the zip files, you get a 404. Assigning permissions for "nt service\package_server" doesn't work - the permissions apply to folders and text files but they don't apply to zip files through inheritance. It only works if you assign read permission specifically for the zip file itself.
+
+Here's a command to specifically assign permissions for a zip file
+
+     icacls "C:\PackageServer\www\downloads\My_Package-0.0.1.zip" /grant "nt service\package_server":R
 
 
 
