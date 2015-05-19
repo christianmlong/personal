@@ -164,6 +164,20 @@ The service prorperties dialog should look like this:
 
 Notice our service is running, and is set to start automatically.
 
+#### Update
+
+Updated 2015-05-19
+
+Via email, Michael Schlenker points this out:
+
+
+> Virtual Service Accounts can have the 'Logon as a Service' right removed via
+> Group Policy, which leads to weird errors.  It is actually a recommended step
+> for security hardening certain Windows servers (as you don't want to have
+> random services running).
+
+Good point, and thanks for the feedback.
+
 #### At your service
 
 We've come to the end of Part 2. We have a Twisted application running as Windows service. It is running under a virtual service account. 
