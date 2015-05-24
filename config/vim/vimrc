@@ -82,8 +82,8 @@ set hlsearch
 " ,<space>
 nnoremap <leader><space> :noh<cr>
 " These lines make the tab key match bracket pairs
-nnoremap <tab> %
-vnoremap <tab> %
+" nnoremap <tab> %
+" vnoremap <tab> %
 " This disables the arrow keys while you’re in normal mode to help you
 " learn to use hjkl
 nnoremap <up> <nop>
@@ -236,4 +236,3 @@ nmap <leader>bm :CtrlPMRU<cr>
 
 " Gundo plugin
 map <leader>g :GundoToggle<CR>
-
