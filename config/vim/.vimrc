@@ -95,10 +95,10 @@ nnoremap <right> <nop>
 " inoremap <left> <nop>
 " inoremap <right> <nop>
 " Make j and k move by screen line, not file line
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+" nnoremap j gj
+" nnoremap k gk
+" vnoremap j gj
+" vnoremap k gk
 " Make semicolon do the same thing as colon
 nnoremap ; :
 
@@ -138,6 +138,10 @@ autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhite
 " Enable spellcheck
 set spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.txt setlocal spell
+" Word-completion from the spelling dictionary
+set complete+=kspell
 
 " vim-airline config
 let g:airline_powerline_fonts = 1
