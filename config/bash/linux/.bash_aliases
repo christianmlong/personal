@@ -20,7 +20,7 @@ alias copydot='~/projects/personal/util/python/copy_dot_files.py'
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
 alias rnet='sudo ifdown eth1 && sudo ifup eth1'
-alias piptest='pip install -r ~/.virtualenvs/test_requirements.txt'
+alias pipdev='pip install -r ~/.virtualenvs/dev_requirements.txt'
 
 function make_change_dir
 {
