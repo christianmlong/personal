@@ -6,4 +6,4 @@ requests[security]
 ipython
 ipdb
 coverage
-
+cookiecutter
