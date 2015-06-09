@@ -42,7 +42,7 @@ set modelines=0
 " More fine-grained undo
 inoremap <Space> <Space><C-g>u
 inoremap <Return> <Return><C-g>u
-inoremap <Tab> <Tab><C-g>u
+" inoremap <Tab> <Tab><C-g>u
 inoremap <BS> <BS><C-g>u
 inoremap <Del> <Del><C-g>u
 inoremap <c-u> <c-g>u<c-u>
