@@ -9,9 +9,9 @@ Summary: The pylint package provides a pytest utility that is easily confused wi
 
 #### The Problem
 
-`pylint` installs a `pytest` script, and `pytest` installs a `py.test` script.
+`pylint` installs a `pytest` script, and `pytest` installs a `py.test` script. Confusing.
 
-The [`pylint`](http://www.pylint.org/) code quality checker installs, as one of its dependencies, the [`logilab-common`](https://www.logilab.org/project/logilab-common) package. `logilab-common` provides a module called `pytest`. That's awfully close to the `py.test` script that the [`pytest`](http://pytest.org) project provides. I can never remember which one to use, when I have both `pylint` and `pytest` installed. Fortunately, the  [`logilab-common`](https://www.logilab.org/project/logilab-common) package has marked its `pytest` module as "to be deprecated", so the confusion might be fixed someday.
+The [pylint](http://www.pylint.org/) code quality checker installs the [logilab-common](https://www.logilab.org/project/logilab-common) package. `logilab-common` provides a module called `pytest`. That's awfully close to the `py.test` script that the [`pytest`](http://pytest.org) project provides. I can never remember which one to use, when I have both `pylint` and `pytest` installed. Fortunately, the  [logilab-common](https://www.logilab.org/project/logilab-common) package has marked its `pytest` module as "to be deprecated", so the confusion might be fixed someday.
 
 #### Investigating using `strace`
 
@@ -31,5 +31,5 @@ I knew the `pytest` project was supplying the `py.test` script, but I did not kn
 
 Here we see that the `pytest.py` file is in the `logilab/common` directory, so we know what package installed it. 
 
-For a fun intro to `strace`, see Julia Evans' [`strace` zine](http://jvns.ca/blog/2015/04/14/strace-zine/).
+For a fun intro to `strace`, see Julia Evans' [strace zine](http://jvns.ca/blog/2015/04/14/strace-zine/).
 
