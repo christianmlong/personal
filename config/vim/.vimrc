@@ -5,6 +5,7 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+call pathogen#helptags()
 
 " Settings for vim-sensible
 set undodir^=~/.vim/undo
@@ -59,7 +60,8 @@ set backspace=indent,eol,start
 set laststatus=2
 " Vim 7.4 (Patch 7.3.787) will show the absolute line number instead of "0",
 " when both "relativenumber" and "number" are set.
-set number
+" See a more elaborate number/relativenumber solution farther down.
+" set number
 " set relativenumber
 
 " " Use normal regexes when searching, not vim regexes
@@ -219,3 +221,42 @@ nmap <leader>bm :CtrlPMRU<cr>
 
 " Gundo plugin
 map <leader>g :GundoToggle<CR>
+
+" Trigger UltiSnips configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+
+
+
+
+
+" From
+" http://jeetworks.org/from-acolyte-to-adept-the-next-step-after-nop-ing-arrow-keys/
+"
+" Use relative number in insert mode, and absolute the rest of the time.
+set number
+if has('autocmd')
+augroup vimrc_linenumbering
+    autocmd!
+    autocmd WinLeave *
+                \ if &number |
+                \   set norelativenumber |
+                \ endif
+    autocmd BufWinEnter *
+                \ if &number |
+                \   set relativenumber |
+                \ endif
+    autocmd VimEnter *
+                \ if &number |
+                \   set relativenumber |
+                \ endif
+augroup END
+endif
