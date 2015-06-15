@@ -2,7 +2,7 @@ Title: ipdb, the iPython debugger
 Category: Python
 Tags:python, ipython
 Author: Christian Long
-Date: 2015-05-28 16:52
+Date: 2015-06-15 15:32
 Summary: An introduction to ipdb, the iPython debugger.
 
 [TOC]
