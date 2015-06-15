@@ -6,4 +6,9 @@ default_context:
     github_username: "christianmlong"
     website: "http://christianlong.com"
 
+cookiecutter_dir:  "/home/christianmlong/.cookiecutters/"
+
+abbreviations:
+    flask:          /home/christianmlong/.cookiecutters/cookiecutter-flask
+    base:           /home/christianmlong/.cookiecutters/cookiecutter-pypackage
 

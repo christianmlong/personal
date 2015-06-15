@@ -20,7 +20,6 @@ alias copydot='~/projects/personal/util/python/copy_dot_files.py'
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
 alias rnet='sudo ifdown eth1 && sudo ifup eth1'
-alias pipdev='pip install -r ~/.virtualenvs/dev_requirements.txt'
 
 function make_change_dir
 {
@@ -49,3 +48,41 @@ function tmux_sync_env
     export "${ssh_connection}"
 }
 alias tse='tmux_sync_env'
+
+# Set up a virtualenvironment with development tools
+function pip_setup_dev_environment
+{
+
+    python -c 'import sys; print(sys.real_prefix)' 2>/dev/null && INVENV=1 || INVENV=0
+    if [[ $INVENV -eq 0 ]]; then
+        echo "Not in a virtual environment"
+    else
+        pip install --upgrade -r ~/.virtualenvs/dev_requirements.txt
+
+        PYTEST_PATH=$VIRTUAL_ENV/bin/pytest
+        # Remove the obsolete `pytest` script that pylint installs.
+        if [[ -a $PYTEST_PATH ]]; then
+            rm $PYTEST_PATH
+            echo "Removed obsolete pytest script"
+        else
+            echo "Obsolete pytest script not found"
+        fi
+        echo $PYTEST_PATH
+    fi
+
+}
+alias pipdev='pip_setup_dev_environment'
+
+# Set up a new project with cookiecutter
+function new_project_from_cookiecutter
+{
+    if [ "$1" -a "$2" ]; then
+        echo Making virtualenv and cookiecutter project
+        ENVNAME=$(python ~/projects/public-personal/python/cookiecutter/cookie.py "$1" "$2")
+        echo $ENVNAME
+        workon $ENVNAME
+    else
+        echo "Please give a project name and description"
+    fi
+}
+alias cookie='new_project_from_cookiecutter'

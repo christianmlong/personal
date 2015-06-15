@@ -7,3 +7,5 @@ ipython
 ipdb
 coverage
 cookiecutter
+coveralls
+hypothesis

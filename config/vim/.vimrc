@@ -242,21 +242,37 @@ let g:UltiSnipsEditSplit="vertical"
 " http://jeetworks.org/from-acolyte-to-adept-the-next-step-after-nop-ing-arrow-keys/
 "
 " Use relative number in insert mode, and absolute the rest of the time.
+" set number
+" if has('autocmd')
+" augroup vimrc_linenumbering
+"     autocmd!
+"     autocmd WinLeave *
+"                 \ if &number |
+"                 \   set norelativenumber |
+"                 \ endif
+"     autocmd BufWinEnter *
+"                 \ if &number |
+"                 \   set relativenumber |
+"                 \ endif
+"     autocmd VimEnter *
+"                 \ if &number |
+"                 \   set relativenumber |
+"                 \ endif
+" augroup END
+" endif
+
+set relativenumber
 set number
-if has('autocmd')
+
 augroup vimrc_linenumbering
-    autocmd!
-    autocmd WinLeave *
-                \ if &number |
-                \   set norelativenumber |
-                \ endif
-    autocmd BufWinEnter *
-                \ if &number |
-                \   set relativenumber |
-                \ endif
-    autocmd VimEnter *
-                \ if &number |
-                \   set relativenumber |
-                \ endif
+autocmd!
+autocmd WinLeave *
+\ if &number |
+\ set norelativenumber |
+\ endif
+autocmd WinEnter *
+\ if &number |
+\ set relativenumber |
+\ endif
 augroup END
-endif
+
