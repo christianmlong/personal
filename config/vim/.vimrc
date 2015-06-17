@@ -38,7 +38,7 @@ set undolevels=1000
 
 " Disable some old unneeded features
 set nocompatible
-set modelines=0
+" set modelines=0
 
 " More fine-grained undo
 inoremap <Space> <Space><C-g>u
@@ -275,4 +275,3 @@ autocmd WinEnter *
 \ set relativenumber |
 \ endif
 augroup END
-
