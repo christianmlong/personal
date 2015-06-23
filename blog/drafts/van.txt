@@ -1,0 +1,12 @@
+1. Thorough negative testing. Cause failures with test cases.
+2. Fuzz with address checking and standard alloc
+3. Compiling with address checking and standard memory alloc
+4. Focused manual spotcheck validation of fields
+5. Fuzzing w/ output examination
+6. Context-sensitive source code analysis
+7. Multi-implementation tests
+8. Aggressive, not compiled out runtime assertions
+9. Implementations in safer languages
+10. Static analysis
+11. Thorough human review/audit
+12. Formal methods
