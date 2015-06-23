@@ -22,4 +22,5 @@ Summary: A quick post to gather a list of security best practices that Van Lindb
 10. Static analysis
 11. Thorough human review/audit
 12. Formal methods
+
 Use more than 1.
