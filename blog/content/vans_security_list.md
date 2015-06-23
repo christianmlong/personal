@@ -24,3 +24,8 @@ Summary: A quick post to gather a list of security best practices that Van Lindb
 12. Formal methods
 
 Use more than 1.
+
+#### Update 2015-06-23 14:11
+
+Van [mentionned](https://twitter.com/VanL/status/613423845114953728) that this list was from David Wheeler. Thanks! David's [Secure Programming HOWTO](http://www.dwheeler.com/secure-programs/) is an essential reference.
+
