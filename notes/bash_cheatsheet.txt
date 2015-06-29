@@ -1,0 +1,5 @@
+
+Symbolic links
+ln -s /path/to/original/file link_name
+
+
