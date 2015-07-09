@@ -3,6 +3,12 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# GNU Utilities
+# I used Homebrew to install the GNU Utilities. Put them first in the PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+
 # From Unix & Linux Stack Exchange
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
@@ -35,12 +41,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-# GNU Utilities
-# I used Homebrew to install the GNU Utilities. Put them first in the PATH
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
 
 
 export VISUAL=vi
