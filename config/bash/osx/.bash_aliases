@@ -11,7 +11,6 @@ alias top='htop'
 alias off='sudo shutdown -h now && exit'
 alias reboot='sudo shutdown -r now && exit'
 alias gitinfo='~/projects/personal/util/bash/git-info.sh'
-alias copydot='~/projects/personal/util/python/copy_dot_files.py'
 # View the dir stack
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'

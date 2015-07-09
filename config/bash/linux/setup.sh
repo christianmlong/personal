@@ -10,5 +10,5 @@ ln -s ~/projects/public-personal/config/vim/.vimrc ~/.vimrc
 ln -s ~/projects/public-personal/config/vim/git_clone_vim_plugins.sh ~/.vim/bundle/git_clone_vim_plugins.sh
 ln -s ~/projects/public-personal/config/vim/git_pull_all.sh ~/.vim/bundle/git_pull_all.sh
 ln -s ~/projects/public-personal/config/virtualenv/postmkvirtualenv ~/.virtualenvs/postmkvirtualenv
-ln -s /home/christianmlong/projects/public-personal/config/virtualenv/test_requirements.txt ~/.virtualenvs/test_requirements.txt
+ln -s ~/projects/public-personal/config/virtualenv/test_requirements.txt ~/.virtualenvs/test_requirements.txt
 

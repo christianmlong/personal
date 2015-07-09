@@ -1,0 +1,23 @@
+[user]
+	name = Christian Long
+	email = chlong2@cisco.com
+[gitreview]
+	username = christianmlong
+[push]
+	default = matching
+[core]
+	editor = vim
+[alias]
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit        
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all 
+	st = status
+	co = checkout
+	ci = commit
+	wiff = diff --color-words
+[diff]
+	tool = bcomp
+[merge]
+	tool = bcomp
+[rerere]
+	enabled = true
+	autoupdate = true
