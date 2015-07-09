@@ -15,6 +15,7 @@
 	ci = commit
 	wiff = diff --color-words
 	up = "!git remote update -p; git merge --ff-only @{u}"
+	ap = add --patch
 [diff]
 	tool = bcomp
 [merge]
