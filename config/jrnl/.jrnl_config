@@ -1,0 +1,14 @@
+{
+  "default_hour": 9, 
+  "linewrap": 79, 
+  "encrypt": false, 
+  "default_minute": 0, 
+  "tagsymbols": "@", 
+  "editor": "vi", 
+  "timeformat": "%Y-%m-%d %H:%M", 
+  "highlight": true, 
+  "journals": {
+    "default": "~/Documents/CML/Notes/jrnl/cisco.txt", 
+    "personal": "~/Documents/CML/Notes/jrnl/personal.txt"
+  }
+}
