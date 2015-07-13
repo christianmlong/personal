@@ -275,3 +275,8 @@ autocmd WinEnter *
 \ set relativenumber |
 \ endif
 augroup END
+
+" Fix spelling errors quicker. Press Ctrl-L in insert mode to jump back to the
+" nearest spelling error, fix it automatically, and return to the place I was
+" editing.
+imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
