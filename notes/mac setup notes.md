@@ -171,7 +171,21 @@ Now, install the rest of the GNU utils you want
 
 #### Other Homebrew
 
-    brew install hub 
+    brew install hub --HEAD
+    brew install gist
+
+#### Setup Gists for Github Enterprise
+
+Login to Cisco Github Enterprise using the `cist` alias.
+
+    cist --login
+
+That will store an OAuth token at `~/.gist.httpstipgithub.cisco.com`
+
+Now you can publish Gists like this
+
+    cist my_markdown_file.md
+
 
 ### Python
 
