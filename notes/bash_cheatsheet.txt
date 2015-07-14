@@ -2,4 +2,5 @@
 Symbolic links
 ln -s /path/to/original/file link_name
 
-
+When changing to a symlinked directory, change to the real path, not the symlinked path
+cd -P
