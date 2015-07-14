@@ -65,3 +65,22 @@ function new_project_from_cookiecutter
     fi
 }
 alias cookie='new_project_from_cookiecutter'
+
+# Publish gist to Cisco Github Enterprise
+function cisco_gist
+{
+    export GITHUB_URL='https://tip-github-1.cisco.com/'
+    gist "$@"
+    unset GITHUB_URL
+}
+alias cist='cisco_gist'
+
+# Use hub to interact with Cisco Github Enterprise
+function cisco_hub
+{
+    export GITHUB_HOST='tip-github-1.cisco.com'
+    hub "$@"
+    unset GITHUB_HOST
+}
+alias chub='cisco_hub'
+
