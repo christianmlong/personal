@@ -18,11 +18,17 @@
 	ap = add --patch
 	ff = merge --ff-only
 [diff]
-	tool = bcomp
+	tool = bc3
 [merge]
-	tool = bcomp
+	tool = bc3
 [rerere]
 	enabled = true
 	autoupdate = true
 [pull]
 	ff = only
+[hub]
+	host = tip-github-1.cisco.com
+[difftool]
+	bc3 = trustExitCode
+[mergetool]
+	bc3 = trustExitCode
