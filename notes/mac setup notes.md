@@ -166,6 +166,7 @@ Now, install the rest of the GNU utils you want
     brew install less
     brew install unzip
     brew install rsync
+    brew install bash-completion
 
 
 
