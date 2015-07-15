@@ -175,6 +175,10 @@ Now, install the rest of the GNU utils you want
     brew install hub --HEAD
     brew install gist
 
+#### Install powerline fonts
+
+I'm using vim powerline, and it needs a special font. I'm using a patched version of Inconsolata-g, at 13 points. Here is the [collection of patched powerline fonts](https://github.com/powerline/fonts). In iTerm2, the powerline arrows don't quite match up, so I use a different font, "13 point Meslo LG M Regular for Powerline", for the non-ASCII font.
+
 #### Setup Gists for Github Enterprise
 
 Login to Cisco Github Enterprise using the `cist` alias.
