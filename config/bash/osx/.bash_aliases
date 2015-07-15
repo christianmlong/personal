@@ -14,6 +14,7 @@ alias gitinfo='~/projects/personal/util/bash/git-info.sh'
 # View the dir stack
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
+alias ☁️='cowsay clooooud'
 
 function make_change_dir
 {
