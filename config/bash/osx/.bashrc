@@ -21,7 +21,7 @@ shopt -s histappend                      # append to history, don't overwrite it
 shopt -s checkwinsize
 
 PS1='\u@\h:\w\$ '
-# enable color support of ls 
+# enable color support of ls
 test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
