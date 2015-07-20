@@ -67,3 +67,7 @@ target/
 # Mac stuff
 .DS_Store
 
+# Vim stuff
+*.spl
+*.swp
+
