@@ -68,11 +68,13 @@ set laststatus=2
 " nnoremap / /\v
 " vnoremap / /\v
 
-" If you search for an all-lowercase string your search will be
-" case-insensitive, but if one or more characters is uppercase the search will
-" be case-sensitive.
-set ignorecase
-set smartcase
+" " If you search for an all-lowercase string your search will be
+" " case-insensitive, but if one or more characters is uppercase the search will
+" " be case-sensitive.
+" set ignorecase
+" set smartcase
+set noignorecase
+
 " set gdefault   " I'm used to putting g at the end of the find/replace
 " These lines highlight search results as you type
 set incsearch
@@ -128,8 +130,8 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 function! FixWhiteSpace()
     " Remove trailing white space
     %s/\s\+$//e
-    " Remove extra blank lines at eof
-    %s/\($\n\)\+\%$//e
+    " " Remove extra blank lines at eof
+    " %s/\($\n\)\+\%$//e
 endfunction
 nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
 autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
@@ -172,6 +174,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 set splitbelow
 set splitright
 
+" " Vim should ignore these files in its wildmenu
+" " Also affects Ctrl-P.
+" set wildignore+=/var/folders/gh/**,/private/var/folders/gh/**
+set wildignore+=*.pyc
+
 " Settings for Ctrl-P
 "
 " Setup some default ignores
@@ -191,6 +198,13 @@ nmap <leader>p :CtrlP<cr>
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMRU<cr>
+
+" Don't inlcude temp files in Ctrl-P MRU
+" let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
+let g:ctrlp_mruf_exclude = '/var/folders/gh/.*|/private/var/folders/gh/.*|/usr/local/share/vim/.*'
+
+" Open multiple files as hidden buffers
+let g:ctrlp_open_multiple_files = 'i'
 
 " " BufferGator
 " " Use the right side of the screen
@@ -284,5 +298,14 @@ imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " Preview markdown file in Marked
 :nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
 
-" Use the system clipboard
-set clipboard=unnamed
+" " Use the system clipboard
+" set clipboard=unnamed
+
+" Use the mouse for scrolling and for visual selection
+set mouse=a
+
+
+
+
+
+
