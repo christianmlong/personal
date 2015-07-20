@@ -35,6 +35,14 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Bash Secrets
+# Keep secret environment variables and oauth tokens out of version control.
+# Instead, set them in .bash_secrets, and make sure to chmod 400 that file.
+if [ -f ~/.bash_secrets ]; then
+    . ~/.bash_secrets
+fi
+
+
 # Enable bash completion
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -55,3 +63,4 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
+
