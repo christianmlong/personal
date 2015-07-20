@@ -7,7 +7,7 @@ alias ...='cd .. && cd ..'
 alias o='less -R'
 alias psw='ps -efww'
 alias du='ncdu'
-alias top='htop'
+alias top='sudo htop'
 alias off='sudo shutdown -h now && exit'
 alias reboot='sudo shutdown -r now && exit'
 alias gitinfo='~/projects/personal/util/bash/git-info.sh'
@@ -15,6 +15,12 @@ alias gitinfo='~/projects/personal/util/bash/git-info.sh'
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
 alias ☁️='cowsay clooooud'
+alias useradd='sudo ~/projects/public-personal/config/bash/osx/useradd_osx.sh'
+alias adduser='sudo ~/projects/public-personal/config/bash/osx/useradd_osx.sh'
+alias use_postgres_91='brew unlink postgresql93 && brew link postgresql91'
+alias use_postgres_93='brew unlink postgresql91 && brew link postgresql93'
+alias gzip='gzip -k'
+alias gunzip='gunzip -k'
 
 function make_change_dir
 {
@@ -85,3 +91,9 @@ function cisco_hub
 }
 alias chub='cisco_hub'
 
+# Show the symlink, if any, with 'which'
+function swhich
+{
+    THE_PATH=`which $1`
+    ls -al $THE_PATH
+}
