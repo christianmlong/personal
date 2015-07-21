@@ -128,10 +128,19 @@ inoremap <F9> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 function! FixWhiteSpace()
+    " Save the cursor position for later
+    let l = line(".")
+    let c = col(".")
     " Remove trailing white space
     %s/\s\+$//e
-    " " Remove extra blank lines at eof
-    " %s/\($\n\)\+\%$//e
+    " Remove extra blank lines at eof
+    " Note : In the replace pattern, you
+    " have to use \r to represent newline
+    " while in the search pattern, you use \n
+    "            ¯\_(ツ)_/¯
+    %s/\($\n\)\+\%$/\r/e
+    " Restore the previous cursor position
+    call cursor(l, c)
 endfunction
 nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
 autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
