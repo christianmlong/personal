@@ -60,9 +60,8 @@ set backspace=indent,eol,start
 set laststatus=2
 " Vim 7.4 (Patch 7.3.787) will show the absolute line number instead of "0",
 " when both "relativenumber" and "number" are set.
-" See a more elaborate number/relativenumber solution farther down.
-" set number
-" set relativenumber
+set number
+set relativenumber
 
 " " Use normal regexes when searching, not vim regexes
 " nnoremap / /\v
@@ -285,9 +284,6 @@ map <leader>g :GundoToggle<CR>
 " augroup END
 " endif
 
-set relativenumber
-set number
-
 augroup vimrc_linenumbering
 autocmd!
 autocmd WinLeave *
@@ -313,9 +309,5 @@ imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Use the mouse for scrolling and for visual selection
 set mouse=a
-
-
-
-
 
 
