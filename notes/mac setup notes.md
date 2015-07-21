@@ -57,6 +57,18 @@ However, I had a problem with some non-native mac software (Perforce Diff and Kd
 
 I also read something about the hidden files not working in Column View, but this is unrelated - I am having this problem in List View.
 
+#### Pycharm and ideaVim
+
+I export all my PyCharm settings to this file
+
+    ~/projects/public-personal/config/pycharm/settings.jar
+
+To re-enable key repeat when using ideaVim with PyCharm
+
+    defaults write com.jetbrains.PyCharm ApplePressAndHoldEnabled -bool false
+
+A reboot is required to get the change to be effective.
+
 #### Diff and Merge
 
 I tried to set up some diff and merge utilities. Here's what didn't work.
