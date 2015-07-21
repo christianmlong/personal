@@ -35,16 +35,23 @@ function new_blog_post
 }
 alias nbp='new_blog_post'
 
-# Set up a virtualenvironment with development tools
-function pip_setup_dev_environment
+# Are we in a virtual environment?  We can't return values from bash functions.
+# Instead, in the calling function, use command substitution to get the result.
+# For example:
+#    MY_VAR=$(in_virtualenv)
+function in_virtualenv
 {
+    python -c 'import sys; print(sys.real_prefix)' > /dev/null 2>&1 && INVENV=1 || INVENV=0
+    echo "$INVENV"
+}
 
-    python -c 'import sys; print(sys.real_prefix)' 2>/dev/null && INVENV=1 || INVENV=0
+# Remove obsolete "pytest" script, that comes with pylint
+function remove_obsolete_pytest
+{
+    INVENV=$(in_virtualenv)
     if [[ $INVENV -eq 0 ]]; then
         echo "Not in a virtual environment"
     else
-        pip install --upgrade -r ~/.virtualenvs/dev_requirements.txt
-
         PYTEST_PATH=$VIRTUAL_ENV/bin/pytest
         # Remove the obsolete `pytest` script that pylint installs.
         if [[ -a $PYTEST_PATH ]]; then
@@ -55,7 +62,18 @@ function pip_setup_dev_environment
         fi
         echo $PYTEST_PATH
     fi
+}
 
+# Set up a virtualenvironment with development tools
+function pip_setup_dev_environment
+{
+    INVENV=$(in_virtualenv)
+    if [[ $INVENV -eq 0 ]]; then
+        echo "Not in a virtual environment"
+    else
+        pip install --upgrade -r ~/.virtualenvs/dev_requirements.txt
+        remove_obsolete_pytest
+    fi
 }
 alias pipdev='pip_setup_dev_environment'
 
