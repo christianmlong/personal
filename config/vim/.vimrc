@@ -14,8 +14,8 @@ set encoding=utf-8
 
 " Pretty colors
 "set t_Co=256
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 " let g:solarized_contrast='high'
 call togglebg#map("<F5>")
 colorscheme solarized
