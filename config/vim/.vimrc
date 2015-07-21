@@ -153,6 +153,7 @@ set spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
+autocmd BufRead,BufNewFile *.rst setlocal spell
 " Word-completion from the spelling dictionary
 set complete+=kspell
 
