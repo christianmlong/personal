@@ -1,0 +1,35 @@
+" Show command status in status bar
+set showcmd
+
+"Map jk to Esc so that you do not have to reach for the Esc button"
+imap jk <Esc>
+
+" Set the leader to comma
+" So, for <Leader>r   type a comma then type r within 1 second.
+let mapleader=","
+
+" These lines highlight search results as you type
+set incsearch
+set showmatch
+set hlsearch
+
+" The <leader><space> mapping makes it easy to clear out a search by typing
+" ,<space>
+nnoremap <leader><space> :noh<cr>
+
+" Search case sensitive
+set noignorecase
+
+" This disables the arrow keys while you’re in normal mode to help you
+" learn to use hjkl
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+
+" Make semicolon do the same thing as colon
+nnoremap ; :
+
+set relativenumber
+set number
+

@@ -1,0 +1,5 @@
+" Config file for the ideaVim plugin I'm using with PyCharm.
+
+
+source ~/.vimrc_common
+

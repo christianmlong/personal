@@ -23,11 +23,8 @@ colorscheme solarized
 " Switch in and out of paste mode
 set pastetoggle=<F10>
 
-" Show command status in status bar
-set showcmd
-
-"Map jk to Esc so that you do not have to reach for the Esc button"
-imap jk <Esc>
+" Import common settings
+source ~/.vimrc_common
 
 " Allow hidden buffers
 set hidden
@@ -49,61 +46,11 @@ inoremap <Del> <Del><C-g>u
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
-" Set the leader to comma
-" So, for <Leader>r   type a comma then type r within 1 second.
-let mapleader=","
-
 " From Steve Losh's vim guide
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-" Vim 7.4 (Patch 7.3.787) will show the absolute line number instead of "0",
-" when both "relativenumber" and "number" are set.
-set number
-set relativenumber
-
-" " Use normal regexes when searching, not vim regexes
-" nnoremap / /\v
-" vnoremap / /\v
-
-" " If you search for an all-lowercase string your search will be
-" " case-insensitive, but if one or more characters is uppercase the search will
-" " be case-sensitive.
-" set ignorecase
-" set smartcase
-set noignorecase
-
-" set gdefault   " I'm used to putting g at the end of the find/replace
-" These lines highlight search results as you type
-set incsearch
-set showmatch
-set hlsearch
-" The <leader><space> mapping makes it easy to clear out a search by typing
-" ,<space>
-nnoremap <leader><space> :noh<cr>
-" These lines make the tab key match bracket pairs
-" nnoremap <tab> %
-" vnoremap <tab> %
-" This disables the arrow keys while you’re in normal mode to help you
-" learn to use hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-" These lines disable the arrow keys in insert mode to force you to get back
-" into normal mode the instant you’re done inserting text
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-" Make j and k move by screen line, not file line
-" nnoremap j gj
-" nnoremap k gk
-" vnoremap j gj
-" vnoremap k gk
-" Make semicolon do the same thing as colon
-nnoremap ; :
 
 " Show tabs and trailing characters.
 "set listchars=tab:»·,trail:·,eol:¬
@@ -309,5 +256,4 @@ imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Use the mouse for scrolling and for visual selection
 set mouse=a
-
 
