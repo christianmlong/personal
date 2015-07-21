@@ -7,7 +7,8 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Setup symlinks to dotfiles
 ln -s ~/projects/public-personal/config/bash/osx/.bash_aliases ~/.bash_aliases
 ln -s ~/projects/public-personal/config/bash/osx/.bashrc ~/.bashrc
-ln -s ~/projects/public-personal/config/bash/osx/dircolors.ansi-dark ~/.dircolors
+# ln -s ~/projects/public-personal/config/bash/osx/dircolors.ansi-dark ~/.dircolors
+ln -s ~/projects/public-personal/config/bash/osx/dircolors.ansi-light ~/.dircolors
 ln -s ~/projects/public-personal/config/git/osx/.gitconfig ~/.gitconfig
 
 ln -s ~/projects/public-personal/config/tmux/.tmux.conf ~/.tmux.conf
