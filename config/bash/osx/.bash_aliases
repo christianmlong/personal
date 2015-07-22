@@ -15,8 +15,6 @@ alias gitinfo='~/projects/personal/util/bash/git-info.sh'
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
 alias ☁️='cowsay clooooud'
-alias use_postgres_91='brew unlink postgresql93 && brew link postgresql91'
-alias use_postgres_93='brew unlink postgresql91 && brew link postgresql93'
 alias gzip='gzip -k'
 alias gunzip='gunzip -k'
 
@@ -110,6 +108,26 @@ alias chub='cisco_hub'
 # Show the symlink, if any, with 'which'
 function swhich
 {
-    THE_PATH=`which $1`
-    ls -al $THE_PATH
+    # If the call to which succeeds, then show the alias if there is one.
+    # More on capturing output, error, and return code from bash command
+    # substitution:
+    #    http://mywiki.wooledge.org/BashFAQ/002
+    if THE_PATH=$(which $1); then
+        ls -al "$THE_PATH"
+    fi
+}
+
+# Activate and deactivate the different postgres versions I have installed
+function use_postgres_91
+{
+    pg_ctl -w -D /usr/local/var/postgres94/data stop -s -m fast
+    brew unlink postgresql && brew link postgresql91
+    pg_ctl -w -D /usr/local/var/postgres91/data -l /usr/local/var/postgres91/data/server.log start
+}
+
+function use_postgres_94
+{
+    pg_ctl -w -D /usr/local/var/postgres91/data stop -s -m fast
+    brew unlink postgresql91 && brew link postgresql
+    pg_ctl -w -D /usr/local/var/postgres94/data -l /usr/local/var/postgres94/data/server.log start
 }
