@@ -1,0 +1,74 @@
+set encoding=utf-8
+
+" Import common settings
+source ~/.vimrc_common
+
+" Allow hidden buffers
+set hidden
+
+" Remember more commands, search history, and undo levels
+set history=1000
+set undolevels=1000
+
+" Disable some old unneeded features
+set nocompatible
+" set modelines=0
+
+" More fine-grained undo
+inoremap <Space> <Space><C-g>u
+inoremap <Return> <Return><C-g>u
+" inoremap <Tab> <Tab><C-g>u
+inoremap <BS> <BS><C-g>u
+inoremap <Del> <Del><C-g>u
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
+" From Steve Losh's vim guide
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+
+" Show tabs and trailing characters.
+"set listchars=tab:»·,trail:·,eol:¬
+set listchars=tab:»·,trail:·
+set list
+
+" Reformat paragraphs and list.
+" nnoremap <Leader>r gq}
+
+" Spaces instead of tabs
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+"Press F9 in normal mode or in insert mode to insert the current datestamp
+nnoremap <F9> "=strftime("%Y-%m-%d %H:%M")<CR>P
+inoremap <F9> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
+
+" Make vim read .md files as Markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+function! FixWhiteSpace()
+    " Save the cursor position for later
+    let l = line(".")
+    let c = col(".")
+    " Remove trailing white space
+    %s/\s\+$//e
+    " Remove extra blank lines at eof
+    " Note : In the replace pattern, you
+    " have to use \r to represent newline
+    " while in the search pattern, you use \n
+    "            ¯\_(ツ)_/¯
+    %s/\($\n\)\+\%$/\r/e
+    " Restore the previous cursor position
+    call cursor(l, c)
+endfunction
+nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
+autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
+autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
+
+

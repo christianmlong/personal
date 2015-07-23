@@ -15,24 +15,13 @@
 	ci = commit
 	wiff = diff --color-words
 
-# Reference
+# Reference for git up alias
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
 	up = "!git remote update -p; git merge --ff-only @{u}"
 
 	ap = add --patch
 	ff = merge --ff-only
 [diff]
-	tool = bc3
+	tool = vimdiff2
 [merge]
-	tool = bc3
-[rerere]
-	enabled = true
-	autoupdate = true
-[pull]
-	ff = only
-[hub]
-	host = tip-github-1.cisco.com
-[difftool]
-	bc3 = trustExitCode
-[mergetool]
-	bc3 = trustExitCode
+	tool = vimdiff2

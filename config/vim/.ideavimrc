@@ -3,3 +3,5 @@
 
 source ~/.vimrc_common
 
+set relativenumber
+

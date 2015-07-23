@@ -30,6 +30,6 @@ nnoremap <right> <nop>
 " Make semicolon do the same thing as colon
 nnoremap ; :
 
-set relativenumber
+" set relativenumber
 set number
 

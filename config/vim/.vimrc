@@ -26,6 +26,8 @@ set pastetoggle=<F10>
 " Import common settings
 source ~/.vimrc_common
 
+set relativenumber
+
 " Allow hidden buffers
 set hidden
 
