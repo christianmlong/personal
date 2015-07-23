@@ -27,3 +27,6 @@ CIAM
 builtin
 Django
 screenshare
+vendored
+toolchain
+dir
