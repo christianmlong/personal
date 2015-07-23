@@ -131,3 +131,16 @@ function use_postgres_94
     brew unlink postgresql91 && brew link postgresql
     pg_ctl -w -D /usr/local/var/postgres94/data -l /usr/local/var/postgres94/data/server.log start
 }
+
+function jrnl
+{
+    if [ -n $TZ ]; then
+        export TZ_BACKUP_JRNL=$TZ
+        unset TZ
+    fi
+    /usr/local/bin/jrnl $@
+    if [ -n $TZ_BACKUP_JRNL ]; then
+        export TZ=$TZ_BACKUP_JRNL
+        unset TZ_BACKUP_JRNL
+    fi
+}
