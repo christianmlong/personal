@@ -256,6 +256,12 @@ imap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 " " Use the system clipboard
 " set clipboard=unnamed
 
-" Use the mouse for scrolling and for visual selection
-set mouse=a
+" " Use the mouse for scrolling and for visual selection
+" set mouse=a
+
+" Use the mouse only for normal mode
+" set mouse=n
+
+" Note setting the mouse variable messes with tmux's mouse settings. So, I'll
+" leave vim mouse off for now.
 
