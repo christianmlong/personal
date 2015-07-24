@@ -1,6 +1,7 @@
 [user]
 	name = Christian Long
-	email = christianzlong2@gmail.com
+#	email = christianzlong2@gmail.com
+	email = chlong2@cisco.com
 [gitreview]
 	username = christianmlong
 [push]
@@ -13,12 +14,18 @@
 	st = status
 	co = checkout
 	ci = commit
-	pull = pull --rebase
 	wiff = diff --color-words
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	ap = add --patch
+	ff = merge --ff-only
 [diff]
 	tool = vimdiff2
-[pull]
-	rebase = preserve
+[merge]
+	tool = vimdiff2
 [rerere]
 	enabled = true
 	autoupdate = true
+[pull]
+	ff = only
+#[hub]
+#	host = tip-github-1.cisco.com
