@@ -18,6 +18,7 @@
 	up = "!git remote update -p; git merge --ff-only @{u}"
 	ap = add --patch
 	ff = merge --ff-only
+	ds = diff --staged
 [diff]
 	tool = vimdiff2
 [merge]
