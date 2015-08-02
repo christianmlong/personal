@@ -9,6 +9,7 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ln -s ~/projects/public-personal/config/bash/linux/.bash_aliases ~/.bash_aliases
 #ln -s ~/projects/public-personal/config/bash/linux/.bashrc ~/.bashrc
 ln -s ~/projects/public-personal/config/bash/linux/.bashrc_14_04 ~/.bashrc
+ln -s ~/projects/public-personal/config/bash/linux/.profile ~/.profile
 ln -s ~/projects/public-personal/config/bash/linux/.dircolors ~/.dircolors
 ln -s ~/projects/public-personal/config/git/.gitconfig ~/.gitconfig
 ln -s ~/projects/public-personal/config/tmux/.tmux.conf ~/.tmux.conf
