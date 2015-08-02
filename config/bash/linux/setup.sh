@@ -12,7 +12,7 @@ ln -s ~/projects/public-personal/config/bash/linux/.bashrc_14_04 ~/.bashrc
 ln -s ~/projects/public-personal/config/bash/linux/.profile ~/.profile
 ln -s ~/projects/public-personal/config/bash/linux/.dircolors ~/.dircolors
 ln -s ~/projects/public-personal/config/git/.gitconfig ~/.gitconfig
-ln -s ~/projects/public-personal/config/tmux/.tmux.conf ~/.tmux.conf
+ln -s ~/projects/public-personal/config/tmux/linux/.tmux.conf ~/.tmux.conf
 
 ln -s ~/projects/public-personal/config/vim/.vimrc ~/.vimrc
 ln -s ~/projects/public-personal/config/vim/.vimrc_common ~/.vimrc_common
