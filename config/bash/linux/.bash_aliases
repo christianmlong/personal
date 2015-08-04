@@ -86,3 +86,8 @@ function new_project_from_cookiecutter
     fi
 }
 alias cookie='new_project_from_cookiecutter'
+
+function tree
+{
+    /usr/local/bin/tree -a
+}

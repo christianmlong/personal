@@ -144,3 +144,9 @@ function jrnl
         unset TZ_BACKUP_JRNL
     fi
 }
+
+function tree
+{
+    /usr/local/bin/tree -a
+}
+
