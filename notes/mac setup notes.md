@@ -155,7 +155,7 @@ That installs the coreutils prefixed with a 'g'. We can make some path changes t
 It will suggest some exports, put them in .bashrc.
 
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/share/man:$MANPATH"
 
 Now, install the rest of the GNU utils you want
 

@@ -6,7 +6,7 @@
 # GNU Utilities
 # I used Homebrew to install the GNU Utilities. Put them first in the PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/share/man:$MANPATH"
 
 
 # From Unix & Linux Stack Exchange
