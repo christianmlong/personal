@@ -33,3 +33,7 @@ nnoremap ; :
 " set relativenumber
 set number
 
+" Disable Ctrl-A and Ctrl-X (increment and decrement number)
+noremap <c-a> <Nop>
+noremap <c-x> <Nop>
+
