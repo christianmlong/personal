@@ -32,6 +32,12 @@
 	ff = only
 [hub]
 	host = tip-github-1.cisco.com
+
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+
 [difftool "p4merge"]
 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
 [mergetool "p4merge"]
