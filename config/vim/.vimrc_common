@@ -37,3 +37,6 @@ set number
 noremap <c-a> <Nop>
 noremap <c-x> <Nop>
 
+" Disable Ctrl-U (Undoable undo)
+noremap <c-u> <Nop>
+
