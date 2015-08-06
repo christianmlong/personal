@@ -251,7 +251,7 @@ augroup END
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Preview markdown file in Marked
-:nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
+nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
 
 " " Use the system clipboard
 " set clipboard=unnamed
