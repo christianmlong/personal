@@ -21,10 +21,6 @@
 
 	ap = add --patch
 	ff = merge --ff-only
-[diff]
-	tool = bc3
-[merge]
-	tool = bc3
 [rerere]
 	enabled = true
 	autoupdate = true
@@ -33,11 +29,18 @@
 [hub]
 	host = tip-github-1.cisco.com
 
+[diff]
+    #tool = bc3
+    tool = p4merge
+    #tool = meld
+[merge]
+    #tool = bc3
+    tool = p4merge
+    #tool = meld
 [difftool]
     prompt = false
 [mergetool]
     prompt = false
-
 [difftool "p4merge"]
 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
 [mergetool "p4merge"]
