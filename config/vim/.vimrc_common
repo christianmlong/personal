@@ -2,7 +2,7 @@
 set showcmd
 
 "Map jk to Esc so that you do not have to reach for the Esc button"
-imap jk <Esc>
+inoremap jk <Esc>
 
 " Set the leader to comma
 " So, for <Leader>r   type a comma then type r within 1 second.
