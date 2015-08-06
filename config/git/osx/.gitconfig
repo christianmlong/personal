@@ -32,11 +32,15 @@
 	ff = only
 [hub]
 	host = tip-github-1.cisco.com
-[difftool]
-	bc3 = trustExitCode
-[mergetool]
-	bc3 = trustExitCode
+#[difftool]
+#	bc3 = trustExitCode
+#[mergetool]
+#	bc3 = trustExitCode
 [difftool "p4merge"]
 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
 [mergetool "p4merge"]
 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
+[difftool "bc3"]
+    trustExitCode = true
+[mergetool "bc3"]
+    trustExitCode = true
