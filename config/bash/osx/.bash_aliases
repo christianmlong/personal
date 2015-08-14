@@ -147,6 +147,6 @@ function jrnl
 
 function tree
 {
-    /usr/local/bin/tree -a
+    /usr/local/bin/tree -a "$@"
 }
 
