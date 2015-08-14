@@ -19,7 +19,7 @@
     ds = diff --staged
     lsp = log --stat -p
 
-# Reference
+# Reference for git up alias
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
 	up = "!git remote update -p; git merge --ff-only @{u}"
 
@@ -36,10 +36,6 @@
 [rerere]
 	enabled = true
 	autoupdate = true
-[pull]
-	ff = only
-[hub]
-	host = tip-github-1.cisco.com
 
 [diff]
     #tool = bc3
