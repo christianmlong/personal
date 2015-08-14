@@ -25,6 +25,14 @@
 
 	ap = add --patch
 	ff = merge --ff-only
+
+# Find orphaned commits
+# Source: https://gist.github.com/matthewmccullough/988077
+# with gitk
+    orphank = "!gitk --all `git reflog | cut -d ' ' -f 1`&"
+# on the command line
+    orphanl = "!git log --pretty=oneline --abbrev-commit --graph --decorate `git reflog | cut -d ' ' -f 1`"
+
 [rerere]
 	enabled = true
 	autoupdate = true
