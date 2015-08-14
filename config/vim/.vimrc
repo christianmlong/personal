@@ -102,6 +102,7 @@ set spellfile=~/.vim/spell/en.utf-8.add
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd BufRead,BufNewFile *.txt setlocal spell
 autocmd BufRead,BufNewFile *.rst setlocal spell
+autocmd FileType gitcommit setlocal spell
 " Word-completion from the spelling dictionary
 set complete+=kspell
 
