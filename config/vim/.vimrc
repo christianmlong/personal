@@ -104,7 +104,7 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 autocmd BufRead,BufNewFile *.rst setlocal spell
 autocmd FileType gitcommit setlocal spell
 " Word-completion from the spelling dictionary
-set complete+=kspell
+" set complete+=kspell
 
 " vim-airline config
 let g:airline_powerline_fonts = 1
