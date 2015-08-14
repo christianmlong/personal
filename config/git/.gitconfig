@@ -8,13 +8,14 @@
 [core]
 	editor = vim
 [alias]
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit        
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all 
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	st = status
 	co = checkout
 	ci = commit
 	wiff = diff --color-words
 	up = "!git remote update -p; git merge --ff-only @{u}"
+
 	ap = add --patch
 	ff = merge --ff-only
 	ds = diff --staged
