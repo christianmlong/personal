@@ -13,16 +13,25 @@
 	st = status
 	co = checkout
 	ci = commit
-	wiff = diff --color-words
+    d = diff
+    dt = difftool
+    ds = diff --staged
+    lsp = log --stat -p
+
+# Reference
+# http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
 	up = "!git remote update -p; git merge --ff-only @{u}"
 
 	ap = add --patch
 	ff = merge --ff-only
-	ds = diff --staged
-[diff]
-	tool = vimdiff2
-[merge]
-	tool = vimdiff2
+
+# Find orphaned commits
+# Source: https://gist.github.com/matthewmccullough/988077
+# with gitk
+    orphank = "!gitk --all `git reflog | cut -d ' ' -f 1`&"
+# on the command line
+    orphanl = "!git log --pretty=oneline --abbrev-commit --graph --decorate `git reflog | cut -d ' ' -f 1`"
+
 [rerere]
 	enabled = true
 	autoupdate = true
@@ -30,3 +39,8 @@
 	ff = only
 #[hub]
 #	host = tip-github-1.cisco.com
+
+[diff]
+	tool = vimdiff2
+[merge]
+	tool = vimdiff2
