@@ -14,7 +14,10 @@
 	st = status
 	co = checkout
 	ci = commit
-	wiff = diff --color-words
+    d = diff
+    dt = difftool
+    ds = diff --staged
+    lsp = log --stat -p
 
 # Reference
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
