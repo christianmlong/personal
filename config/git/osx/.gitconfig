@@ -17,6 +17,7 @@
     d = diff
     dt = difftool
     ds = diff --staged
+    dts = difftool --staged
     lsp = log --stat -p
 
 # Reference for git up alias
