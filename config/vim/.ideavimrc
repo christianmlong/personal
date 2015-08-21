@@ -3,5 +3,13 @@
 
 source ~/.vimrc_common
 
+" Can't use jk in intellivim. The delay in completion while waiting
+" for the 'k' after 'j' is pressed interferes with the auto-completion.
+" So, when you type 'proj - <Tab>' you get 'projectj' instead of 'project'.
+" Just use the escape key in intellivim.
+
+" " Map jk to Esc so that you do not have to reach for the Esc button
+" inoremap jk <Esc>
+
 set relativenumber
 

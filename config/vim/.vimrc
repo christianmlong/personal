@@ -10,6 +10,9 @@ call pathogen#helptags()
 " Import common settings
 source ~/.vimrc_common
 
+" Map jk to Esc so that you do not have to reach for the Esc button
+inoremap jk <Esc>
+
 " Settings for vim-sensible
 set undodir^=~/.vim/undo
 
