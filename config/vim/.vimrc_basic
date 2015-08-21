@@ -74,4 +74,3 @@ autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhite
 autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
 autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
 
-
