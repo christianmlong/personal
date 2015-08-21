@@ -7,6 +7,9 @@ syntax on
 filetype plugin indent on
 call pathogen#helptags()
 
+" Import common settings
+source ~/.vimrc_common
+
 " Settings for vim-sensible
 set undodir^=~/.vim/undo
 
@@ -22,9 +25,6 @@ colorscheme solarized
 
 " Switch in and out of paste mode
 set pastetoggle=<F10>
-
-" Import common settings
-source ~/.vimrc_common
 
 set relativenumber
 
