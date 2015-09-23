@@ -24,6 +24,11 @@ set encoding=utf-8
 set background=light
 " let g:solarized_contrast='high'
 call togglebg#map("<F5>")
+" I tried using the solarized theme just for Airline, and just using
+" the more colorful default theme for vim itself. However, the reverse-
+" highlighting in the default scheme did not work with the solarized
+" color scheme in iterm. So, I went back to specifying solarized in vim
+" as well.
 colorscheme solarized
 
 " Switch in and out of paste mode
@@ -94,10 +99,10 @@ function! FixWhiteSpace()
     call cursor(l, c)
 endfunction
 nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
-autocmd FileType python,javascript,text autocmd FileWritePre    * :call FixWhiteSpace()
-autocmd FileType python,javascript,text autocmd FileAppendPre   * :call FixWhiteSpace()
-autocmd FileType python,javascript,text autocmd FilterWritePre  * :call FixWhiteSpace()
-autocmd FileType python,javascript,text autocmd BufWritePre     * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql autocmd FileWritePre    * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql autocmd FileAppendPre   * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql autocmd FilterWritePre  * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql autocmd BufWritePre     * :call FixWhiteSpace()
 
 " Enable spellcheck
 set spelllang=en_us
@@ -268,4 +273,25 @@ nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
 
 " Note setting the mouse variable messes with tmux's mouse settings. So, I'll
 " leave vim mouse off for now.
+
+" This allows you to call aliases and bash functions with the :! command
+" http://stackoverflow.com/questions/4642822/commands-executed-from-vim-are-not-recognizing-bash-command-aliases
+" If you had a virtualenv activated when you started vim, then virtualenvwrapper throws an error at the start
+" of the new interactive bash login. This also causes problems when piping a
+" buffer through unix filters (:%!indent)
+" set shellcmdflag=-ic
+
+" Save and run the current file in Python
+" Moved to .vim/ftplugin/python.vim
+" nnoremap <leader>r :execute ':w' \| !python %<cr>
+
+" Disable full-screen ex mode
+nnoremap Q <nop>
+
+" Shift-tab dedents
+inoremap <S-Tab> <C-d>
+
+" Easily close a buffer without closing the split
+" http://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
+nnoremap <C-c> :bp\|bd #<CR>
 

@@ -11,7 +11,7 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils
 
 # From Unix & Linux Stack Exchange
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTCONTROL=ignoreboth:erasedups  # no duplicate entries, don't remember commands that start with space
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it

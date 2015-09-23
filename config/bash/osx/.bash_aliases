@@ -17,6 +17,9 @@ alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --en
 alias ☁️='cowsay clooooud'
 alias gzip='gzip -k'
 alias gunzip='gunzip -k'
+alias komodo='open -a "Komodo Edit 9"'
+alias lint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc"'
+alias dlint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django'
 
 function make_change_dir
 {

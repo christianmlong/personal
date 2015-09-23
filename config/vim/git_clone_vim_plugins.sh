@@ -31,3 +31,5 @@ git clone https://github.com/honza/vim-snippets.git
 git clone https://github.com/sjl/gundo.vim.git
 git clone git@github.com:KabbAmine/zeavim.vim.git
 
+git clone git://github.com/AndrewRadev/linediff.vim.git
+

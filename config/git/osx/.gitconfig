@@ -4,12 +4,16 @@
 [gitreview]
 	username = christianmlong
 [push]
-	default = matching
+	default = upstream
 [core]
 	editor = vim
 	excludesfile = /Users/chlong2/.gitignore_global
 [alias]
+        # Just this branch
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        # Some branches
+        lols = log --graph --decorate --pretty=oneline --abbrev-commit --branches=*
+        # All branches and tags
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	st = status
 	co = checkout
@@ -34,18 +38,26 @@
 # on the command line
     orphanl = "!git log --pretty=oneline --abbrev-commit --graph --decorate `git reflog | cut -d ' ' -f 1`"
 
+    incoming = "!git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}"
+    outgoing = log --pretty=oneline --abbrev-commit --graph @{u}..
+
+# I can never remember this syntax
+    delete-remote-branch = push origin --delete 
+
 [rerere]
 	enabled = true
 	autoupdate = true
 
 [diff]
     #tool = bc3
-    tool = p4merge
+    #tool = p4merge
     #tool = meld
+    tool = kdiff3
 [merge]
     #tool = bc3
-    tool = p4merge
+    #tool = p4merge
     #tool = meld
+    tool = kdiff3
 [difftool]
     prompt = false
 [mergetool]

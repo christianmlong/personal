@@ -17,12 +17,12 @@ nnoremap <leader><space> :noh<cr>
 " Search case sensitive
 set noignorecase
 
-" This disables the arrow keys while you’re in normal mode to help you
-" learn to use hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+" " This disables the arrow keys while you’re in normal mode to help you
+" " learn to use hjkl
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
 
 " Make semicolon do the same thing as colon
 nnoremap ; :
@@ -36,4 +36,7 @@ noremap <c-x> <Nop>
 
 " Disable Ctrl-U (Undoable undo)
 noremap <c-u> <Nop>
+
+" Make Y yank to the end of the line
+nnoremap Y y$
 
