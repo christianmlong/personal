@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+      @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'source sans pro'; }
+      h1, h2, h3 {
+        font-family: 'source sans pro';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'source code pro'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Betamax
+
+
+---
+
+
+## Intro
+
+
+--
+
+- ### Testing library for the Python requests package
+
+--
+
+- ### Record and replay network activity
+
+--
+
+- ### Similar to Ruby's VCR
+
+
+---
+
+## What does it do
+
+--
+
+- ### Intercepts network activity from your tests
+
+--
+
+- ### Records it to its "cassette library"
+
+--
+
+- ### Record
+
+--
+
+- ### Replay
+
+
+
+---
+
+## Advantages
+
+--
+
+- ### Track changes
+
+--
+
+- ### Reliability
+
+--
+
+- ### Speed
+
+
+
+
+---
+
+## Example
+
+---
+
+## Example - Setup
+
+
+```python
+from betamax import Betamax
+from requests import Session
+from unittest import TestCase
+```
+
+---
+
+## Example - Setup
+
+
+```python
+from betamax import Betamax
+from requests import Session
+from unittest import TestCase
+
+with Betamax.configure() as config:
+    config.cassette_library_dir = 'tests/fixtures/cassettes'
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+
+    def test_weather(self):
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+
+    def test_weather(self):
+        with Betamax(self.session) as betamax:
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+
+    def test_weather(self):
+        with Betamax(self.session) as betamax:
+            betamax.use_cassette('weather')
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+
+    def test_weather(self):
+        with Betamax(self.session) as betamax:
+            betamax.use_cassette('weather')
+            resp = self.session.get('http://api.wx.com/weather')
+```
+
+---
+
+## Example - Test Class
+
+
+```python
+...
+
+class TestWeatherAPI(TestCase):
+    def setUp(self):
+        self.session = Session()
+
+    def test_weather(self):
+        with Betamax(self.session) as betamax:
+            betamax.use_cassette('weather')
+            resp = self.session.get('http://api.wx.com/weather')
+            assert resp.json()['snow'] is not None
+```
+
+---
+
+## Example - QDDTS
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+```
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+    def test_run_query_with_full_query(self,
+                                       betamax_session,
+                                      ):
+```
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+    def test_run_query_with_full_query(self,
+                                       betamax_session,
+                                      ):
+        qddts = QDDTS()
+```
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+    def test_run_query_with_full_query(self,
+                                       betamax_session,
+                                      ):
+        qddts = QDDTS()
+        # Use the betamax session
+        qddts.session = betamax_session
+```
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+    def test_run_query_with_full_query(self,
+                                       betamax_session,
+                                      ):
+        qddts = QDDTS()
+        # Use the betamax session
+        qddts.session = betamax_session
+        actual_results = qddts.query_cdets_as_dict()
+```
+
+---
+
+## Example - QDDTS
+
+
+```python
+@pytest.mark.usefixtures('betamax_session')
+class TestQDDTSFullQuery(object):
+    def test_run_query_with_full_query(self,
+                                       betamax_session,
+                                      ):
+        qddts = QDDTS()
+        # Use the betamax session
+        qddts.session = betamax_session
+        actual_results = qddts.query_cdets_as_dict()
+        assert len(actual_results.split(u'\n')) > 12000
+```
+
+---
+
+## Links
+
+ - ### Betamax for Python
+ https://betamax.readthedocs.org/en/latest/
+
+ - ### Betamax for Java
+ http://freeside.co/betamax/
+
+ - ### VCR for Ruby
+ https://github.com/vcr/vcr
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

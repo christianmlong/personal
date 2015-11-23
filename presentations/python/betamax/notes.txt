@@ -1,0 +1,25 @@
+Intro
+
+
+
+What does it do
+
+
+Betamax is a testing tool that works with the requests library. During tests, it intercepts all network activity. It looks at each outgoing network request, and compares it to its library of stored interactions.
+
+It maintains a cache that it calls the "cassette library". Every network interaction is recorded there.
+
+During your test run, if no matching request is found, then it makes the real request and records the response
+
+The next time your test makes that same request, Betamax will replay the previously-recorded response
+
+
+
+Advantages
+
+You check your cassette library in to git. This allows you to track any changes in the services you rely on.
+
+It makes your tests much more reliable. No more failures due to network timeouts. Your CI server doesn't need to make network calls.
+
+Your tests run faster, because they don't hit the network. Running CIAM's IPCentral tests goes from minutes to seconds
+
