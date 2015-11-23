@@ -1,0 +1,58 @@
+
+
+Slide 1
+
+Pytest is a python test runner that offers many improvements over the builtin
+test runner.
+
+Pytest Fixtures are a replacement for unittest setup and teardown functions.
+They are a good way of modularizing test requirements, so you can break up your
+test requirements in to small, simple pieces and combine them as needed. I like
+them because they reduce boilerplate code in your test suite.
+
+
+
+
+
+Slide 2
+
+Here's how they work. You declare a Pytest fixture by decorating a function
+with the pytest.fixture decorator. That function is now available anywhere in
+the test run under that name.
+
+--
+
+To use a pytest fixture, all you have to do is add it as an argument to the
+test function that will be using it.
+
+
+I have added an assert 0 to the end of this test, to make it fail. Here's what
+it looks like when you run it
+
+
+
+
+
+Slide 3
+
+You can see, Pytest gives you some useful information about the failure, and
+prints a little bit of context around the failure point. You can pass it a
+verbose option to get more info.
+
+
+
+Slide 4
+
+So, what is really happening here?
+
+
+
+1   pytest finds the test_ehlo function because of the test_ prefix. The test
+    function needs a function argument named smtp. A matching fixture function
+    is discovered by looking for a fixture-marked function named smtp.
+
+2   smtp() is called to create an instance.
+
+3   the test_ehlo function is called, and it is passed the smtp instance
+    that the smtp function returned
+
