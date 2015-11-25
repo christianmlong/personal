@@ -1,0 +1,1 @@
+asciidoctor -T /Users/chlong2/projects/cloned_apps/asciidoctor-reveal.js/templates/slim pytest_fixtures.adoc
