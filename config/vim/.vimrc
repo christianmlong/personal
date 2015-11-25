@@ -173,6 +173,15 @@ let g:ctrlp_mruf_exclude = '/var/folders/gh/.*|/private/var/folders/gh/.*|/usr/l
 " Open multiple files as hidden buffers
 let g:ctrlp_open_multiple_files = 'i'
 
+" Case-sensitive search for MRU files
+" Not working currently 9/24/15
+let g:ctrlp_mruf_case_sensitive = 1
+
+" Set this to 1 to disable adding nonmodifiable buffers, for example help
+" files, to the MRU list:
+let g:ctrlp_mruf_exclude_nomod = 1
+
+
 " " BufferGator
 " " Use the right side of the screen
 " let g:buffergator_viewport_split_policy = 'R'
@@ -293,5 +302,5 @@ inoremap <S-Tab> <C-d>
 
 " Easily close a buffer without closing the split
 " http://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
-nnoremap <C-c> :bp\|bd #<CR>
+nnoremap <leader><C-c> :bp\|bd #<CR>
 
