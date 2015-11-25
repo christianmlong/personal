@@ -20,6 +20,8 @@ alias gunzip='gunzip -k'
 alias komodo='open -a "Komodo Edit 9"'
 alias lint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc"'
 alias dlint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django'
+alias rm='trash'
+alias rrm='/usr/local/opt/coreutils/libexec/gnubin/rm'
 
 function make_change_dir
 {

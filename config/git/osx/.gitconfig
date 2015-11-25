@@ -9,20 +9,26 @@
 	editor = vim
 	excludesfile = /Users/chlong2/.gitignore_global
 [alias]
-        # Just this branch
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        # Some branches
-        lols = log --graph --decorate --pretty=oneline --abbrev-commit --branches=*
-        # All branches and tags
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	st = status
-	co = checkout
-	ci = commit
+    # Just this branch
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    # Some branches
+    lols = log --graph --decorate --pretty=oneline --abbrev-commit --branches=*
+    # All branches and tags
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    st = status
+    co = checkout
+    ci = commit
+    cim = commit -m
+    wip = commit -m "wip"
     d = diff
     dt = difftool
     ds = diff --staged
     dts = difftool --staged
     lsp = log --stat -p
+    # Diff with the upstream tracking branch (e.g. origin/<branch name>)
+    du = diff @{u}
+    # Force push to remote
+    pfu = push -f origin
 
 # Reference for git up alias
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
@@ -42,7 +48,7 @@
     outgoing = log --pretty=oneline --abbrev-commit --graph @{u}..
 
 # I can never remember this syntax
-    delete-remote-branch = push origin --delete 
+    delete-remote-branch = push origin --delete
 
 [rerere]
 	enabled = true
@@ -71,8 +77,8 @@
 [mergetool "bc3"]
     trustExitCode = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 	trustExitCode = true
