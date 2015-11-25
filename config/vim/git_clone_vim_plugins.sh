@@ -10,7 +10,7 @@ git clone git://github.com/tpope/vim-surround
 git clone git://github.com/tpope/vim-unimpaired
 
 git clone git@github.com:bling/vim-airline.git
-git clone git@github.com:kien/ctrlp.vim.git
+git clone git@github.com:ctrlpvim/ctrlp.vim.git
 # git clone git@github.com:jeetsukumaran/vim-buffergator.git
 
 git clone git@github.com:bronson/vim-visual-star-search.git
