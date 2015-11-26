@@ -129,12 +129,6 @@ I manage my dotfiles as symlinks in to my personal github repository. For OS X, 
 
     . ~/projects/public-personal/config/bash/osx/setup.sh
 
-Add a new file, `~/.bash_profile` with these contents:
-
-    if [ -f ~/.bashrc ]; then
-        source ~/.bashrc
-    fi
-
 Start a new terminal
 
 
