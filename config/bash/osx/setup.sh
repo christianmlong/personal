@@ -22,6 +22,6 @@ ln -s ~/projects/public-personal/config/vim/git_pull_all.sh ~/.vim/bundle/git_pu
 
 mkdir -p ~/.virtualenvs
 ln -s ~/projects/public-personal/config/virtualenv/postmkvirtualenv ~/.virtualenvs/postmkvirtualenv
-ln -s ~/projects/public-personal/config/virtualenv/test_requirements.txt ~/.virtualenvs/test_requirements.txt
+ln -s ~/projects/public-personal/config/virtualenv/dev_requirements.txt ~/.virtualenvs/dev_requirements.txt
 
 ln -s ~/projects/public-personal/config/python/.pdbrc.py ~/.pdbrc.py

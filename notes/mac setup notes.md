@@ -250,6 +250,8 @@ Now you can publish Gists like this
     brew install python python3
 
     # Note: don't use --user, not ready for prime time
+    pip install --upgrade requests
+    pip install --upgrade requests[security]
     pip install --upgrade pip setuptools virtualenv virtualenvwrapper
 
 ####
