@@ -92,4 +92,16 @@ task completion
 Run a Python user group
 itertools/itertoolz
 Fabric
-
+Puppet
+Maven
+Java
+Apache
+Django
+Postgres
+Security
+ssl
+YouTrack
+pytest
+Betamax testing
+SOAP
+SoapUI

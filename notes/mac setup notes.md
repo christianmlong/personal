@@ -94,9 +94,34 @@ My first impressions of Beyond Compare are good. It opened a directory compariso
 
     mkdir ~/projects
     cd ~/projects
+    brew install git
     git clone git@github.com:christianmlong/personal.git public-personal
 
+#### Github ssh key fingerprints
 
+
+https://help.github.com/articles/what-are-github-s-ssh-key-fingerprints/
+
+What are GitHub's SSH key fingerprints?
+
+Public key fingerprints can be used to validate a connection to a remote server.
+
+These are GitHub's public key fingerprints (in hexadecimal format):
+
+    16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48 (RSA)
+    ad:1c:08:a4:40:e3:6f:9c:f5:66:26:5d:4b:33:5d:8c (DSA)
+
+These are the SHA256 hashes shown in OpenSSH 6.8 and newer (in base64 format):
+
+    SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8 (RSA)
+    SHA256:br9IjFspm1vxR3iA35FWE+4VTyz1hYVLIE2t1/CeyWQ (DSA)
+
+GitHub also uses SSHFP DNS records to securely publish our SSH key fingerprints. You can query for our SSHFP records using the command below:
+
+    dig SSHFP github.com +nostats +nocomments +nocmd
+    # ;github.com.            IN  SSHFP
+    # github.com.     300 IN  SSHFP   2 1 7491973E5F8B39D5327CD4E08BC81B05F7710B49
+    # github.com.     300 IN  SSHFP   1 1 BF6B6825D2977C511A475BBEFB88AAD54A92AC73
 
 #### dotfiles
 
@@ -110,7 +135,7 @@ Add a new file, `~/.bash_profile` with these contents:
         source ~/.bashrc
     fi
 
-Start a new terminal 
+Start a new terminal
 
 
 Now pull all my vim plugins
@@ -159,9 +184,10 @@ It will suggest some exports, put them in .bashrc.
 
 Now, install the rest of the GNU utils you want
 
+    brew install bash-completion
     brew install binutils
     brew install diffutils
-    brew install ed --default-names
+    brew install ed --with-default-names
     brew install findutils --with-default-names
     brew install gawk
     brew install gnu-indent --with-default-names
@@ -171,21 +197,42 @@ Now, install the rest of the GNU utils you want
     brew install gnutls
     brew install grep --with-default-names
     brew install gzip
+    brew install less
+    brew install rsync
     brew install tmux
+    brew install unzip
     brew install watch
     brew install wdiff --with-gettext
     brew install wget
-    brew install less
-    brew install unzip
-    brew install rsync
-    brew install bash-completion
 
 
 
 #### Other Homebrew
 
-    brew install hub --HEAD
+    brew install caskroom/cask/brew-cask
+
+    brew install cloc
+    brew install cowsay
+    brew install dos2unix
     brew install gist
+    brew install gnupg
+    brew install htop-osx
+    brew install hub --HEAD
+    brew install jrnl
+    brew install kdiff3
+    brew install keybase
+    brew install libxslt
+    brew install mtr
+    brew install ncdu
+    brew install python
+    brew install python3
+    brew install reattach-to-user-namespace
+    brew install rename
+    brew install ruby
+    brew install ssh-copy-id
+    brew install stress
+    brew install trash
+    brew install tree
 
 #### Install powerline fonts
 
