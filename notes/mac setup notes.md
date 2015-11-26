@@ -249,6 +249,7 @@ Now you can publish Gists like this
 
     brew install python python3
 
-    pip install --user --upgrade pip setuptools virtualenv virtualenvwrapper
+    # Note: don't use --user, not ready for prime time
+    pip install --upgrade pip setuptools virtualenv virtualenvwrapper
 
 ####
