@@ -59,6 +59,9 @@ export EDITOR=vi
 #     test -z "$TMUX" && tmux attach
 # fi
 
+# Add pip --user installs to PATH
+PATH=$PATH:~/.local/bin
+
 # virtualenvwrapper setup
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
