@@ -187,7 +187,7 @@ ignored-classes=SQLObject
 # List of members which are set dynamically and missed by pylint inference
 # system, and so shouldn't trigger E0201 when accessed. Python regular
 # expressions are accepted.
-generated-members=REQUEST,acl_users,aq_parent,"[a-zA-Z]+_set{1,2}",
+generated-members=REQUEST,acl_users,aq_parent,"[a-zA-Z]+_set{1,2}",save,delete
 
 [VARIABLES]
 # Tells whether we should check for unused import in __init__ files.
