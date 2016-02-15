@@ -1,0 +1,15 @@
+# YAPF style definition file
+# https://github.com/google/yapf
+[style]
+based_on_style = pep8
+spaces_before_comment = 4
+split_before_logical_operator = true
+dedent_closing_brackets = true
+column_limit = 80
+split_penalty_for_added_line_split = 3
+split_penalty_after_opening_bracket = 3
+split_penalty_excess_character = 25
+
+
+
+
