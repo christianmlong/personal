@@ -3,11 +3,14 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+# Brew path
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
 # GNU Utilities
 # I used Homebrew to install the GNU Utilities. Put them first in the PATH
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/share/man:$MANPATH"
-
 
 # From Unix & Linux Stack Exchange
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
