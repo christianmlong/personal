@@ -15,3 +15,6 @@ export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ORACLE_HOME
 export PATH=$PATH:$ORACLE_HOME
 export TNS_ADMIN=$ORACLE_HOME/network/admin
 # export TNS_ADMIN=$ORACLE_HOME
+
+# Homebrew sbin setup
+export PATH="/usr/local/sbin:$PATH"
