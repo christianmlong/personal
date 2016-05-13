@@ -59,6 +59,18 @@ export EDITOR=vi
 #     test -z "$TMUX" && tmux attach
 # fi
 
+# Enable bash completion for pandoc
+eval "$(pandoc --bash-completion)"
+
+# Enable bash completion for my custom 'git float' alias
+# Reference:
+# http://stackoverflow.com/questions/11466991/git-aliases-command-line-autocompletion-of-branch-names
+_git_float()
+{
+    _git_branch
+}
+
+
 # virtualenvwrapper setup
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
