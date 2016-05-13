@@ -3,12 +3,12 @@
 default_context:
     full_name: "Christian Long"
     author_name: "Christian Long"
-    email: "chlong2@cisco.com"
+    author_email: "chlong2@cisco.com"
     github_username: "chlong2"
     website: "https://tip-github-1.cisco.com/chlong2"
 
 cookiecutter_dir:  "/Users/chlong2/.cookiecutters/"
 
 abbreviations:
-    base:           /Users/chlong2/.cookiecutters/cookiecutter-pypackage
+    base:        /Users/chlong2/.cookiecutters/cookiecutter-pypackage-minimal
 
