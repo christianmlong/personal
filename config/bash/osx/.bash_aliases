@@ -1,4 +1,5 @@
 alias l='ls -alF'
+alias ll='ls -alFrth'
 alias cdv='cdvirtualenv'
 alias cdsp='cdsitepackages'
 alias cdp='cdproject'
@@ -22,6 +23,11 @@ alias lint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/pyth
 alias dlint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django'
 alias rm='trash'
 alias rrm='/usr/local/opt/coreutils/libexec/gnubin/rm'
+alias pyclean='find . -xdev -type f -name '"'*.pyc'"' -exec /usr/local/opt/coreutils/libexec/gnubin/rm {} +'
+alias bumpversion_tag_and_release='cdproject && bumpversion release --tag && git push --tags'
+alias gl='clear && git lnp'
+alias gll='git l'
+alias gs='git st'
 
 function make_change_dir
 {
@@ -123,17 +129,17 @@ function swhich
 }
 
 # Activate and deactivate the different postgres versions I have installed
-function use_postgres_91
-{
-    pg_ctl -w -D /usr/local/var/postgres94/data stop -s -m fast
-    brew unlink postgresql && brew link postgresql91
-    pg_ctl -w -D /usr/local/var/postgres91/data -l /usr/local/var/postgres91/data/server.log start
-}
+# function use_postgres_91
+# {
+#     pg_ctl -w -D /usr/local/var/postgres94/data stop -s -m fast
+#     brew unlink postgresql && brew link postgresql91
+#     pg_ctl -w -D /usr/local/var/postgres91/data -l /usr/local/var/postgres91/data/server.log start
+# }
 
 function use_postgres_94
 {
-    pg_ctl -w -D /usr/local/var/postgres91/data stop -s -m fast
-    brew unlink postgresql91 && brew link postgresql
+    # pg_ctl -w -D /usr/local/var/postgres91/data stop -s -m fast
+    # brew unlink postgresql91 && brew link postgresql
     pg_ctl -w -D /usr/local/var/postgres94/data -l /usr/local/var/postgres94/data/server.log start
 }
 
@@ -150,7 +156,7 @@ function jrnl
     fi
 }
 
-function tree
+function alltree
 {
     /usr/local/bin/tree -a "$@"
 }
