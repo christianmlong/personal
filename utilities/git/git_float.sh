@@ -3,23 +3,35 @@
 set -e
 set -u
 
-# BASE_BRANCH=staging
-BASE_BRANCH=development
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+INTEGRATION_BRANCH=local_integration
+
+if [ $# -eq 0 ]; then
+    echo "Please provide at least one branch name"
+    exit 1
+fi
+
+if [ $CURRENT_BRANCH == $INTEGRATION_BRANCH ]; then
+    echo "You are on branch ${CURRENT_BRANCH}. Switch to a feature branch before running"
+    exit 1
+fi
+
+echo Float on top of $GIT_FLOAT_BASE_BRANCH
 
 git fetch --all --prune
 
-git co $BASE_BRANCH
+git co $GIT_FLOAT_BASE_BRANCH
 git up
 
-git branch -f local_integration $BASE_BRANCH
+git branch -f $INTEGRATION_BRANCH $GIT_FLOAT_BASE_BRANCH
 
 for i in "$@"
 do
     git co "$i"
-    git rebase $BASE_BRANCH
+    git rebase $GIT_FLOAT_BASE_BRANCH
 done
 
-git co local_integration
+git co $INTEGRATION_BRANCH
 
 for i in "$@"
 do
@@ -29,3 +41,4 @@ done
 printf '\n'
 git merge --no-edit "$@"
 
+git co $CURRENT_BRANCH
