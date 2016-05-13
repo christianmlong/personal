@@ -8,8 +8,15 @@ source ~/.vimrc_common
 " So, when you type 'proj - <Tab>' you get 'projectj' instead of 'project'.
 " Just use the escape key in intellivim.
 
-" " Map jk to Esc so that you do not have to reach for the Esc button
-" inoremap jk <Esc>
+" Update Wednesday, February 24, 2016
+" Screw it, it's too inconvenient to not have jk in Pycharm. I'm going to
+" try re-enabling it.
+
+" Map jk to Esc so that you do not have to reach for the Esc button
+inoremap jk <Esc>
 
 set relativenumber
+
+" By setting visual bell, we can silence IdeaVim's sound bell
+set visualbell
 

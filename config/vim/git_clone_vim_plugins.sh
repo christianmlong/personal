@@ -8,8 +8,11 @@ git clone git://github.com/tpope/vim-repeat
 git clone git://github.com/tpope/vim-sensible
 git clone git://github.com/tpope/vim-surround
 git clone git://github.com/tpope/vim-unimpaired
+git clone git://github.com/tpope/vim-characterize
 
-git clone git@github.com:bling/vim-airline.git
+git clone git@github.com:vim-airline/vim-airline.git
+git clone git@github.com:vim-airline/vim-airline-themes.git
+
 git clone git@github.com:ctrlpvim/ctrlp.vim.git
 # git clone git@github.com:jeetsukumaran/vim-buffergator.git
 
@@ -28,8 +31,11 @@ git clone https://github.com/sirver/ultisnips
 git clone https://github.com/honza/vim-snippets.git
 
 
-git clone https://github.com/sjl/gundo.vim.git
-git clone git@github.com:KabbAmine/zeavim.vim.git
+# git clone https://github.com/sjl/gundo.vim.git
+# git clone git@github.com:KabbAmine/zeavim.vim.git
 
 git clone git://github.com/AndrewRadev/linediff.vim.git
+
+# Ansible file support (YAML, Jinja2, hosts file)
+git clone git@github.com:pearofducks/ansible-vim.git
 

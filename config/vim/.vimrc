@@ -99,10 +99,10 @@ function! FixWhiteSpace()
     call cursor(l, c)
 endfunction
 nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
-autocmd FileType python,javascript,text,sql autocmd FileWritePre    * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql autocmd FileAppendPre   * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql autocmd FilterWritePre  * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql autocmd BufWritePre     * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini autocmd FileWritePre    * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini autocmd FileAppendPre   * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini autocmd FilterWritePre  * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini autocmd BufWritePre     * :call FixWhiteSpace()
 
 " Enable spellcheck
 set spelllang=en_us
@@ -159,6 +159,8 @@ let g:ctrlp_custom_ignore = {
 " control. It also supports works with .svn, .hg, .bzr.
 let g:ctrlp_working_path_mode = 'r'
 
+let g:ctrlp_max_history = 10000
+
 " Use a leader instead of the actual named binding
 nmap <leader>p :CtrlP<cr>
 
@@ -168,7 +170,7 @@ nmap <leader>bm :CtrlPMRU<cr>
 
 " Don't inlcude temp files in Ctrl-P MRU
 " let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_mruf_exclude = '/var/folders/gh/.*|/private/var/folders/gh/.*|/usr/local/share/vim/.*'
+let g:ctrlp_mruf_exclude = '/var/folders/gh/*|/private/var/folders/gh/*|/usr/local/share/vim/*'
 
 " Open multiple files as hidden buffers
 let g:ctrlp_open_multiple_files = 'i'
@@ -269,7 +271,9 @@ augroup END
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Preview markdown file in Marked
-nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
+" nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
+" nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr>
+nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr><cr>
 
 " " Use the system clipboard
 " set clipboard=unnamed
@@ -302,5 +306,15 @@ inoremap <S-Tab> <C-d>
 
 " Easily close a buffer without closing the split
 " http://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
-nnoremap <leader><C-c> :bp\|bd #<CR>
+nnoremap <leader><C-d> :bp\|bd #<CR>
 
+" Swap Ctrl-i and Ctrl-o
+" Set Ctrl-o to be Forward and Ctrl-I to be Back
+:nnoremap <C-I> <C-O>
+:nnoremap <C-O> <C-I>
+
+" Show the commands as they are being typed.
+" Something above is setting this to noshowcmd, but
+" I'm not sure what. Anyway, set it to showcmd here
+" at the end to override what is being set above.
+set showcmd
