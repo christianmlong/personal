@@ -79,3 +79,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
 
+
+# I'm not sure where this perl path manipulation came from
+# I think I did a bla_bla >> ~/.bashrc at some point.
+# Anyway, I'm commenting it out and we'll see what breaks.
+# PATH="/Users/chlong2/perl5/bin${PATH+:}${PATH}"; export PATH;
+# PERL5LIB="/Users/chlong2/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/Users/chlong2/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/Users/chlong2/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/Users/chlong2/perl5"; export PERL_MM_OPT;
