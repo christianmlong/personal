@@ -25,3 +25,6 @@ ln -s ~/projects/public-personal/config/virtualenv/postmkvirtualenv ~/.virtualen
 ln -s ~/projects/public-personal/config/virtualenv/dev_requirements.txt ~/.virtualenvs/dev_requirements.txt
 
 ln -s ~/projects/public-personal/config/python/.pdbrc.py ~/.pdbrc.py
+
+mkdir -p ~/.config/yapf
+ln -s ~/projects/public-personal/config/python/yapf ~/.config/yapf/style
