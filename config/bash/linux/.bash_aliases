@@ -43,9 +43,20 @@ alias nbp='new_blog_post'
 function tmux_sync_env
 {
     ssh_auth_sock=`tmux showenv | grep "^SSH_AUTH_SOCK"`
+    if [ -n "$ssh_auth_sock" ]
+    then
+        export ${ssh_auth_sock}
+    else
+        echo "SSH_AUTH_SOCK is empty"
+    fi
+
     ssh_connection=`tmux showenv | grep "^SSH_CONNECTION"`
-    export ${ssh_auth_sock}
-    export "${ssh_connection}"
+    if [ -n "$ssh_connection" ]
+    then
+        export ${ssh_connection}
+    else
+        echo "SSH_CONNECTION is empty"
+    fi
 }
 alias tse='tmux_sync_env'
 
