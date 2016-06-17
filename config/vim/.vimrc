@@ -222,7 +222,10 @@ let g:ctrlp_mruf_exclude_nomod = 1
 
 
 " Gundo plugin
-map <leader>g :GundoToggle<CR>
+map <leader>u :GundoToggle<CR>
+
+" Fugitive plugin
+map <leader>g :Gstatus<CR>
 
 " Trigger UltiSnips configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
