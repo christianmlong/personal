@@ -20,6 +20,11 @@ ln -s ~/projects/public-personal/config/vim/.vimrc_common ~/.vimrc_common
 ln -s ~/projects/public-personal/config/vim/git_clone_vim_plugins.sh ~/.vim/bundle/git_clone_vim_plugins.sh
 ln -s ~/projects/public-personal/config/vim/git_pull_all.sh ~/.vim/bundle/git_pull_all.sh
 
+ln -s ~/projects/public-personal/config/vim/after ~/.vim/after
+ln -s ~/projects/public-personal/config/vim/ftplugin ~/.vim/ftplugin
+ln -s ~/projects/public-personal/config/vim/spell ~/.vim/spell
+
+
 mkdir -p ~/.virtualenvs
 ln -s ~/projects/public-personal/config/virtualenv/postmkvirtualenv ~/.virtualenvs/postmkvirtualenv
 ln -s ~/projects/public-personal/config/virtualenv/dev_requirements.txt ~/.virtualenvs/dev_requirements.txt

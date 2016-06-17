@@ -18,4 +18,3 @@ nnoremap <leader>d :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/pu
 
 " Save current file, then run it with Fabric
 nnoremap <leader>f :execute ':w' \| !fab %<cr>
-
