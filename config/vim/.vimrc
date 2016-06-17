@@ -104,6 +104,10 @@ autocmd FileType python,javascript,text,sql,dosini autocmd FileAppendPre   * :ca
 autocmd FileType python,javascript,text,sql,dosini autocmd FilterWritePre  * :call FixWhiteSpace()
 autocmd FileType python,javascript,text,sql,dosini autocmd BufWritePre     * :call FixWhiteSpace()
 
+" Get the last word on fixing Python indentation so it doesn't indet
+" spuriously on every darn colon.
+autocmd FileType python setlocal indentkeys-=<:>
+
 " Enable spellcheck
 set spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
