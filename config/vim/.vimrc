@@ -114,6 +114,16 @@ autocmd FileType gitcommit setlocal spell
 " Word-completion from the spelling dictionary
 " set complete+=kspell
 
+" Only use one space after a period when wrapping text using J or gq
+" http://stackoverflow.com/questions/4760428/how-can-i-make-vims-j-and-gq-commands-use-one-space-after-a-period
+"
+" Possible counterargument: Using two spaces makes it easier for vim to find
+" the real end of a sentence that contains a sentence-like structure inside
+" it. Set cpo+=J in .vimrc to tell vim you are using two spaces at the end of
+" sentences.
+" http://stevelosh.com/blog/2012/10/why-i-two-space/
+:set nojoinspaces
+
 " vim-airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
