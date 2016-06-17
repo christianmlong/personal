@@ -49,7 +49,7 @@
     # of local branches on top of the new commits.
     #
     # Usage:
-    # git float branch1 branch2 branch3
+    # git float [--no-merge] branch1 branch2 branch3
     #
     # It needs an environment variable set
     # export GIT_FLOAT_BASE_BRANCH=<your branch name here>
