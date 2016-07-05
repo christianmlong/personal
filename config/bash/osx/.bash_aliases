@@ -28,6 +28,8 @@ alias bumpversion_tag_and_release='cdproject && bumpversion release --tag && git
 alias gl='clear && git lnp'
 alias gll='git l'
 alias gs='git st'
+alias ga='git ap'
+alias gc='git ci -m'
 
 function make_change_dir
 {

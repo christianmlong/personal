@@ -20,6 +20,9 @@ alias copydot='~/projects/personal/util/python/copy_dot_files.py'
 alias drs='dirs -v'
 alias gitserve='git daemon --reuseaddr --base-path=. --export-all --verbose --enable=receive-pack'
 alias rnet='sudo ifdown eth1 && sudo ifup eth1'
+alias ga='git ap'
+alias gc='git ci -m'
+
 
 function make_change_dir
 {
