@@ -8,22 +8,60 @@
 [core]
 	editor = vim
 [alias]
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	st = status
-	co = checkout
-	ci = commit
+    # Just this branch
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    # Some branches
+    lols = log --graph --decorate --pretty=oneline --abbrev-commit --branches=*
+    # All branches and tags
+    l = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    # No pager
+    lnp = "!git --no-pager -c color.ui=always log --graph --decorate --pretty=oneline --abbrev-commit --all | head -n40"
+    st = status
+    co = checkout
+    ci = commit
+    cim = commit -m
+    wip = commit -m "wip"
     d = diff
+    dcw = diff --color-words
+    dcw2 = diff --color-words=.
     dt = difftool
     ds = diff --staged
+    dscw = diff --staged --color-words
+    dscw2 = diff --staged --color-words=.
+    dts = difftool --staged
+    mt = mergetool
+    rc = rebase --continue
     lsp = log --stat -p
+    # Diff with the upstream tracking branch (e.g. origin/<branch name>)
+    du = diff @{u}
+    ducw = diff --color-words @{u}
+    ducw2 = diff --color-words=. @{u}
+    dtu = difftool @{u}
+    # Force push to remote
+    pfu = push -f origin
+    bv = branch -a -vv
+
+    # This script "floats" any number of local branches
+    # on top of a chosen base branch. So, when the base
+    # branch gets updated, it will move your whole tree
+    # of local branches on top of the new commits.
+    #
+    # Usage:
+    # git float [--no-merge] branch1 branch2 branch3
+    #
+    # It needs an environment variable set
+    # export GIT_FLOAT_BASE_BRANCH=<your branch name here>
+    #
+    # See also my .bashrc, for a way to enable bash
+    # autocompletion for this custom alias.
+    float = "!/Users/chlong2/projects/public-personal/utilities/git/git_float.sh"
 
 # Reference for git up alias
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
-	up = "!git remote update -p; git merge --ff-only @{u}"
+    up = "!git fetch --all --prune; git merge --ff-only @{u}"
 
-	ap = add --patch
-	ff = merge --ff-only
+    ap = add --patch
+    ff = merge --ff-only
 
 # Find orphaned commits
 # Source: https://gist.github.com/matthewmccullough/988077
