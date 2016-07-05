@@ -16,5 +16,5 @@ nnoremap <leader>l :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/pu
 " Save current file, then run pylint on it, using the pylint-django plugin
 nnoremap <leader>d :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django %<cr>
 
-" Save current file, then run it with Fabric
-nnoremap <leader>f :execute ':w' \| !fab %<cr>
+" " Save current file, then run it with Fabric
+" nnoremap <leader>f :execute ':w' \| !fab %<cr>
