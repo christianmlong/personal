@@ -107,6 +107,7 @@ autocmd FileType python,javascript,text,sql,dosini autocmd BufWritePre     * :ca
 " Get the last word on fixing Python indentation so it doesn't indet
 " spuriously on every darn colon.
 autocmd FileType python setlocal indentkeys-=<:>
+autocmd FileType python setlocal indentkeys-=:
 
 " Enable spellcheck
 set spelllang=en_us
