@@ -65,10 +65,14 @@ export EDITOR=vi
 # Enable bash completion for pandoc
 eval "$(pandoc --bash-completion)"
 
-# Enable bash completion for my custom 'git float' alias
+# Enable bash completion for my custom 'git float' and 'git mfloat' aliases
 # Reference:
 # http://stackoverflow.com/questions/11466991/git-aliases-command-line-autocompletion-of-branch-names
 _git_float()
+{
+    _git_branch
+}
+_git_mfloat()
 {
     _git_branch
 }

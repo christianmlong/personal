@@ -30,6 +30,11 @@ alias gll='git l'
 alias gs='git st'
 alias ga='git ap'
 alias gc='git ci -m'
+alias gd='git d'
+alias gdt='git dt'
+alias gds='git ds'
+alias gdts='git dts'
+alias gm='git co alpha && git merge --no-ff'
 
 function make_change_dir
 {
