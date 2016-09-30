@@ -145,3 +145,5 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 	trustExitCode = true
+[hub]
+	host = github4-chn.cisco.com
