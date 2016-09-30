@@ -83,6 +83,11 @@ inoremap <F9> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
 " Make vim read .md files as Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" enable fenced code block syntax highlighting
+" Reference https://github.com/tpope/vim-markdown
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+
+
 function! FixWhiteSpace()
     " Save the cursor position for later
     let l = line(".")
