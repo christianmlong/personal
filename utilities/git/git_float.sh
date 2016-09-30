@@ -11,17 +11,20 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-DO_MERGE=true
+DO_MERGE=false
 DO_PULL_UPSTREAM=true
-# Note: The way this is written, you can't supply both --no-merge and
+# Note: The way this is written, you can't supply both --merge and
 # --no-pull-upstream options. If that becomes necessary, then we might look at
 # rewriting this in Python.
-if [ "$1" = "--no-merge" ]; then
-    DO_MERGE=false
+if [ "$1" = "--merge" ]; then
+    DO_MERGE=true
     shift
 elif [ "$1" = "--no-pull-upstream" ]; then
     DO_PULL_UPSTREAM=false
     shift
+elif [[ "$1" == --* ]]; then
+    echo "Unrecognized argument ${1}"
+    exit 1
 fi
 
 if [ $# -eq 0 ]; then
