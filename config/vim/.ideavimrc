@@ -20,3 +20,5 @@ set relativenumber
 " By setting visual bell, we can silence IdeaVim's sound bell
 set visualbell
 
+" Enable "surround" movements cs'" ysiw) etc.
+set surround
