@@ -63,6 +63,8 @@
     up = "!git fetch --all --prune; git merge --ff-only @{u}"
 
     ap = add --patch
+    # Use word diff when doing add --patch
+    apw = -c interactive.diffFilter=\"git diff --color-words\" add --patch
     ff = merge --ff-only
 
 # Find orphaned commits
