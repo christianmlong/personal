@@ -72,10 +72,6 @@ _git_float()
 {
     _git_branch
 }
-_git_mfloat()
-{
-    _git_branch
-}
 
 
 # virtualenvwrapper setup
