@@ -8,18 +8,20 @@ INTEGRATION_BRANCH=local_integration
 
 DO_MERGE=false
 DO_PULL_UPSTREAM=true
-# Note: The way this is written, you can't supply both --merge and
-# --no-pull-upstream options. If that becomes necessary, then we might look at
-# rewriting this in Python.
-if [ "$1" = "--merge" ]; then
-    DO_MERGE=true
-    shift
-elif [ "$1" = "--no-pull-upstream" ]; then
-    DO_PULL_UPSTREAM=false
-    shift
-elif [[ "$1" == --* ]]; then
-    echo "Unrecognized argument ${1}"
-    exit 1
+if [ $# -ne 0 ]; then
+    # Note: The way this is written, you can't supply both --merge and
+    # --no-pull-upstream options. If that becomes necessary, then we might look
+    # at rewriting this in Python.
+    if [ "$1" = "--merge" ]; then
+        DO_MERGE=true
+        shift
+    elif [ "$1" = "--no-pull-upstream" ]; then
+        DO_PULL_UPSTREAM=false
+        shift
+    elif [[ "$1" == --* ]]; then
+        echo "Unrecognized argument ${1}"
+        exit 1
+    fi
 fi
 
 if [ $# -eq 0 ]; then
