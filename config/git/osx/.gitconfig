@@ -9,6 +9,9 @@
 [core]
 	editor = vim
 	excludesfile = /Users/chlong2/.gitignore_global
+    # Don't complain about extra blank lines at the
+    # end of a file.
+    whitespace = -blank-at-eof
 [alias]
     # Just this branch
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
