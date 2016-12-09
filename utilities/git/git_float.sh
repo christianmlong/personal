@@ -3,7 +3,7 @@
 set -e
 set -u
 
-CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 INTEGRATION_BRANCH=local_integration
 
 if [ $# -eq 0 ]; then
