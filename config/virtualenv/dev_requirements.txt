@@ -6,6 +6,7 @@ bumpversion
 pip
 setuptools
 wheel
+when-changed
 
 #tox
 #coverage
