@@ -37,6 +37,7 @@ alias gdts='git dts'
 alias gm='~/projects/public-personal/utilities/git/git_alphamerge.sh'
 alias gu='git up'
 alias ag="ag --color-match '35'"
+alias shove_it='~/projects/public-personal/utilities/git/git_alphamerge.sh && git push origin alpha:alpha alpha:s2 && git float'
 
 function make_change_dir
 {
