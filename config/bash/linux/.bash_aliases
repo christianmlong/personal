@@ -25,6 +25,7 @@ alias gll='git l'
 alias gs='git st'
 alias ga='git ap'
 alias gc='git ci -m'
+alias gu='git up'
 
 
 function make_change_dir
