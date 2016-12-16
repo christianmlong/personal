@@ -324,6 +324,9 @@ nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr><cr>
 " Disable full-screen ex mode
 nnoremap Q <nop>
 
+" Disable tab key in normal mode
+nnoremap <Tab> <nop>
+
 " Shift-tab dedents
 inoremap <S-Tab> <C-d>
 

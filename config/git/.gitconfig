@@ -7,9 +7,19 @@
 	default = matching
 [core]
 	editor = vim
+    # Don't complain about extra blank lines at the
+    # end of a file.
+    whitespace = -blank-at-eof
 [alias]
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    # Just this branch
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    # Some branches
+    lols = log --graph --decorate --pretty=oneline --abbrev-commit --branches=*
+    # All branches and tags
+    l = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    # No pager
+    lnp = "!git --no-pager -c color.ui=always log --graph --decorate --pretty=oneline --abbrev-commit --all | head -n40"
+
 	st = status
 	co = checkout
 	ci = commit
@@ -20,10 +30,11 @@
 
 # Reference for git up alias
 # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
-	up = "!git remote update -p; git merge --ff-only @{u}"
+    up = "!git fetch --all --prune; git merge --ff-only @{u}"
 
 	ap = add --patch
 	ff = merge --ff-only
+    bv = branch -a -vv
 
 # Find orphaned commits
 # Source: https://gist.github.com/matthewmccullough/988077
