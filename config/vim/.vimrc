@@ -103,7 +103,7 @@ function! FixWhiteSpace()
     " Restore the previous cursor position
     call cursor(l, c)
 endfunction
-nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
+nnoremap <silent> <Leader>ws :call FixWhiteSpace()<CR>
 autocmd FileType python,javascript,text,sql,dosini autocmd FileWritePre    * :call FixWhiteSpace()
 autocmd FileType python,javascript,text,sql,dosini autocmd FileAppendPre   * :call FixWhiteSpace()
 autocmd FileType python,javascript,text,sql,dosini autocmd FilterWritePre  * :call FixWhiteSpace()
