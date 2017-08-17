@@ -1,0 +1,33 @@
+# Representation of the graph for puzzle 1, in adajcency format.
+# https://networkx.readthedocs.io/en/stable/reference/readwrite.adjlist.html
+#
+# The graph looks like this:
+#
+#   a-b-c
+#   |   |
+# d-e-f-g-h
+# | | | | |
+# i-j-k-l-m
+# | | | | |
+# n-o-p-q-r
+#   | | |
+#   s-t-u
+
+
+a b e
+b c
+c g
+d i e
+e f j
+f g k
+g h l
+h m
+i j n
+j k o
+k l p
+l m q
+m r
+n o
+o p s
+p q t
+q r u
