@@ -1,5 +1,5 @@
-alias l='ls -alF'
-alias ll='ls -alFrth'
+alias l='ls -alF --color=always'
+alias ll='ls -alFrth --color=always'
 alias cdv='cdvirtualenv'
 alias cdsp='cdsitepackages'
 alias cdp='cdproject'
