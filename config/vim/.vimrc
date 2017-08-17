@@ -193,7 +193,7 @@ nmap <leader>bm :CtrlPMRU<cr>
 
 " Don't inlcude temp files in Ctrl-P MRU
 " let g:ctrlp_mruf_exclude = '/tmp/.*\|/temp/.*'
-let g:ctrlp_mruf_exclude = '/var/folders/gh/*|/private/var/folders/gh/*|/usr/local/share/vim/*'
+let g:ctrlp_mruf_exclude = '/var/folders/*|/private/var/folders/*|/usr/local/share/vim/*'
 
 " Open multiple files as hidden buffers
 let g:ctrlp_open_multiple_files = 'i'
