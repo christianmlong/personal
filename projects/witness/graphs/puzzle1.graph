@@ -12,8 +12,9 @@
 # n-o-p-q-r
 #   | | |
 #   s-t-u
-
-
+#
+#
+# Note: there can be no blank lines in this file. Otherwise, you get a pop from empty list error.
 a b e
 b c
 c g
