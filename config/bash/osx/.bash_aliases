@@ -114,7 +114,7 @@ alias cookie='new_project_from_cookiecutter'
 # Publish gist to Cisco Github Enterprise
 function cisco_gist
 {
-    export GITHUB_URL='https://tip-github-1.cisco.com/'
+    export GITHUB_URL='https://github4-chn.cisco.com/'
     gist "$@"
     unset GITHUB_URL
 }
