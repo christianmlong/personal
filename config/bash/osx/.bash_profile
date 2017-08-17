@@ -18,3 +18,7 @@ export TNS_ADMIN=$ORACLE_HOME/network/admin
 
 # Homebrew sbin setup
 export PATH="/usr/local/sbin:$PATH"
+
+# Homebrew python setup
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
