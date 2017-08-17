@@ -1,12 +1,14 @@
 pylint
 pytest
-ipython
-ipdb
 bumpversion
 pip
 setuptools
 wheel
 when-changed
+yapf
+pylint-django
+fabric
+pdbpp
 
 #tox
 #coverage
@@ -15,4 +17,5 @@ when-changed
 #coveralls
 #hypothesis
 #flake8
-#pdbpp
+#ipdb
+#ipython

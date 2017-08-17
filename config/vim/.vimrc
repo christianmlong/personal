@@ -103,7 +103,7 @@ function! FixWhiteSpace()
     " Restore the previous cursor position
     call cursor(l, c)
 endfunction
-nnoremap <silent> <Leader>fws :call FixWhiteSpace()<CR>
+nnoremap <silent> <Leader>ws :call FixWhiteSpace()<CR>
 autocmd FileType python,javascript,text,sql,dosini autocmd FileWritePre    * :call FixWhiteSpace()
 autocmd FileType python,javascript,text,sql,dosini autocmd FileAppendPre   * :call FixWhiteSpace()
 autocmd FileType python,javascript,text,sql,dosini autocmd FilterWritePre  * :call FixWhiteSpace()
@@ -344,3 +344,12 @@ nnoremap <leader><C-d> :bp\|bd #<CR>
 " I'm not sure what. Anyway, set it to showcmd here
 " at the end to override what is being set above.
 set showcmd
+
+" Use ag with ack.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev ag Ack
+nmap <leader>f :Ack -ws<space>
+nmap <leader>F :Ack<space>
+

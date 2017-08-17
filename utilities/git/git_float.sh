@@ -89,7 +89,7 @@ if [ "$DO_MERGE" = "true" ]; then
     done
     printf '\n'
 
-    git merge --no-ff --no-edit "$BRANCHES"
+    git merge --no-ff --no-edit $BRANCHES
 fi
 
 git co "$CURRENT_BRANCH"
