@@ -327,9 +327,6 @@ nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr><cr>
 " Disable full-screen ex mode
 nnoremap Q <nop>
 
-" Disable tab key in normal mode
-nnoremap <Tab> <nop>
-
 " Shift-tab dedents
 inoremap <S-Tab> <C-d>
 
@@ -341,6 +338,17 @@ nnoremap <leader><C-d> :bp\|bd #<CR>
 " Set Ctrl-o to be Forward and Ctrl-I to be Back
 :nnoremap <C-I> <C-O>
 :nnoremap <C-O> <C-I>
+
+" Disable tab key in normal mode
+"
+" Note: There is no way to disable the tab key and still keep the behavior of
+" Ctrl-I. Vim can not distinguish between Tab and Ctrl-I, because the terminal
+" sends vim the same bytes for both actions.
+" https://stackoverflow.com/questions/14641942/how-to-unmap-tab-and-do-not-make-ctrl-i-invalid-in-vim
+" https://superuser.com/questions/770068/in-vim-how-can-i-remap-tab-without-also-remapping-ctrli
+" https://groups.google.com/forum/#!topic/vim_use/DtAa014x0Z4
+" https://groups.google.com/forum/#!topic/vim_dev/Ym6D-kWIsyo
+" nnoremap <Tab> <nop>
 
 " Show the commands as they are being typed.
 " Something above is setting this to noshowcmd, but
