@@ -16,19 +16,22 @@
 #
 # Note: there can be no blank lines in this file. Otherwise, you get a pop from empty list error.
 a b e
-b c
-c g
+b a c
+c b g
 d i e
-e f j
-f g k
-g h l
-h m
-i j n
-j k o
-k l p
-l m q
-m r
-n o
-o p s
-p q t
-q r u
+e a d f j
+f e g k
+g c f h l
+h g m
+i d j n
+j e i k o
+k f j l p
+l g k m q
+m h l r
+n i o
+o n j p s
+p k o q t
+q p l r u
+s o t
+t s p u
+u t q
