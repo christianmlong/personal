@@ -168,11 +168,14 @@ set wildignore+=*.pyc
 
 " Settings for Ctrl-P
 "
+
+" Use .gitignore as the source of what files to ignore.
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+"   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+" \}
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
