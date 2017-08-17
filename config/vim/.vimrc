@@ -364,3 +364,5 @@ cnoreabbrev ag Ack
 nmap <leader>f :Ack -ws<space>
 nmap <leader>F :Ack<space>
 
+" Tell vim-rhubarb about enterprise github
+let g:github_enterprise_urls = ['https://github4-chn.cisco.com']

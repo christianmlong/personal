@@ -5,6 +5,7 @@ git clone git://github.com/altercation/vim-colors-solarized
 
 git clone git://github.com/tpope/vim-commentary
 git clone git://github.com/tpope/vim-fugitive
+git clone git://github.com/tpope/vim-rhubarb
 git clone git://github.com/tpope/vim-repeat
 git clone git://github.com/tpope/vim-sensible
 git clone git://github.com/tpope/vim-surround
