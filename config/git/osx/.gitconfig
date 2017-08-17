@@ -143,10 +143,10 @@
 # 	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 # 	trustExitCode = true
 [difftool "sourcetree"]
-	cmd = "export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
+	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
 	path =
 [mergetool "sourcetree"]
-	cmd = "export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\""
+	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\""
 	trustExitCode = true
 [hub]
 	host = github4-chn.cisco.com
