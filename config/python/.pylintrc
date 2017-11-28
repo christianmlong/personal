@@ -90,6 +90,30 @@ score=yes
 max-nested-blocks=5
 
 
+[LOGGING]
+
+# Logging modules to check that the string format arguments are in logging
+# function parameter format
+logging-modules=logging
+
+
+[SPELLING]
+
+# Spelling dictionary name. Available dictionaries: none. To make it working
+# install python-enchant package.
+spelling-dict=
+
+# List of comma separated words that should not be checked.
+spelling-ignore-words=
+
+# A path to a file that contains private dictionary; one word per line.
+spelling-private-dict-file=
+
+# Tells whether to store unknown words to indicated private dictionary in
+# --spelling-private-dict-file option instead of raising a message.
+spelling-store-unknown-words=no
+
+
 [BASIC]
 
 # Naming hint for argument names
@@ -215,13 +239,6 @@ single-line-class-stmt=no
 single-line-if-stmt=no
 
 
-[LOGGING]
-
-# Logging modules to check that the string format arguments are in logging
-# function parameter format
-logging-modules=logging
-
-
 [MISCELLANEOUS]
 
 # List of note tags to take in consideration, separated by a comma.
@@ -241,23 +258,6 @@ ignore-imports=no
 
 # Minimum lines number of a similarity.
 min-similarity-lines=12
-
-
-[SPELLING]
-
-# Spelling dictionary name. Available dictionaries: none. To make it working
-# install python-enchant package.
-spelling-dict=
-
-# List of comma separated words that should not be checked.
-spelling-ignore-words=
-
-# A path to a file that contains private dictionary; one word per line.
-spelling-private-dict-file=
-
-# Tells whether to store unknown words to indicated private dictionary in
-# --spelling-private-dict-file option instead of raising a message.
-spelling-store-unknown-words=no
 
 
 [TYPECHECK]
