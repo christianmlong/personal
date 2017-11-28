@@ -9,7 +9,6 @@ echo Auto-merge in to branch $GIT_FLOAT_BASE_BRANCH
 
 if [[
     ${CURRENT_BRANCH} == 'alpha'
-    || ${CURRENT_BRANCH} == 's2'
     || ${CURRENT_BRANCH} == 'stage'
     || ${CURRENT_BRANCH} == 'master'
     || ${CURRENT_BRANCH} == 'dev'
@@ -23,3 +22,5 @@ fi
 git co $GIT_FLOAT_BASE_BRANCH
 git merge --no-ff --no-edit $CURRENT_BRANCH
 git branch -d $CURRENT_BRANCH
+git push origin $GIT_FLOAT_BASE_BRANCH:$GIT_FLOAT_BASE_BRANCH
+git float
