@@ -337,22 +337,6 @@ variable-name-hint=[a-z_][a-z0-9_]{2,30}$
 variable-rgx=[a-z_][a-z0-9_]{1,50}$
 
 
-[CLASSES]
-
-# List of method names used to declare (i.e. assign) instance attributes.
-defining-attr-methods=__init__,__new__,setUp
-
-# List of member names, which should be excluded from the protected access
-# warning.
-exclude-protected=_asdict,_fields,_replace,_source,_make
-
-# List of valid names for the first argument in a class method.
-valid-classmethod-first-arg=cls
-
-# List of valid names for the first argument in a metaclass class method.
-valid-metaclass-classmethod-first-arg=mcs
-
-
 [DESIGN]
 
 # Maximum number of arguments for function / method
@@ -384,6 +368,22 @@ max-statements=250
 
 # Minimum number of public methods for a class (see R0903).
 min-public-methods=1
+
+
+[CLASSES]
+
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,__new__,setUp
+
+# List of member names, which should be excluded from the protected access
+# warning.
+exclude-protected=_asdict,_fields,_replace,_source,_make
+
+# List of valid names for the first argument in a class method.
+valid-classmethod-first-arg=cls
+
+# List of valid names for the first argument in a metaclass class method.
+valid-metaclass-classmethod-first-arg=mcs
 
 
 [IMPORTS]
