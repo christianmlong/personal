@@ -200,9 +200,8 @@ callbacks=cb_,_cb
 # not used).
 dummy-variables-rgx=^ignore_
 
-# Argument names that match this expression will be ignored. Default to name
-# with leading underscore
-ignored-argument-names=_.*
+# Argument names that match this expression will be ignored.
+ignored-argument-names=^ignore_
 
 # Tells whether we should check for unused import in __init__ files.
 init-import=yes
