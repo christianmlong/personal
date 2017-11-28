@@ -1,4 +1,5 @@
 alias l='ls -alF'
+alias ll='ls -alFrth'
 alias cdv='cdvirtualenv'
 alias cdsp='cdsitepackages'
 alias cdp='cdproject'
