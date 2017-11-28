@@ -150,3 +150,4 @@
 	trustExitCode = true
 [hub]
 	host = github4-chn.cisco.com
+	host = wwwin-github.cisco.com
