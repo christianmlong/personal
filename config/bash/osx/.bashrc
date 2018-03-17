@@ -75,7 +75,6 @@ _git_float()
 
 
 # virtualenvwrapper setup
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
