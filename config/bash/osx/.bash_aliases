@@ -8,7 +8,6 @@ alias ...='cd ../..'
 alias o='less -R'
 alias psw='ps -efww'
 alias du='ncdu'
-alias top='sudo htop'
 alias off='sudo shutdown -h now && exit'
 alias reboot='sudo shutdown -r now && exit'
 alias gitinfo='~/projects/personal/util/bash/git-info.sh'
@@ -37,9 +36,9 @@ alias gdts='git dts'
 alias gu='git up'
 alias ag="ag --color --color-match '35'"
 alias shove_it='git diff-index --quiet HEAD -- &&  ~/projects/public-personal/utilities/git/git_megamerge.sh || echo "Commit changes first"'
-alias punch_it='git diff-index --quiet HEAD -- && ( ~/projects/public-personal/utilities/git/git_checkout_before_tagging.sh && bumpversion_tag_and_release && bumpversion patch && git push origin alpha:alpha && git float ) || echo "Commit changes first"'
-alias ship_it='git diff-index --quiet HEAD -- && ( git push origin $(git describe --tags --abbrev=0):stage && git push origin $(git describe --tags --abbrev=0):master ) || echo "Commit changes first"'
-alias run_local_tests='pytest --duration=10 -m "not glacial_test and not really_slow_test" -n auto -r w --ds=ciam.web.settings.local_test'
+alias punch_it='git diff-index --quiet HEAD -- && ( ~/projects/public-personal/utilities/git/git_checkout_before_tagging.sh && bumpversion_tag_and_release && bumpversion micro && git push origin alpha:alpha && git float ) || echo "Commit changes first"'
+alias ship_it='git diff-index --quiet HEAD -- && git push origin $(git describe --tags --abbrev=0):master || echo "Commit changes first"'
+alias run_local_tests='py.test --duration=10 -m "not glacial_test and not really_slow_test" -n auto -r w --ds=ciam.web.settings.local_test'
 
 function make_change_dir
 {

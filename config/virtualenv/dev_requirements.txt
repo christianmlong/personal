@@ -1,13 +1,16 @@
 attrs
 bumpversion
 fabric
-jupyter
+pandas
 pandas-profiling
 pdbpp
 pip
 pylint
 pylint-django
 pytest
+pytest-django
+requests
+requests[security]
 setuptools
 wheel
 when-changed
@@ -20,6 +23,6 @@ yapf
 #hypothesis
 #ipdb
 #ipython
-#pytest-django
-#requests[security]
+#jupyter
+#qgrid
 #tox

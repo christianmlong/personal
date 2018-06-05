@@ -16,6 +16,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>CopySelection</key>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>51FC70A1-A6FF-4721-AF7B-05655491B650</string>
 	<key>DoubleClickPerformsSmartSelection</key>
@@ -64,8 +66,10 @@
 	<key>NSFontPanelSizeSliderParams</key>
 	<string>2 0 100</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/projects/public-personal/config/iterm2/big_mac</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
@@ -111,18 +115,20 @@
 	<string>760 804 400 129 0 0 1920 1200 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 607 620 392 0 0 1920 1200 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 139 606 456 0 0 1920 1178 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>469 206 796 473 0 0 1920 1178 </string>
+	<string>469 147 1016 502 0 0 1920 1200 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1920 1200 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>95 93 1130 747 0 0 1440 878 </string>
+	<string>2 424 1130 747 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>106 40 1290 837 0 0 1440 877 </string>
+	<string>2 8 955 1163 0 0 1920 1178 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>1 39 1290 837 0 0 1440 877 </string>
+	<string>4 354 1130 747 0 0 1920 1178 </string>
 	<key>NeverWarnAboutShortLivedSessions_51FC70A1-A6FF-4721-AF7B-05655491B650</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_51FC70A1-A6FF-4721-AF7B-05655491B650_selection</key>
@@ -701,7 +707,7 @@
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Rows</key>
 			<integer>45</integer>
 			<key>Screen</key>
@@ -1403,7 +1409,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>35516387-9213-4128-9753-DE79D9C9256D</string>
 	<key>NoSyncLastTipTime</key>
-	<real>458165294.63134199</real>
+	<real>540508207.16466999</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1414,6 +1420,21 @@
 	<real>466010522.69086301</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
+	<key>NoSyncTipsToNotShow</key>
+	<array>
+		<string>000</string>
+		<string>0000</string>
+		<string>0000</string>
+		<string>0001</string>
+		<string>0002</string>
+		<string>0003</string>
+		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+		<string>0007</string>
+	</array>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>

@@ -1,9 +1,13 @@
 
+# I used Homebrew to install the GNU Utilities. Put them first in the PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/share/man:$MANPATH"
+
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 
-# Jenv (Java Environment) setup
+# Jenv setup
 if which jenv &> /dev/null; then
     export JENV_ROOT=/usr/local/var/jenv
     eval "$(jenv init -)"
@@ -16,9 +20,11 @@ export PATH=$PATH:$ORACLE_HOME
 export TNS_ADMIN=$ORACLE_HOME/network/admin
 # export TNS_ADMIN=$ORACLE_HOME
 
-# Homebrew sbin setup
+# Homebrew path setup
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # Homebrew python setup
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python@2/bin:$PATH"
 
+# Pyenv setup

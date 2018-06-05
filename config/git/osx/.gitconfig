@@ -12,6 +12,8 @@
     # Don't complain about extra blank lines at the
     # end of a file.
     whitespace = -blank-at-eof
+	; pager = diff-so-fancy | less --tabs=4 -RFX
+
 [alias]
     # Just this branch
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -27,24 +29,25 @@
     cim = commit -m
     wip = commit -m "wip"
     d = diff
-    dcw = diff --color-words
-    dcw2 = diff --color-words=.
+    # dcw = diff --color-words
+    # dcw2 = diff --color-words=.
     dt = difftool
     ds = diff --staged
-    dscw = diff --staged --color-words
-    dscw2 = diff --staged --color-words=.
+    # dscw = diff --staged --color-words
+    # dscw2 = diff --staged --color-words=.
     dts = difftool --staged
     mt = mergetool
     rc = rebase --continue
     lsp = log --stat -p
     # Diff with the upstream tracking branch (e.g. origin/<branch name>)
     du = diff @{u}
-    ducw = diff --color-words @{u}
-    ducw2 = diff --color-words=. @{u}
+    # ducw = diff --color-words @{u}
+    # ducw2 = diff --color-words=. @{u}
     dtu = difftool @{u}
     # Force push to remote
     pfu = push -f origin
     bv = branch -a -vv
+    cp = cherry-pick
 
     # This script "floats" any number of local branches
     # on top of a chosen base branch. So, when the base
@@ -144,10 +147,12 @@
 # 	trustExitCode = true
 [difftool "sourcetree"]
 	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\""
 	trustExitCode = true
 [hub]
 	host = github4-chn.cisco.com
 	host = wwwin-github.cisco.com
+[commit]
+	template = /Users/chlong2/.stCommitMsg

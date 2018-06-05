@@ -236,6 +236,7 @@ let g:ctrlp_mruf_exclude_nomod = 1
 
 " Gundo plugin
 map <leader>u :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 
 " Fugitive plugin
 map <leader>g :Gstatus<CR>
@@ -295,11 +296,6 @@ augroup END
 " nearest spelling error, fix it automatically, and return to the place I was
 " editing.
 inoremap <c-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-" Preview markdown file in Marked
-" nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
-" nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr>
-nnoremap <leader>m :!open -a Marked\ 2.app '%:p'<cr><cr>
 
 " " Use the system clipboard
 " set clipboard=unnamed

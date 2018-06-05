@@ -3,15 +3,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Brew path
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-# GNU Utilities
-# I used Homebrew to install the GNU Utilities. Put them first in the PATH
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:/usr/local/opt/findutils/share/man:$MANPATH"
-
 # From Unix & Linux Stack Exchange
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
 export HISTCONTROL=ignoreboth:erasedups  # no duplicate entries, don't remember commands that start with space
@@ -75,16 +66,15 @@ _git_float()
 
 
 # virtualenvwrapper setup
+
+# This is using the sitewide installation of Python 2.7.14 (from Homebrew) to
+# run the virtualenv automation.
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python
+
+# All new virtualenvs will be Python 3 by default.
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--python=python3'
+
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
+
 source /usr/local/bin/virtualenvwrapper.sh
-
-
-# I'm not sure where this perl path manipulation came from
-# I think I did a bla_bla >> ~/.bashrc at some point.
-# Anyway, I'm commenting it out and we'll see what breaks.
-# PATH="/Users/chlong2/perl5/bin${PATH+:}${PATH}"; export PATH;
-# PERL5LIB="/Users/chlong2/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/Users/chlong2/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/Users/chlong2/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/Users/chlong2/perl5"; export PERL_MM_OPT;
