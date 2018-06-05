@@ -438,55 +438,6 @@ variable-naming-style=snake_case
 # naming-style
 #variable-rgx=
 
-[DESIGN]
-
-# Maximum number of arguments for function / method
-max-args=10
-
-# Maximum number of attributes for a class (see R0902).
-max-attributes=15
-
-# Maximum number of boolean expressions in a if statement
-max-bool-expr=5
-
-# Maximum number of branch for function / method body
-max-branches=20
-
-# Maximum number of locals for function / method body
-max-locals=35
-
-# Maximum number of parents for a class (see R0901).
-max-parents=7
-
-# Maximum number of public methods for a class (see R0904).
-max-public-methods=40
-
-# Maximum number of return / yield for function / method body
-max-returns=6
-
-# Maximum number of statements in function / method body
-max-statements=250
-
-# Minimum number of public methods for a class (see R0903).
-min-public-methods=1
-
-
-[CLASSES]
-
-# List of method names used to declare (i.e. assign) instance attributes.
-defining-attr-methods=__init__,__new__,setUp
-
-# List of member names, which should be excluded from the protected access
-# warning.
-exclude-protected=_asdict,_fields,_replace,_source,_make
-
-# List of valid names for the first argument in a class method.
-valid-classmethod-first-arg=cls
-
-# List of valid names for the first argument in a metaclass class method.
-valid-metaclass-classmethod-first-arg=mcs
-
-
 [IMPORTS]
 
 # Allow wildcard imports from modules that define __all__.
@@ -518,6 +469,55 @@ known-standard-library=
 
 # Force import order to recognize a module as part of a third party library.
 known-third-party=enchant
+
+
+[CLASSES]
+
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,__new__,setUp
+
+# List of member names, which should be excluded from the protected access
+# warning.
+exclude-protected=_asdict,_fields,_replace,_source,_make
+
+# List of valid names for the first argument in a class method.
+valid-classmethod-first-arg=cls
+
+# List of valid names for the first argument in a metaclass class method.
+valid-metaclass-classmethod-first-arg=mcs
+
+
+[DESIGN]
+
+# Maximum number of arguments for function / method
+max-args=10
+
+# Maximum number of attributes for a class (see R0902).
+max-attributes=15
+
+# Maximum number of boolean expressions in a if statement
+max-bool-expr=5
+
+# Maximum number of branch for function / method body
+max-branches=20
+
+# Maximum number of locals for function / method body
+max-locals=35
+
+# Maximum number of parents for a class (see R0901).
+max-parents=7
+
+# Maximum number of public methods for a class (see R0904).
+max-public-methods=40
+
+# Maximum number of return / yield for function / method body
+max-returns=6
+
+# Maximum number of statements in function / method body
+max-statements=250
+
+# Minimum number of public methods for a class (see R0903).
+min-public-methods=1
 
 
 [EXCEPTIONS]
