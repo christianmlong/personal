@@ -172,6 +172,12 @@ score=yes
 # Maximum number of nested blocks for function / method body
 max-nested-blocks=5
 
+# Complete name of functions that never returns. When checking for
+# inconsistent-return-statements if a never returning function is called then
+# it will be considered as an explicit return statement and no message will be
+# printed.
+never-returning-functions=sys.exit
+
 
 [LOGGING]
 
@@ -438,6 +444,7 @@ variable-naming-style=snake_case
 # naming-style
 #variable-rgx=
 
+
 [IMPORTS]
 
 # Allow wildcard imports from modules that define __all__.
@@ -474,11 +481,17 @@ known-third-party=enchant
 [CLASSES]
 
 # List of method names used to declare (i.e. assign) instance attributes.
-defining-attr-methods=__init__,__new__,setUp
+defining-attr-methods=__init__,
+                      __new__,
+                      setUp
 
 # List of member names, which should be excluded from the protected access
 # warning.
-exclude-protected=_asdict,_fields,_replace,_source,_make
+exclude-protected=_asdict,
+                  _fields,
+                  _replace,
+                  _source,
+                  _make
 
 # List of valid names for the first argument in a class method.
 valid-classmethod-first-arg=cls
