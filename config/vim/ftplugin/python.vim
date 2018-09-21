@@ -17,10 +17,12 @@ nnoremap <leader>t :execute ':w' \| !py.test -rw -W ignore %<cr>
 nnoremap <leader>T :execute ':w' \| !py.test --pdb -x -rw -W ignore %<cr>
 
 " Save current file, then run pylint on it
-nnoremap <leader>l :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" %<cr>
+" nnoremap <leader>l :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" %<cr>
+nnoremap <leader>l :execute ':w' \| !lint %<cr>
 
 " Save current file, then run pylint on it, using the pylint-django plugin
-nnoremap <leader>d :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django %<cr>
+" nnoremap <leader>d :execute ':w' \| !pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins=pylint_django %<cr>
+nnoremap <leader>d :execute ':w' \| !dlint %<cr>
 
 " " Save current file, then run it with Fabric
 " nnoremap <leader>f :execute ':w' \| !fab %<cr>
