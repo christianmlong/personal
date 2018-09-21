@@ -11,6 +11,7 @@ git clone git://github.com/tpope/vim-sensible
 git clone git://github.com/tpope/vim-surround
 git clone git://github.com/tpope/vim-unimpaired
 git clone git://github.com/tpope/vim-characterize
+git clone git://github.com/tpope/vim-abolish
 
 git clone git@github.com:vim-airline/vim-airline.git
 git clone git@github.com:vim-airline/vim-airline-themes.git

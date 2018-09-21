@@ -14,6 +14,10 @@
     whitespace = -blank-at-eof
 	; pager = diff-so-fancy | less --tabs=4 -RFX
 
+[interactive]
+    # No need to press return in interactive mode
+    singleKey = true
+
 [alias]
     # Just this branch
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -29,7 +33,7 @@
     cim = commit -m
     wip = commit -m "wip"
     d = diff
-    # dcw = diff --color-words
+    dw = diff --color-words
     # dcw2 = diff --color-words=.
     dt = difftool
     ds = diff --staged
@@ -64,30 +68,37 @@
     # autocompletion for this custom alias.
     float = "!/Users/chlong2/projects/public-personal/utilities/git/git_float.sh"
 
-# Reference for git up alias
-# http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
+    # Reference for git up alias
+    # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
     up = "!git fetch --all --prune; git merge --ff-only @{u}"
 
     ap = add --patch
+
     # Use word diff when doing add --patch
     apw = -c interactive.diffFilter=\"git diff --color-words\" add --patch
+
+    # Special add --patch for Betamax
+    # Doesn't work Friday, July 13, 2018
+    # apbetamax = -c interactive.diffFilter=\"diff --ignore-matching-lines=' *\"recorded_at\": .*'\" add --patch
+    # apbetamax = -c interactive.diffFilter=\"diff --ignore-matching-lines='.*recorded_at.*'\" add --patch
+
     ff = merge --ff-only
 
-# Find orphaned commits
-# Source: https://gist.github.com/matthewmccullough/988077
-# with gitk
-    orphank = "!gitk --all `git reflog | cut -d ' ' -f 1`&"
-# on the command line
+    # Find orphaned commits
+    # Source: https://gist.github.com/matthewmccullough/988077
+    # with gitk
+    #orphank = "!gitk --all `git reflog | cut -d ' ' -f 1`&"
+    # on the command line
     orphanl = "!git log --pretty=oneline --abbrev-commit --graph --decorate `git reflog | cut -d ' ' -f 1`"
 
     incoming = "!git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}"
     outgoing = log --pretty=oneline --abbrev-commit --graph @{u}..
 
-# I can never remember this syntax
+    # I can never remember this syntax
     delete-remote-branch = "!f() { git push --delete origin $1 && git branch --unset-upstream $1; }; f"
     delete-remote-tag = push --delete origin
 
-# Another pretty log format
+    # Another pretty log format
     lg = !"git lg1"
     lg1 = !"git lg1-specific --all"
     lg2 = !"git lg2-specific --all"
@@ -97,8 +108,13 @@
     lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(black)%s%C(reset) %C(dim black)- %an%C(reset)'
     lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(bold yellow)%d%C(reset)%n''          %C(black)%s%C(reset)%n''          %C(dim black)- %an <%ae> %C(reset) %C(dim black)(committer: %cn <%ce>)%C(reset)'
 
-    pr  = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    ; pr  = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+    ; pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+    pr = "!f() { git fetch -fu ${2:-$(git remote |grep ^upstream || echo origin)} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+
 
 [rerere]
     #enabled = true
@@ -111,15 +127,22 @@
     #tool = p4merge
     #tool = meld
     tool = kdiff3
+    compactionHeuristic = true
 [merge]
     #tool = bc3
     #tool = p4merge
     #tool = meld
     tool = kdiff3
+    ff = no
+    commit = no
 [difftool]
     prompt = false
 [mergetool]
     # See https://gist.github.com/tdd/470582
+
+# Custom diff tool for ignoring some changes in Betamax cassettes
+[difftool "betamax"]
+    cmd = diff --recursive --unified=1 --color --ignore-matching-lines=' *\"recorded_at\": .*' \"$LOCAL\" \"$REMOTE\"
 
 # 	# Clean up backup files created by merge tools on tool exit
 # 	keepBackup = false

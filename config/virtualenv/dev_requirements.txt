@@ -1,20 +1,10 @@
-attrs
 bumpversion
-fabric
-pandas
-pandas-profiling
 pdbpp
 pip
-pylint
-pylint-django
+pylint<2.0
 pytest
-pytest-django
-requests
-requests[security]
 setuptools
 wheel
-when-changed
-yapf
 
 #cookiecutter
 #coverage
@@ -26,3 +16,11 @@ yapf
 #jupyter
 #qgrid
 #tox
+attrs
+fabric
+pandas
+pandas-profiling
+when-changed
+yapf
+requests
+requests[security]

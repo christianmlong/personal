@@ -362,3 +362,7 @@ nmap <leader>F :Ack<space>
 
 " Tell vim-rhubarb about enterprise github
 let g:github_enterprise_urls = ['https://github4-chn.cisco.com']
+
+" Let vim shell use bash aliases.
+" https://stackoverflow.com/questions/8841116/vim-not-recognizing-aliases-when-in-interactive-mode
+let $BASH_ENV = "~/.bash_aliases"

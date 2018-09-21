@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# This allows vim shell to use bash aliases e.g.
+#
+shopt -s expand_aliases
+
 alias l='ls -alF --color=always'
 alias ll='ls -alFrth --color=always'
 alias cdv='cdvirtualenv'
@@ -18,9 +24,7 @@ alias ☁️='cowsay clooooud'
 alias gzip='gzip -k'
 alias gunzip='gunzip -k'
 alias komodo='open -a "Komodo Edit 9"'
-alias lint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc"'
-alias dlint='pylint --rcfile="/Users/chlong2/projects/public-personal/config/python/.pylintrc" --load-plugins pylint_django'
-alias rm='trash -a'
+alias rm='trash'
 alias rrm='/usr/local/opt/coreutils/libexec/gnubin/rm'
 alias pyclean='find . -xdev -type f -name '"'*.pyc'"' -exec /usr/local/opt/coreutils/libexec/gnubin/rm {} +'
 alias bumpversion_tag_and_release='cdproject && bumpversion release --tag && git push --tags'
@@ -39,11 +43,14 @@ alias shove_it='git diff-index --quiet HEAD -- &&  ~/projects/public-personal/ut
 alias punch_it='git diff-index --quiet HEAD -- && ( ~/projects/public-personal/utilities/git/git_checkout_before_tagging.sh && bumpversion_tag_and_release && bumpversion micro && git push origin alpha:alpha && git float ) || echo "Commit changes first"'
 alias ship_it='git diff-index --quiet HEAD -- && git push origin $(git describe --tags --abbrev=0):master || echo "Commit changes first"'
 alias run_local_tests='py.test --duration=10 -m "not glacial_test and not really_slow_test" -n auto -r w --ds=ciam.web.settings.local_test'
+alias find_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk"
+alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk | git apply --cached --unidiff-zero"
+alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/next_ciam/.coveragerc && open /tmp/htmlcov/index.html"
 
 function make_change_dir
 {
-    mkdir -p $1
-    cd $1
+    mkdir -p "$1"
+    cd "$1" || exit
 }
 alias mcd='make_change_dir'
 
@@ -64,33 +71,34 @@ function in_virtualenv
 }
 
 # Remove obsolete "pytest" script, that comes with pylint
-function remove_obsolete_pytest
-{
-    INVENV=$(in_virtualenv)
-    if [[ $INVENV -eq 0 ]]; then
-        echo "Not in a virtual environment"
-    else
-        PYTEST_PATH=$VIRTUAL_ENV/bin/pytest
-        # Remove the obsolete `pytest` script that pylint installs.
-        if [[ -a $PYTEST_PATH ]]; then
-            rm $PYTEST_PATH
-            echo "Removed obsolete pytest script"
-        else
-            echo "Obsolete pytest script not found"
-        fi
-        echo $PYTEST_PATH
-    fi
-}
+# No longer needed, as of Wednesday, July 18, 2018
+# function remove_obsolete_pytest
+# {
+#     INVENV=$(in_virtualenv)
+#     if [[ "$INVENV" -eq 0 ]]; then
+#         echo "Not in a virtual environment"
+#     else
+#         PYTEST_PATH="$VIRTUAL_ENV/bin/pytest"
+#         # Remove the obsolete `pytest` script that pylint installs.
+#         if [[ -a "$PYTEST_PATH" ]]; then
+#             rm "$PYTEST_PATH"
+#             echo "Removed obsolete pytest script"
+#         else
+#             echo "Obsolete pytest script not found"
+#         fi
+#         echo "$PYTEST_PATH"
+#     fi
+# }
 
 # Set up a virtualenvironment with development tools
 function pip_setup_dev_environment
 {
     INVENV=$(in_virtualenv)
-    if [[ $INVENV -eq 0 ]]; then
+    if [[ "$INVENV" -eq 0 ]]; then
         echo "Not in a virtual environment"
     else
         pip install --upgrade -r ~/.virtualenvs/dev_requirements.txt
-        remove_obsolete_pytest
+        # remove_obsolete_pytest
     fi
 }
 alias pipdev='pip_setup_dev_environment'
@@ -98,18 +106,18 @@ alias pipdev='pip_setup_dev_environment'
 # Set up a new project with cookiecutter
 function new_project_from_cookiecutter
 {
-    if [ "$1" -a "$2" ]; then
+    if [ "$1" ] && [ "$2" ]; then
         echo Making virtualenv and cookiecutter project
         ENVNAME=$(python ~/projects/public-personal/python/cookiecutter/cookie.py "$1" "$2")
-        echo $ENVNAME
-        workon $ENVNAME
+        echo "$ENVNAME"
+        workon "$ENVNAME"
     else
         echo "Please give a project name and description"
     fi
 }
 alias cookie='new_project_from_cookiecutter'
 
-# Publish gist to Cisco Github Enterprise
+# Publish gist to the SR&O Cisco Github Enterprise
 function cisco_gist
 {
     export GITHUB_URL='https://github4-chn.cisco.com/'
@@ -118,14 +126,14 @@ function cisco_gist
 }
 alias cist='cisco_gist'
 
-# Use hub to interact with Cisco Github Enterprise
-function cisco_hub
+# Publish gist to the company-wide Cisco Github Enterprise
+function public_cisco_gist
 {
-    export GITHUB_HOST='tip-github-1.cisco.com'
-    hub "$@"
-    unset GITHUB_HOST
+    export GITHUB_URL='https://wwwin-github.cisco.com/'
+    gist "$@"
+    unset GITHUB_URL
 }
-alias chub='cisco_hub'
+alias pist='public_cisco_gist'
 
 # Show the symlink, if any, with 'which'
 function swhich
@@ -134,7 +142,7 @@ function swhich
     # More on capturing output, error, and return code from bash command
     # substitution:
     #    http://mywiki.wooledge.org/BashFAQ/002
-    if THE_PATH=$(which $1); then
+    if THE_PATH=$(which "$1"); then
         ls -al "$THE_PATH"
     fi
 }
@@ -156,13 +164,13 @@ function use_postgres_94
 
 function jrnl
 {
-    if [ -n $TZ ]; then
-        export TZ_BACKUP_JRNL=$TZ
+    if [ -n "$TZ" ]; then
+        export TZ_BACKUP_JRNL="$TZ"
         unset TZ
     fi
-    /usr/local/bin/jrnl $@
-    if [ -n $TZ_BACKUP_JRNL ]; then
-        export TZ=$TZ_BACKUP_JRNL
+    /usr/local/bin/jrnl "$@"
+    if [ -n "$TZ_BACKUP_JRNL" ]; then
+        export TZ="$TZ_BACKUP_JRNL"
         unset TZ_BACKUP_JRNL
     fi
 }
@@ -178,9 +186,41 @@ function analyze_csv
     PROFILE_SCRIPT=$HOME/projects/cloned_apps/pandas-profiling/profile_csv.py
 
     if [ -f "$1" ]; then
-        $PYTHON $PROFILE_SCRIPT --output "$1".html "$1"
+        "$PYTHON" "$PROFILE_SCRIPT" --output "$1".html "$1"
     else
         echo 'Please specify a path to a CSV file'
     fi
 
 }
+
+
+# Scan with Pylint
+function scan_with_pylint
+{
+    PYLINT_BIN="$VIRTUAL_ENV/bin/pylint"
+
+    PYLINTRC_DIR="/Users/chlong2/projects/public-personal/config/python"
+
+    EXTRA_ARGS="--msg-template='"'{path}:{line}:{column}: {msg_id}: {msg} ({symbol})'"'"
+
+    if [[ "$1" = '--lax' ]]; then
+        PYLINTRC="$PYLINTRC_DIR/.pylintrc_lax"
+    else
+        PYLINTRC="$PYLINTRC_DIR/.pylintrc"
+    fi
+    shift
+
+    if [[ "$1" = '--django' ]]; then
+        PYLINT_DJANGO="--load-plugins=pylint_django"
+    else
+        PYLINT_DJANGO=""
+    fi
+    shift
+
+    "$PYLINT_BIN" "$EXTRA_ARGS" --rcfile="$PYLINTRC" "$PYLINT_DJANGO" "$@"
+}
+alias lint='scan_with_pylint --strict --no-django'
+alias dlint='scan_with_pylint --strict --django'
+alias lintlax='scan_with_pylint --lax --no-django'
+alias dlintlax='scan_with_pylint --lax --django'
+
