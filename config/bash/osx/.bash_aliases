@@ -201,7 +201,7 @@ function scan_with_pylint
 
     PYLINTRC_DIR="/Users/chlong2/projects/public-personal/config/python"
 
-    EXTRA_ARGS="--msg-template='"'{path}:{line}:{column}: {msg_id}: {msg} ({symbol})'"'"
+    PYLINT_MSG_FORMAT="'"'{path}:{line}:{column}: {symbol}: {msg}'"'"
 
     if [[ "$1" = '--lax' ]]; then
         PYLINTRC="$PYLINTRC_DIR/.pylintrc_lax"
@@ -210,14 +210,18 @@ function scan_with_pylint
     fi
     shift
 
+    ARGS=(
+        "--jobs=0"
+        "--rcfile=$PYLINTRC"
+        "--msg-template=$PYLINT_MSG_FORMAT"
+    )
+
     if [[ "$1" = '--django' ]]; then
-        PYLINT_DJANGO="--load-plugins=pylint_django"
-    else
-        PYLINT_DJANGO=""
+        ARGS+=("--load-plugins=pylint_django")
     fi
     shift
 
-    "$PYLINT_BIN" "$EXTRA_ARGS" --rcfile="$PYLINTRC" "$PYLINT_DJANGO" "$@"
+    "$PYLINT_BIN" "${ARGS[@]}" "$@"
 }
 alias lint='scan_with_pylint --strict --no-django'
 alias dlint='scan_with_pylint --strict --django'
