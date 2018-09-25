@@ -40,8 +40,9 @@ alias gdts='git dts'
 alias gu='git up'
 alias ag="ag --color --color-match '35'"
 alias shove_it='git diff-index --quiet HEAD -- &&  ~/projects/public-personal/utilities/git/git_megamerge.sh || echo "Commit changes first"'
-alias punch_it='git diff-index --quiet HEAD -- && ( ~/projects/public-personal/utilities/git/git_checkout_before_tagging.sh && bumpversion_tag_and_release && bumpversion micro && git push origin alpha:alpha && git float ) || echo "Commit changes first"'
-alias ship_it='git diff-index --quiet HEAD -- && git push origin $(git describe --tags --abbrev=0):master || echo "Commit changes first"'
+alias pr_it='git diff-index --quiet HEAD -- && ( ~/projects/public-personal/utilities/git/git_checkout_feature_branch.sh && hub pull-request -o -b alpha ) || echo "Commit changes first"'
+alias tag_it='git diff-index --quiet HEAD -- && ( git co alpha && bumpversion_tag_and_release && bumpversion micro && git float && git push origin alpha && git push --tags ) || echo "Commit changes first"'
+alias ship_it='git diff-index --quiet HEAD -- && ( git push origin master && git push origin $(git describe --tags --abbrev=0):master ) || echo "Commit changes first"'
 alias run_local_tests='py.test --duration=10 -m "not glacial_test and not really_slow_test" -n auto -r w --ds=ciam.web.settings.local_test'
 alias find_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk"
 alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk | git apply --cached --unidiff-zero"
