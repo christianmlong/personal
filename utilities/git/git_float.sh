@@ -38,29 +38,31 @@ fi
 declare -a BRANCHES
 if [ $# -eq 0 ]; then
     # Make an array
-    read -r -a BRANCHES <<< "$(git branch --no-merge)"
+    while IFS= read -r line; do
+        # Trim whitespace
+        # https://stackoverflow.com/questions/369758/how-to-trim-whitespace-from-a-bash-variable/369795#369795
+        trimmed_line="${line//[[:space:]]/}"
+        if ! [[
+            ${trimmed_line} == 'alpha'
+            || ${trimmed_line} == 'stage'
+            || ${trimmed_line} == 'master'
+            || ${trimmed_line} == 'dev'
+            || ${trimmed_line} == 'develop'
+        ]]; then
+            echo "adding $trimmed_line"
+            BRANCHES+=( "$trimmed_line" )
+        fi
+    done < <( git branch --no-merge )
+
+    # This doesn't work
+    # https://stackoverflow.com/questions/11426529/reading-output-of-a-command-into-an-array-in-bash/32931403#32931403
+    # read -r -a BRANCHES <<< "$(git branch --no-merge)"
 else
     # Read the arguments as an array
     BRANCHES=("$@")
 fi
 
-# Remove some branch names from the array of branches we are going to be acting
-# on.
-TEMP=()
-for value in "${BRANCHES[@]}"
-do
-    if ! [[
-        ${value} == 'alpha'
-        || ${value} == 'stage'
-        || ${value} == 'master'
-        || ${value} == 'dev'
-        || ${value} == 'develop'
-    ]]; then
-        TEMP+=("$value")
-    fi
-done
-BRANCHES=("${TEMP[@]}")
-unset TEMP
+echo "Branches: ${BRANCHES[*]}"
 
 if [ "$CURRENT_BRANCH" == "$INTEGRATION_BRANCH" ]; then
     echo "You are on branch ${CURRENT_BRANCH}. Switch to a feature branch before running"
