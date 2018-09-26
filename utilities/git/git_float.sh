@@ -44,6 +44,24 @@ else
     BRANCHES=("$@")
 fi
 
+# Remove some branch names from the array of branches we are going to be acting
+# on.
+TEMP=()
+for value in "${BRANCHES[@]}"
+do
+    if ! [[
+        ${value} == 'alpha'
+        || ${value} == 'stage'
+        || ${value} == 'master'
+        || ${value} == 'dev'
+        || ${value} == 'develop'
+    ]]; then
+        TEMP+=("$value")
+    fi
+done
+BRANCHES=("${TEMP[@]}")
+unset TEMP
+
 if [ "$CURRENT_BRANCH" == "$INTEGRATION_BRANCH" ]; then
     echo "You are on branch ${CURRENT_BRANCH}. Switch to a feature branch before running"
     exit 1
