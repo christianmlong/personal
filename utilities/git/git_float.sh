@@ -67,7 +67,7 @@ if [ "$CURRENT_BRANCH" == "$INTEGRATION_BRANCH" ]; then
     exit 1
 fi
 
-echo "Float on top of $GIT_FLOAT_BASE_BRANCH"
+echo "Float ${BRANCHES[*]} on top of $GIT_FLOAT_BASE_BRANCH"
 
 git fetch --all --prune
 
