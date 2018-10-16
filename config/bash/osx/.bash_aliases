@@ -47,6 +47,7 @@ alias run_local_tests='py.test --duration=10 -m "not glacial_test and not really
 alias find_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk"
 alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk | git apply --cached --unidiff-zero"
 alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/next_ciam/.coveragerc && open /tmp/htmlcov/index.html"
+alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
 
 function make_change_dir
 {
