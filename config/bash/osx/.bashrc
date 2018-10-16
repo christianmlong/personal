@@ -54,7 +54,7 @@ export EDITOR=vi
 # fi
 
 # Enable bash completion for pandoc
-eval "$(pandoc --bash-completion)"
+# eval "$(pandoc --bash-completion)"
 
 # Enable bash completion for my custom 'git float' and 'git mfloat' aliases
 # Reference:
