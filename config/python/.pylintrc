@@ -66,6 +66,12 @@ disable=locally-disabled,
         too-few-public-methods,
         misplaced-comparison-constant,
 
+        # The current version of pylint (2.2.2) has a problem where it
+        # reports missing-docstring even though I have a line in the
+        # file disabling that report. So for now, I disable that
+        # report everywhere using the config file
+        missing-docstring,
+
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
 # multiple time (only on the command line, not in the configuration file where
