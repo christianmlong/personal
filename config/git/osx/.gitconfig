@@ -127,7 +127,7 @@
     #tool = p4merge
     #tool = meld
     tool = kdiff3
-    compactionHeuristic = true
+	compactionHeuristic = true
 [merge]
     #tool = bc3
     #tool = p4merge

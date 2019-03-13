@@ -26,7 +26,6 @@ alias gunzip='gunzip -k'
 alias komodo='open -a "Komodo Edit 9"'
 alias rm='trash'
 alias rrm='/usr/local/opt/coreutils/libexec/gnubin/rm'
-alias pyclean='find . -xdev -type f -name '"'*.pyc'"' -exec /usr/local/opt/coreutils/libexec/gnubin/rm {} +'
 alias bumpversion_tag_and_release='cdproject && bumpversion release --tag && git push --tags'
 alias gl='clear && git lnp'
 alias gll='git l'
@@ -46,7 +45,7 @@ alias ship_it='git diff-index --quiet HEAD -- && ( git push origin master && git
 alias run_local_tests='py.test --duration=10 -m "not glacial_test and not really_slow_test" -n auto -r w --ds=ciam.web.settings.local_test'
 alias find_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk"
 alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk | git apply --cached --unidiff-zero"
-alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/next_ciam/.coveragerc && open /tmp/htmlcov/index.html"
+alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/ciam_tpsd/.coveragerc && open /tmp/htmlcov/index.html"
 alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
 
 function make_change_dir
@@ -156,13 +155,13 @@ function swhich
 #     brew unlink postgresql && brew link postgresql91
 #     pg_ctl -w -D /usr/local/var/postgres91/data -l /usr/local/var/postgres91/data/server.log start
 # }
-
-function use_postgres_94
-{
-    # pg_ctl -w -D /usr/local/var/postgres91/data stop -s -m fast
-    # brew unlink postgresql91 && brew link postgresql
-    pg_ctl -w -D /usr/local/var/postgres94/data -l /usr/local/var/postgres94/data/server.log start
-}
+#
+# function use_postgres_94
+# {
+#     # pg_ctl -w -D /usr/local/var/postgres91/data stop -s -m fast
+#     # brew unlink postgresql91 && brew link postgresql
+#     pg_ctl -w -D /usr/local/var/postgres94/data -l /usr/local/var/postgres94/data/server.log start
+# }
 
 function jrnl
 {
@@ -230,3 +229,6 @@ alias dlint='scan_with_pylint --strict --django'
 alias lintlax='scan_with_pylint --lax --no-django'
 alias dlintlax='scan_with_pylint --lax --django'
 
+function pyclean {
+    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}

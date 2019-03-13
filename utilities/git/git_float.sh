@@ -62,7 +62,12 @@ else
     BRANCHES=("$@")
 fi
 
-echo "Branches: ${BRANCHES[*]}"
+if [ ${#BRANCHES[@]} -eq 0 ]; then
+    echo "No branches to float"
+    exit 0
+else
+    echo "Branches: ${BRANCHES[*]}"
+fi
 
 if [ "$CURRENT_BRANCH" == "$INTEGRATION_BRANCH" ]; then
     echo "You are on branch ${CURRENT_BRANCH}. Switch to a feature branch before running"
