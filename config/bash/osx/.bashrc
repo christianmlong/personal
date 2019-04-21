@@ -67,9 +67,8 @@ _git_float()
 
 # virtualenvwrapper setup
 
-# This is using the sitewide installation of Python 2.7.14 (from Homebrew) to
-# run the virtualenv automation.
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@2/bin/python
+# This is using the brew-installed Python 3 to run the virtualenv automation.
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 # All new virtualenvs will be Python 3 by default.
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--python=python3'
