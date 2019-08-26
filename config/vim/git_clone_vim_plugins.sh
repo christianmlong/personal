@@ -30,6 +30,9 @@ git clone git@github.com:mileszs/ack.vim.git
 # Ag search text objects
 git clone git@github.com:christianmlong/vim-action-ag.git
 
+# Asciidoc support, including fast syntax highlighting
+git clone https://github.com/habamax/vim-asciidoctor.git ~/.vim/pack/my-packages/start/vim-asciidoctor
+
 # Not currently in use
 
 # vim-snipmate and its requirements
