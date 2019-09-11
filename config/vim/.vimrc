@@ -104,10 +104,10 @@ function! FixWhiteSpace()
     call cursor(l, c)
 endfunction
 nnoremap <silent> <Leader>ws :call FixWhiteSpace()<CR>
-autocmd FileType python,javascript,text,sql,dosini autocmd FileWritePre    * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql,dosini autocmd FileAppendPre   * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql,dosini autocmd FilterWritePre  * :call FixWhiteSpace()
-autocmd FileType python,javascript,text,sql,dosini autocmd BufWritePre     * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini,asciidoc autocmd FileWritePre    * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini,asciidoc autocmd FileAppendPre   * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini,asciidoc autocmd FilterWritePre  * :call FixWhiteSpace()
+autocmd FileType python,javascript,text,sql,dosini,asciidoc autocmd BufWritePre     * :call FixWhiteSpace()
 
 " Get the last word on fixing Python indentation so it doesn't indet
 " spuriously on every darn colon.
@@ -366,3 +366,6 @@ let g:github_enterprise_urls = ['https://github4-chn.cisco.com']
 " Let vim shell use bash aliases.
 " https://stackoverflow.com/questions/8841116/vim-not-recognizing-aliases-when-in-interactive-mode
 let $BASH_ENV = "~/.bash_aliases"
+
+" Use our own virtualenv for the Python Black code formatter
+let g:black_virtualenv = '/Users/chlong2/.virtualenvs/python-black'

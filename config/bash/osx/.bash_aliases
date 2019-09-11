@@ -202,8 +202,6 @@ function scan_with_pylint
 
     PYLINTRC_DIR="/Users/chlong2/projects/public-personal/config/python"
 
-    PYLINT_MSG_FORMAT="'"'{path}:{line}:{column}: {symbol}: {msg}'"'"
-
     if [[ "$1" = '--lax' ]]; then
         PYLINTRC="$PYLINTRC_DIR/.pylintrc_lax"
     else
@@ -214,7 +212,6 @@ function scan_with_pylint
     ARGS=(
         "--jobs=0"
         "--rcfile=$PYLINTRC"
-        "--msg-template=$PYLINT_MSG_FORMAT"
     )
 
     if [[ "$1" = '--django' ]]; then
