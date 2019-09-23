@@ -36,6 +36,8 @@ alias gd='git d'
 alias gdt='git dt'
 alias gds='git ds'
 alias gdts='git dts'
+alias gdd='git dd'
+alias gddd='git ddd'
 alias gu='git up'
 alias ag="ag --color --color-match '35'"
 alias shove_it='git diff-index --quiet HEAD -- &&  ~/projects/public-personal/utilities/git/git_megamerge.sh || echo "Commit changes first"'
@@ -47,6 +49,7 @@ alias find_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --outpu
 alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --output-matching=hunk | git apply --cached --unidiff-zero"
 alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/ciam_tpsd/.coveragerc && open /tmp/htmlcov/index.html"
 alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
+alias notify="osascript -e 'display notification \"Job complete\" with title \"iTerm\"'"
 
 function make_change_dir
 {

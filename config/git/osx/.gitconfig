@@ -34,7 +34,8 @@
     wip = commit -m "wip"
     d = diff
     dw = diff --color-words
-    # dcw2 = diff --color-words=.
+    dd = diff --word-diff=porcelain
+    ddd = diff --color-words=.
     dt = difftool
     ds = diff --staged
     # dscw = diff --staged --color-words
