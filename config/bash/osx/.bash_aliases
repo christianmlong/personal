@@ -232,3 +232,69 @@ alias dlintlax='scan_with_pylint --lax --django'
 function pyclean {
     find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 }
+
+# Prepare a new CIAM release
+function prepare_ciam_release
+{
+    if [[ -n $(git status -s) ]]; then
+        echo "Operation cancelled. The repo contains uncommitted changes."
+        return 1
+    fi
+
+    export GIT_FLOAT_BASE_BRANCH=alpha
+    git co alpha
+    bumpversion_tag_and_release
+    git push
+    git co master
+    git ff alpha
+    git push
+    git co alpha
+    git branch -d master
+    bumpversion micro
+    git push
+    git float
+}
+
+# Deploy to CIAM servers using AWX
+function _generic_ciam_deploy
+{
+    TOWER_CLI='/Users/chlong2/.virtualenvs/towercli/bin/tower-cli'
+
+    if [ ! $# == 1 ]; then
+      echo "Must pass name of environment"
+      return
+    fi
+
+    if [ "$1" = "dev" ]; then
+        TEMPLATE_ID=52
+        EXTRA_VARS="--extra-vars='ciam_version=\"alpha\"'"
+        DEPLOY_DESC="Dev CIAM server"
+    elif [ "$1" = "stage" ]; then
+        TEMPLATE_ID=25
+        EXTRA_VARS=''
+        DEPLOY_DESC="Stage CIAM server"
+    elif [ "$1" = "prod" ]; then
+        TEMPLATE_ID=56
+        EXTRA_VARS="--extra-vars='ciam_verify_production_deploy=\"Yes\"'"
+        DEPLOY_DESC="Production CIAM server"
+    else
+        echo "Invalid option $1"
+        return
+    fi
+
+    args=(job launch -J "$TEMPLATE_ID" --no-input --monitor)
+
+    if [ -n "$EXTRA_VARS" ]; then
+        args+=( "$EXTRA_VARS" )
+    fi
+
+    echo "Starting deploy to $DEPLOY_DESC"
+    echo "Tower CLI command"
+    echo "$TOWER_CLI" "${args[@]}"
+    "$TOWER_CLI" "${args[@]}"
+    /usr/bin/osascript -e "display notification \"$DEPLOY_DESC deploy complete\" with title \"iTerm\""
+
+}
+alias dev_ciam_deploy='_generic_ciam_deploy dev'
+alias stage_ciam_deploy='_generic_ciam_deploy stage'
+alias PROD_ciam_deploy='_generic_ciam_deploy prod'
