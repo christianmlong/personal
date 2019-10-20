@@ -33,3 +33,6 @@ export PATH="/usr/local/opt/python@2/bin:$PATH"
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH
+
+# Silence the zsh message
+export BASH_SILENCE_DEPRECATION_WARNING=1
