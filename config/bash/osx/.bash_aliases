@@ -50,6 +50,7 @@ alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --outp
 alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/ciam_tpsd/.coveragerc && open /tmp/htmlcov/index.html"
 alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
 alias notify="osascript -e 'display notification \"Job complete\" with title \"iTerm\"'"
+alias refresh_ciam_mirror="gu && git co alpha && git ff upstream/alpha && git push && git co master && git ff upstream/master && git push && git push --tags && git co alpha"
 
 function make_change_dir
 {
@@ -146,6 +147,8 @@ function swhich
     # More on capturing output, error, and return code from bash command
     # substitution:
     #    http://mywiki.wooledge.org/BashFAQ/002
+
+    # shellcheck disable=SC2230
     if THE_PATH=$(which "$1"); then
         ls -al "$THE_PATH"
     fi
@@ -259,21 +262,50 @@ function prepare_ciam_release
 function _generic_ciam_deploy
 {
     TOWER_CLI='/Users/chlong2/.virtualenvs/towercli/bin/tower-cli'
+    SKIP_LDAP_TAG=0
+    SKIP_DB_VIEWS_TAG=0
 
-    if [ ! $# == 1 ]; then
-      echo "Must pass name of environment"
-      return
+    if [ "$#" -eq 0 ]; then
+        echo "Too few arguments"
+        return
+    elif [ "$#" -gt 2 ]; then
+        echo "Too many arguments"
+        return
     fi
 
     if [ "$1" = "dev" ]; then
+        if [ "$#" -eq 1 ]; then
+            # For now, use my disruptive Epic branch on dev-01 by default.
+            # DEV_BRANCH_NAME='alpha'
+            DEV_BRANCH_NAME='EPIC0010050-new-source-of-alerts'
+        elif [ "$#" -eq 2 ]; then
+            DEV_BRANCH_NAME="$2"
+        fi
         TEMPLATE_ID=52
-        EXTRA_VARS="--extra-vars='ciam_version=\"alpha\"'"
+        EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
         DEPLOY_DESC="Dev CIAM server"
+    elif [ "$1" = "dev2" ]; then
+        if [ "$#" -eq 1 ]; then
+            DEV_BRANCH_NAME='alpha'
+        elif [ "$#" -eq 2 ]; then
+            DEV_BRANCH_NAME="$2"
+        fi
+        TEMPLATE_ID=58
+        EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
+        DEPLOY_DESC="Dev 02 CIAM server"
     elif [ "$1" = "stage" ]; then
+        if [ "$#" -eq 2 ]; then
+            echo "Can not deploy a named branch to Stage"
+            return
+        fi
         TEMPLATE_ID=25
         EXTRA_VARS=''
         DEPLOY_DESC="Stage CIAM server"
     elif [ "$1" = "prod" ]; then
+        if [ "$#" -eq 2 ]; then
+            echo "Can not deploy a named branch to Production"
+            return
+        fi
         TEMPLATE_ID=56
         EXTRA_VARS="--extra-vars='ciam_verify_production_deploy=\"Yes\"'"
         DEPLOY_DESC="Production CIAM server"
@@ -288,13 +320,25 @@ function _generic_ciam_deploy
         args+=( "$EXTRA_VARS" )
     fi
 
+    if [ "$SKIP_LDAP_TAG" -eq 1 ]; then
+        args+=( "--skip-tags=ldap" )
+    fi
+
+    if [ "$SKIP_DB_VIEWS_TAG" -eq 1 ]; then
+        args+=( "--skip-tags=ciam_db_views" )
+    fi
+
     echo "Starting deploy to $DEPLOY_DESC"
     echo "Tower CLI command"
     echo "$TOWER_CLI" "${args[@]}"
-    "$TOWER_CLI" "${args[@]}"
-    /usr/bin/osascript -e "display notification \"$DEPLOY_DESC deploy complete\" with title \"iTerm\""
+    if "$TOWER_CLI" "${args[@]}"; then
+        /usr/bin/osascript -e "display notification \"$DEPLOY_DESC deploy complete\" with title \"iTerm\""
+    else
+        /usr/bin/osascript -e "display notification \"*** $DEPLOY_DESC DEPLOY FAILED ***\" with title \"iTerm\""
+    fi
 
 }
 alias dev_ciam_deploy='_generic_ciam_deploy dev'
+alias dev2_ciam_deploy='_generic_ciam_deploy dev2'
 alias stage_ciam_deploy='_generic_ciam_deploy stage'
 alias PROD_ciam_deploy='_generic_ciam_deploy prod'
