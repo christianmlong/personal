@@ -50,7 +50,9 @@ alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --outp
 alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/ciam_tpsd/.coveragerc && open /tmp/htmlcov/index.html"
 alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
 alias notify="osascript -e 'display notification \"Job complete\" with title \"iTerm\"'"
-alias refresh_ciam_mirror="gu && git co alpha && git ff upstream/alpha && git push && git co master && git ff upstream/master && git push && git push --tags && git co alpha"
+alias refresh_ciam_mirror="workon ciam_mirror && gu && git co alpha && git ff upstream/alpha && git push && git co master && git ff upstream/master && git push && git push --tags && git co alpha"
+alias fix_virtualenv="cdv && deactivate && find . -type l -xtype l -delete && virtualenv . --python=python3"
+
 
 function make_change_dir
 {
@@ -273,18 +275,17 @@ function _generic_ciam_deploy
         return
     fi
 
-    if [ "$1" = "dev" ]; then
-        if [ "$#" -eq 1 ]; then
-            # For now, use my disruptive Epic branch on dev-01 by default.
-            # DEV_BRANCH_NAME='alpha'
-            DEV_BRANCH_NAME='EPIC0010050-new-source-of-alerts'
-        elif [ "$#" -eq 2 ]; then
-            DEV_BRANCH_NAME="$2"
-        fi
-        TEMPLATE_ID=52
-        EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
-        DEPLOY_DESC="Dev CIAM server"
-    elif [ "$1" = "dev2" ]; then
+    # if [ "$1" = "dev" ]; then
+    #     if [ "$#" -eq 1 ]; then
+    #         DEV_BRANCH_NAME='alpha'
+    #     elif [ "$#" -eq 2 ]; then
+    #         DEV_BRANCH_NAME="$2"
+    #     fi
+    #     TEMPLATE_ID=52
+    #     EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
+    #     DEPLOY_DESC="Dev CIAM server"
+    # elif [ "$1" = "dev2" ]; then
+    if [ "$1" = "dev2" ]; then
         if [ "$#" -eq 1 ]; then
             DEV_BRANCH_NAME='alpha'
         elif [ "$#" -eq 2 ]; then
@@ -294,12 +295,13 @@ function _generic_ciam_deploy
         EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
         DEPLOY_DESC="Dev 02 CIAM server"
     elif [ "$1" = "stage" ]; then
-        if [ "$#" -eq 2 ]; then
-            echo "Can not deploy a named branch to Stage"
-            return
+        if [ "$#" -eq 1 ]; then
+            DEV_BRANCH_NAME='alpha'
+        elif [ "$#" -eq 2 ]; then
+            DEV_BRANCH_NAME="$2"
         fi
         TEMPLATE_ID=25
-        EXTRA_VARS=''
+        EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
         DEPLOY_DESC="Stage CIAM server"
     elif [ "$1" = "prod" ]; then
         if [ "$#" -eq 2 ]; then
@@ -342,3 +344,17 @@ alias dev_ciam_deploy='_generic_ciam_deploy dev'
 alias dev2_ciam_deploy='_generic_ciam_deploy dev2'
 alias stage_ciam_deploy='_generic_ciam_deploy stage'
 alias PROD_ciam_deploy='_generic_ciam_deploy prod'
+
+# Generate a CIAM stats email
+function generate_ciam_stats_email
+{
+    OUTPUT=$(/Users/chlong2/projects/ciam_tpsd/scripts/data_analysis/tpsd_statistics/run_stats.sh)
+    exit_status=$?
+    if [ ${exit_status} -ne 0 ]; then
+      echo "ERROR - $OUTPUT"
+    else
+      (echo "$OUTPUT" | pbcopy) \
+      && open 'mailto:vekelly@cisco.com,wwilliam@cisco.com?cc=kleem@cisco.com,ckossmey@cisco.com&subject=CIAM%20TPSD%20Statistics&body=Hi%20Venecia%20and%20Wade%2C%0A%0AHere%20are%20the%20latest%20stats%20for%20CIAM.%0A%0AChristian%0A%0A---%0A%0A'
+    fi
+}
+
