@@ -50,7 +50,7 @@ alias stage_recorded_at="git diff -U0 | grepdiff '      \"recorded_at\":' --outp
 alias pytest_cov="pytest --cov=ciam --cov-report term --cov-report html --cov-config /Users/chlong2/projects/ciam_tpsd/.coveragerc && open /tmp/htmlcov/index.html"
 alias scrum_update="vi /Users/chlong2/tmp/scrum_update.md && /Users/chlong2/projects/utility/webex_teams/scrum_update/scrum_update.sh"
 alias notify="osascript -e 'display notification \"Job complete\" with title \"iTerm\"'"
-alias refresh_ciam_mirror="workon ciam_mirror && gu && git co alpha && git ff upstream/alpha && git push && git co master && git ff upstream/master && git push && git push --tags && git co alpha"
+alias refresh_ciam_mirror="workon ciam_mirror && gu && git co alpha && git ff upstream/alpha && git push && git co master && git ff upstream/master && git push && git push --tags && git co alpha && cd next_ciam.wiki && git co master && gu && git ff upstream/master && git push && cd .."
 alias fix_virtualenv="cdv && deactivate && find . -type l -xtype l -delete && virtualenv . --python=python3"
 
 
@@ -275,17 +275,16 @@ function _generic_ciam_deploy
         return
     fi
 
-    # if [ "$1" = "dev" ]; then
-    #     if [ "$#" -eq 1 ]; then
-    #         DEV_BRANCH_NAME='alpha'
-    #     elif [ "$#" -eq 2 ]; then
-    #         DEV_BRANCH_NAME="$2"
-    #     fi
-    #     TEMPLATE_ID=52
-    #     EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
-    #     DEPLOY_DESC="Dev CIAM server"
-    # elif [ "$1" = "dev2" ]; then
-    if [ "$1" = "dev2" ]; then
+    if [ "$1" = "dev" ]; then
+        if [ "$#" -eq 1 ]; then
+            DEV_BRANCH_NAME='alpha'
+        elif [ "$#" -eq 2 ]; then
+            DEV_BRANCH_NAME="$2"
+        fi
+        TEMPLATE_ID=52
+        EXTRA_VARS="--extra-vars='ciam_version=\"$DEV_BRANCH_NAME\"'"
+        DEPLOY_DESC="Dev CIAM server"
+    elif [ "$1" = "dev2" ]; then
         if [ "$#" -eq 1 ]; then
             DEV_BRANCH_NAME='alpha'
         elif [ "$#" -eq 2 ]; then

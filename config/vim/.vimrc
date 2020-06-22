@@ -361,7 +361,7 @@ nmap <leader>f :Ack -ws<space>
 nmap <leader>F :Ack<space>
 
 " Tell vim-rhubarb about enterprise github
-let g:github_enterprise_urls = ['https://github4-chn.cisco.com']
+let g:github_enterprise_urls = ['https://github4-chn.cisco.com', 'https://wwwin-github.cisco.com']
 
 " Let vim shell use bash aliases.
 " https://stackoverflow.com/questions/8841116/vim-not-recognizing-aliases-when-in-interactive-mode
