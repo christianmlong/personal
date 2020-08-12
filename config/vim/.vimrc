@@ -368,4 +368,4 @@ let g:github_enterprise_urls = ['https://github4-chn.cisco.com', 'https://wwwin-
 let $BASH_ENV = "~/.bash_aliases"
 
 " Use our own virtualenv for the Python Black code formatter
-let g:black_virtualenv = '/Users/chlong2/.virtualenvs/python-black'
+let g:black_virtualenv = '/Users/chlong2/.virtualenvs/black'
