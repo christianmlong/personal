@@ -68,7 +68,7 @@ _git_float()
 # virtualenvwrapper setup
 
 # This is using the brew-installed Python 3 to run the virtualenv automation.
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
