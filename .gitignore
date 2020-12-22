@@ -70,4 +70,5 @@ target/
 # Vim stuff
 *.spl
 *.swp
+*.sug
 
