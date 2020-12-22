@@ -47,6 +47,16 @@ set undolevels=1000
 set nocompatible
 " set modelines=0
 
+" viminfo
+" https://stackoverflow.com/questions/23012391/how-and-where-is-my-viminfo-option-set/23036077
+" https://vim.fandom.com/wiki/Copy,_cut_and_paste#Increasing_the_buffer_size
+set viminfo='100,<50000,s1000,h
+"           |    |      |     |
+"           |    |      |     + disable search highlighting on startup
+"           |    |      + don't save regisers larger than 1000kb
+"           |    + keep 50,000 lines per register
+"           + remember marks for last 100 files
+
 " More fine-grained undo
 inoremap <Space> <Space><C-g>u
 inoremap <Return> <Return><C-g>u
@@ -206,6 +216,16 @@ let g:ctrlp_mruf_case_sensitive = 1
 " files, to the MRU list:
 let g:ctrlp_mruf_exclude_nomod = 1
 
+" Set this to 1 to set searching by filename (as opposed to full path) as the
+" default
+" Note: disabled on Tuesday, September 8, 2020. I was getting this error:
+"
+" E363: pattern uses more memory than 'maxmempattern'
+" Error detected while processing function
+" <SNR>81_PrtFocusMap[1]..<SNR>81_PrtAdd[4]..<SNR>81_BuildPrompt:
+"
+" Something to do with the regex, I think.
+" let g:ctrlp_by_filename = 1
 
 " " BufferGator
 " " Use the right side of the screen
@@ -368,4 +388,19 @@ let g:github_enterprise_urls = ['https://github4-chn.cisco.com', 'https://wwwin-
 let $BASH_ENV = "~/.bash_aliases"
 
 " Use our own virtualenv for the Python Black code formatter
-let g:black_virtualenv = '/Users/chlong2/.virtualenvs/black'
+" let g:black_virtualenv = '/Users/chlong2/.virtualenvs/black'
+
+" Interleave
+" https://vi.stackexchange.com/questions/4575/merge-blocks-by-interleaving-lines
+function! Interleave()
+    " retrieve last selected area position and size
+    let start = line(".")
+    execute "normal! gvo\<esc>"
+    let end = line(".")
+    let [start, end] = sort([start, end], "n")
+    let size = (end - start + 1) / 2
+    " and interleave!
+    for i in range(size - 1)
+        execute (start + size + i). 'm' .(start + 2 * i)
+    endfor
+endfunction

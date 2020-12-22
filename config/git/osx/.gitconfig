@@ -1,18 +1,18 @@
 [user]
 	name = Christian Long
 	email = chlong2@cisco.com
-	signingkey = 031A48F5617AF959
+    signingkey = 031A48F5617AF959
 [gitreview]
-	username = christianmlong
+    username = christianmlong
 [push]
-	default = simple
+    default = simple
 [core]
-	editor = vim
+    editor = vim
 	excludesfile = /Users/chlong2/.gitignore_global
     # Don't complain about extra blank lines at the
     # end of a file.
     whitespace = -blank-at-eof
-	; pager = diff-so-fancy | less --tabs=4 -RFX
+    ; pager = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
     # No need to press return in interactive mode
@@ -53,6 +53,7 @@
     pfu = push -f origin
     bv = branch -a -vv
     cp = cherry-pick
+    vr = difftool -t visual-revert
 
     # This script "floats" any number of local branches
     # on top of a chosen base branch. So, when the base
@@ -121,65 +122,63 @@
 
 
 [rerere]
-    #enabled = true
-    #autoupdate = true
-	enabled = true
-	autoupdate = true
+    enabled = true
+    autoupdate = true
 
 [diff]
-    #tool = bc3
-    #tool = p4merge
-    #tool = meld
     tool = kdiff3
-	compactionHeuristic = true
+    compactionHeuristic = true
 [merge]
-    #tool = bc3
-    #tool = p4merge
-    #tool = meld
     tool = kdiff3
     ff = no
     commit = no
 [difftool]
+    # Auto-accept file prompts when launching merge tools
     prompt = false
 [mergetool]
     # See https://gist.github.com/tdd/470582
+    # Clean up backup files created by merge tools on tool exit
+    keepBackup = false
+    # Clean up temp files created by merge tools on tool exit
+    keepTemporaries = false
+    # Put the temp files in a dedicated dir
+    writeToTemp = true
 
 # Custom diff tool for ignoring some changes in Betamax cassettes
 [difftool "betamax"]
     cmd = diff --recursive --unified=1 --color --ignore-matching-lines=' *\"recorded_at\": .*' \"$LOCAL\" \"$REMOTE\"
 
-# 	# Clean up backup files created by merge tools on tool exit
-# 	keepBackup = false
-# 	# Clean up temp files created by merge tools on tool exit
-# 	keepTemporaries = false
-# 	# Put the temp files in a dedicated dir anyway
-# 	writeToTemp = true
+# Custom diff tool for reverting patches visually in kdiff3
+[difftool "visual-revert"]
+    cmd = kdiff3 $LOCAL $REMOTE --output $MERGED
 
-	# Auto-accept file prompts when launching merge tools
-    prompt = false
-
-# [difftool "p4merge"]
-# 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
-# [mergetool "p4merge"]
-# 	path = /Applications/p4merge.app/Contents/Resources/launchp4merge
-# [difftool "bc3"]
-#     trustExitCode = true
-# [mergetool "bc3"]
-#     trustExitCode = true
-# [difftool "sourcetree"]
-# 	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
-# 	path =
-# [mergetool "sourcetree"]
-# 	cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-# 	trustExitCode = true
-[difftool "sourcetree"]
-	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
-	path = 
-[mergetool "sourcetree"]
-	cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\""
-	trustExitCode = true
 [hub]
-	host = github4-chn.cisco.com
-	host = wwwin-github.cisco.com
+    host = github4-chn.cisco.com
+    host = wwwin-github.cisco.com
 [commit]
 	template = /Users/chlong2/.stCommitMsg
+
+
+
+
+
+# Old config
+#
+# [difftool "sourcetree"]
+#   cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
+#   path =
+# [mergetool "sourcetree"]
+#   cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\""
+#   trustExitCode = true
+# [difftool "sourcetree"]
+#   cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+#   path =
+# [mergetool "sourcetree"]
+#   cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+#   trustExitCode = true
+[difftool "sourcetree"]
+	cmd = "/Applications/kdiff3.app/Contents/MacOS/kdiff3 $LOCAL $REMOTE "
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 $LOCAL $REMOTE --output $MERGED
+	trustExitCode = true

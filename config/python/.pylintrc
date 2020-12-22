@@ -68,7 +68,8 @@ disable=locally-disabled,
         misplaced-comparison-constant,
         logging-format-interpolation,
         logging-fstring-interpolation,
-        f-string-without-interpolation,
+        raise-missing-from,
+        relative-beyond-top-level,
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
