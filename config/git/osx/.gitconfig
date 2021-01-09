@@ -136,3 +136,19 @@
 [hub]
     host = github4-chn.cisco.com
     host = wwwin-github.cisco.com
+
+# Git config for the 'delta' tool for prettier git diffs
+# brew install git-delta
+# https://github.com/dandavison/delta/
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+# Git config suggestions for 'delta' from Julia Evans
+# https://jvns.ca/blog/2021/01/07/day-33--a-login-bug--a-git-trick--and-generating-yaml-files/
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+    syntax-theme = GitHub
