@@ -1,6 +1,6 @@
 [user]
-	name = Christian Long
-	email = chlong2@cisco.com
+    name = Christian Long
+    email = chlong2@cisco.com
     signingkey = 031A48F5617AF959
 [gitreview]
     username = christianmlong
@@ -8,11 +8,9 @@
     default = simple
 [core]
     editor = vim
-	excludesfile = /Users/chlong2/.gitignore_global
-    # Don't complain about extra blank lines at the
-    # end of a file.
+    excludesfile = /Users/christianmlong/.gitignore_global
+    # Don't complain about extra blank lines at the end of a file.
     whitespace = -blank-at-eof
-    ; pager = diff-so-fancy | less --tabs=4 -RFX
 
 [interactive]
     # No need to press return in interactive mode
@@ -38,16 +36,12 @@
     ddd = diff --color-words=.
     dt = difftool
     ds = diff --staged
-    # dscw = diff --staged --color-words
-    # dscw2 = diff --staged --color-words=.
     dts = difftool --staged
     mt = mergetool
     rc = rebase --continue
     lsp = log --stat -p
     # Diff with the upstream tracking branch (e.g. origin/<branch name>)
     du = diff @{u}
-    # ducw = diff --color-words @{u}
-    # ducw2 = diff --color-words=. @{u}
     dtu = difftool @{u}
     # Force push to remote
     pfu = push -f origin
@@ -73,17 +67,7 @@
     # Reference for git up alias
     # http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
     up = "!git fetch --all --prune; git merge --ff-only @{u}"
-
     ap = add --patch
-
-    # Use word diff when doing add --patch
-    apw = -c interactive.diffFilter=\"git diff --color-words\" add --patch
-
-    # Special add --patch for Betamax
-    # Doesn't work Friday, July 13, 2018
-    # apbetamax = -c interactive.diffFilter=\"diff --ignore-matching-lines=' *\"recorded_at\": .*'\" add --patch
-    # apbetamax = -c interactive.diffFilter=\"diff --ignore-matching-lines='.*recorded_at.*'\" add --patch
-
     ff = merge --ff-only
 
     # Find orphaned commits
@@ -155,30 +139,3 @@
 [hub]
     host = github4-chn.cisco.com
     host = wwwin-github.cisco.com
-[commit]
-	template = /Users/chlong2/.stCommitMsg
-
-
-
-
-
-# Old config
-#
-# [difftool "sourcetree"]
-#   cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$LOCAL\" \"$REMOTE\""
-#   path =
-# [mergetool "sourcetree"]
-#   cmd = " export PATH=\"/usr/local/opt/qt/bin:$PATH\"; /usr/local/bin/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\""
-#   trustExitCode = true
-# [difftool "sourcetree"]
-#   cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
-#   path =
-# [mergetool "sourcetree"]
-#   cmd = /usr/local/Cellar/kdiff3/0.9.98/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-#   trustExitCode = true
-[difftool "sourcetree"]
-	cmd = "/Applications/kdiff3.app/Contents/MacOS/kdiff3 $LOCAL $REMOTE "
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 $LOCAL $REMOTE --output $MERGED
-	trustExitCode = true
