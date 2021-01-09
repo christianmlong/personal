@@ -151,4 +151,5 @@
 [delta]
     features = side-by-side line-numbers decorations
     whitespace-error-style = 22 reverse
-    syntax-theme = GitHub
+    # syntax-theme = GitHub
+    syntax-theme = Solarized (light)
