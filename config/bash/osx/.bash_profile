@@ -13,19 +13,9 @@ if which jenv &> /dev/null; then
     eval "$(jenv init -)"
 fi
 
-# # Oracle Instant Client setup
-# ORACLE_HOME=$HOME/.local/bin/oracle/instantclient_11_2
-# export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ORACLE_HOME
-# export PATH=$PATH:$ORACLE_HOME
-# export TNS_ADMIN=$ORACLE_HOME/network/admin
-# # export TNS_ADMIN=$ORACLE_HOME
-
 # Homebrew path setup
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-
-# Homebrew python setup
-# export PATH="/usr/local/opt/python@2/bin:$PATH"
 
 # Setting PATH for Python 3
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
