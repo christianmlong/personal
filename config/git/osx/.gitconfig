@@ -109,6 +109,7 @@
 [diff]
     tool = kdiff3
     compactionHeuristic = true
+    colorMoved = default
 [merge]
     tool = kdiff3
     ff = no
