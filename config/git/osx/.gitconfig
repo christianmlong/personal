@@ -11,6 +11,18 @@
     excludesfile = /Users/christianmlong/.gitignore_global
     # Don't complain about extra blank lines at the end of a file.
     whitespace = -blank-at-eof
+[commit]
+    # Instead of the default commit behavior which is to remove all lines
+    # beginning with #, this 'scissors' setting adds a scissors line to the
+    # commit message in the editor, and then removes all text after the
+    # scissors line.
+    #
+    # The scissors line looks like this:
+    # ---------------->%------------------------
+    #
+    # Note however that Github doesn't render Markdown in commit messages, so
+    # don't try to get fancy ;)
+    cleanup = scissors
 
 [interactive]
     # No need to press return in interactive mode
