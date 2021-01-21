@@ -1,6 +1,6 @@
 [user]
-    name = Christian Long
-    email = chlong2@cisco.com
+	name = Christian Long
+	email = chlong2@cisco.com
     signingkey = 031A48F5617AF959
 [gitreview]
     username = christianmlong
@@ -8,7 +8,7 @@
     default = simple
 [core]
     editor = vim
-    excludesfile = /Users/christianmlong/.gitignore_global
+	excludesfile = /Users/chlong2/.gitignore_global
     # Don't complain about extra blank lines at the end of a file.
     whitespace = -blank-at-eof
 [commit]
@@ -23,6 +23,7 @@
     # Note however that Github doesn't render Markdown in commit messages, so
     # don't try to get fancy ;)
     cleanup = scissors
+	template = /Users/chlong2/.stCommitMsg
 
 [interactive]
     # No need to press return in interactive mode
@@ -166,3 +167,11 @@
     whitespace-error-style = 22 reverse
     # syntax-theme = GitHub
     syntax-theme = Solarized (light)
+
+# Automatically-added entries from SourceTree
+[difftool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
