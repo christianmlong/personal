@@ -72,3 +72,8 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
+
+# prettyprinter setup
+# Enable prettyprinter formattting automatically in all python repl sessions.
+# https://prettyprinter.readthedocs.io
+export PYTHONSTARTUP=~/python_startup.py
