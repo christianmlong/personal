@@ -1,0 +1,4 @@
+# Disable "bracketed paste" mode (which pastes as one big chunk and displays a preview of the paste)
+# https://askubuntu.com/questions/662222/why-bracketed-paste-mode-is-enabled-sporadically-in-my-terminal-screen
+# https://tiswww.cwru.edu/php/chet/readline/rluserman.html
+set enable-bracketed-paste off
