@@ -24,6 +24,9 @@ ln -s ~/projects/public-personal/config/vim/after ~/.vim/after
 ln -s ~/projects/public-personal/config/vim/ftplugin ~/.vim/ftplugin
 ln -s ~/projects/public-personal/config/vim/spell ~/.vim/spell
 
+ln -s ~/projects/public-personal/config/readline/.inputrc .inputrc
+ln -s ~/projects/public-personal/config/python/python_startup.py python_startup.py
+
 
 mkdir -p ~/.virtualenvs
 ln -s ~/projects/public-personal/config/virtualenv/postmkvirtualenv ~/.virtualenvs/postmkvirtualenv
